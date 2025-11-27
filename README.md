@@ -75,3 +75,7 @@ We welcome contributions and community involvement! Here’s how you can get inv
 ---
 
 **Thank you for checking out MAVLink ZKP Proxy! Let’s build the future of decentralized drone and IoT control together.**
+
+## Additional Design Materials
+
+For stack selections, interface sketches, data schemas, and deployment guidance, see [docs/system-plan.md](docs/system-plan.md).
