@@ -1,92 +1,50 @@
 # MAVLink ZKP Proxy
 
-> **Status: architecture and discovery.** This repository currently contains design documentation only. It does not yet contain a working proxy, proof circuit, Midnight contract, dashboard, or deployment.
+> **Current maturity: documentation only.** This repository contains no working proxy, proof circuit, Midnight contract, dashboard, or deployment.
 
-MAVLink ZKP Proxy is a proposed gateway for turning selected MAVLink telemetry into privacy-preserving claims. Instead of publishing precise telemetry to every consumer, the gateway is intended to prove narrowly defined statements—such as “the vehicle is inside an approved area” or “speed is below a limit”—and anchor auditable proof metadata through a Midnight integration.
+MAVLink ZKP Proxy is a proposed observational gateway that turns selected MAVLink telemetry into narrowly defined, privacy-preserving claims. The initial claim is that a simulated vehicle's horizontal speed is at or below a policy limit, without disclosing exact position.
 
-The project is not an autopilot, flight controller, collision-avoidance system, or replacement for a ground-control station. Flight-critical decisions must remain in systems designed and certified for that purpose.
+Zero-knowledge proofs can limit disclosure; they do not prove that telemetry reflects physical reality. Chain inclusion does not authenticate an off-chain sensor reading. Source authentication, replay controls, trustworthy time, and vehicle integrity remain separate concerns.
 
-## The problem
+## Proposed first release
 
-Raw vehicle telemetry can expose location, vehicle identity, and mission details. Operators may nevertheless need to demonstrate compliance to another party. The proposed system separates:
+The first implementation target is one deterministic, single-vehicle SITL vertical slice:
 
-- **private inputs**, such as exact position and vehicle identity;
-- **public claims**, such as a policy identifier, time window, and pass/fail result; and
-- **audit evidence**, such as a proof digest and transaction reference.
+1. ingest MAVLink 2 traffic over local UDP and preserve its trust state;
+2. normalize the required `GLOBAL_POSITION_INT` and `VFR_HUD` fields;
+3. create and independently verify one bounded-speed proof;
+4. record approved proof metadata through a deterministic mock chain adapter;
+5. show redacted lifecycle state; and
+6. replay the scenario in CI from synthetic fixtures.
 
-Zero-knowledge proofs reduce disclosure; they do not establish that a sensor reading is truthful. Source authentication, key provisioning, replay protection, and trust in the vehicle or attestation device are separate requirements.
-
-## Intended first release
-
-The first end-to-end milestone is deliberately narrow:
-
-1. ingest signed or explicitly marked-untrusted MAVLink 2 traffic from one simulated vehicle;
-2. normalize `GLOBAL_POSITION_INT` and `VFR_HUD` data into a versioned internal record;
-3. generate and locally verify a proof that horizontal speed is below a configured threshold;
-4. submit only proof metadata through a mocked Midnight adapter;
-5. display proof state without exposing exact position; and
-6. replay the flow deterministically in CI from a recorded fixture.
-
-Chain deployment, multi-vehicle consensus, arbitrary polygon proofs, autonomous command execution, production Kubernetes, and real-aircraft testing are outside this milestone.
+This MVP is observational. It has no vehicle command path and makes no flight-control, collision-avoidance, safety-critical, scalability, availability, or real-time claim.
 
 ## Proposed architecture
 
 ```text
-PX4/ArduPilot SITL
-       |
-       | MAVLink 2 over UDP (development only)
-       v
-MAVLink bridge --> policy/proof worker --> verifier --> Midnight adapter
-       |                  |                   |              |
-       +------------ event/audit API --------+--------------+
-                              |
-                         operator UI
+single SITL vehicle -> MAVLink bridge -> proof worker -> verifier
+                            |                              |
+                            +------ redacted status ------+-> mock chain adapter
 ```
 
-The bridge terminates MAVLink transport and produces a canonical record. The proof worker evaluates a versioned policy and creates a proof. Verification is a distinct trust boundary. The Midnight adapter must be replaceable with a deterministic mock so development and CI do not depend on a live network. The operator API exposes redacted views by default.
+Components are proposed boundaries, not deployed services. Development begins with a modular process or small workspace; external SDKs remain behind adapters. Technology candidates require evidence and an accepted architecture decision record (ADR) before becoming settled choices.
 
-See the [system architecture and delivery plan](docs/system-plan.md) for trust boundaries, schemas, technology decisions, security assumptions, milestones, and acceptance gates.
+## Start here
 
-## Repository layout
+The [documentation index](docs/README.md) provides audience-specific reading paths and explains document authority. Key references are:
 
-```text
-.
-├── README.md             # Product intent and contributor entry point
-├── docs/
-│   └── system-plan.md    # Architecture, scope, decisions, and delivery plan
-└── LICENSE
-```
+- [product scope](docs/product-scope.md) — MVP, deferred work, non-goals, and success measures;
+- [architecture](docs/architecture.md) — boundaries, responsibilities, data flow, and failure behavior;
+- [data and proof model](docs/data-and-proof-model.md) — telemetry units, encoding, and proof semantics;
+- [security and privacy](docs/security-and-privacy.md) — trust assumptions, threats, controls, and safety boundary;
+- [delivery plan](docs/delivery-plan.md) — phases, evidence, owners, and the next implementation step;
+- [testing and operations](docs/testing-and-operations.md) — validation layers and readiness gates; and
+- [decision register](docs/decisions.md) — proposed, open, deferred, and accepted decisions.
 
-The target source layout is documented rather than pre-created so that the first implementation pull request can establish workspace tooling and ownership deliberately.
+## Contributing during discovery
 
-## Current decisions and open questions
+Useful contributions are reviews, synthetic fixtures, compatibility experiments, schema proposals, threat-model corrections, and evidence-backed ADRs. Do not describe proposed behavior as implemented. Code changes should update the relevant requirements, tests, and decision evidence.
 
-| Area | Current direction | Status |
-| --- | --- | --- |
-| Core services | Rust workspace | Proposed; validate with a vertical slice |
-| Development telemetry | ArduPilot or PX4 SITL over UDP | Proposed |
-| Service contracts | Protobuf/gRPC internally; HTTP/WebSocket at the UI boundary | Proposed |
-| Proof system | Benchmark candidates before selecting a proving system | Open |
-| Midnight integration | Adapter plus deterministic mock first | Proposed; SDK/contract details require validation |
-| Persistence | PostgreSQL metadata; object storage only when retention requires it | Deferred until after the vertical slice |
+## Safety and license
 
-Open design decisions must be resolved with short architecture decision records (ADRs), including measured evidence where performance or compatibility drives the choice.
-
-## Definition of done for the documentation phase
-
-Documentation is ready to hand to implementation teams when:
-
-- every phase has measurable entry and exit criteria;
-- the canonical schema and public/private proof inputs are versioned and reviewed;
-- the threat model identifies owners and mitigations for high-risk threats;
-- proof-system and Midnight compatibility spikes are recorded as ADRs;
-- privacy, retention, and key-management owners are named; and
-- CI commands and supported tool versions are pinned in the implementation scaffold.
-
-## Contributing now
-
-At this stage, useful contributions are design reviews, threat-model corrections, small compatibility experiments, schema proposals, and ADRs. Please avoid presenting proposed behavior as implemented behavior. A change that adds code should include tests, operational documentation, and an update to the relevant decision or milestone.
-
-## Safety and licensing
-
-Use simulation and controlled test environments until the safety and security gates in the system plan are met. Do not connect an experimental build to a flight-critical command path. The project is available under the [MIT License](LICENSE).
+Use simulation and controlled test environments only. Do not connect an experimental build to a flight-critical command path. Hardware work requires the gates in the [delivery plan](docs/delivery-plan.md). This project uses the [MIT License](LICENSE).
