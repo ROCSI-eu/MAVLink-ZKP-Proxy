@@ -37,7 +37,7 @@ The repository name and any eventual product name are branding concerns, not imp
 | --- | --- |
 | Vehicle/SITL source | Emits telemetry; is not implicitly trusted |
 | Operator | Observes redacted lifecycle and failures |
-| Auditor/relying party | Evaluates approved proof metadata and verification outcome |
+| Auditor/relying party | Evaluates the typed verifier result and independently owns any business accept/reject decision |
 | Product owner | Owns purpose, disclosures, and acceptance |
 | Engineering/cryptography/security | Implement and validate boundaries within their disciplines |
 | Service owner/SRE | Owns measured operating limits after a runnable system exists |
@@ -109,13 +109,13 @@ All three gates preserve the SITL-only, no-command, privacy, snapshot-limitation
 - An explicit assurance tier on every policy and verification result, governed by the [telemetry assurance model](security-and-privacy.md#telemetry-assurance-model); the product must fail closed on missing or insufficient tiers and must not present low-assurance evidence as physical or regulatory compliance.
 - Versioned normalized telemetry, deterministic fixtures, and deterministic encoding requirements.
 - One proof that horizontal speed in centimetres per second is at or below a public policy maximum.
-- Independent local verification including version, policy, expiry, and replay checks.
+- Independent local verification that reports separate cryptographic, policy, freshness, revocation, replay, assurance, and optional publication dimensions; any aggregate disposition is derived and no business decision is verifier-produced.
 - A replaceable chain adapter and offline deterministic mock; no live-chain dependency in default CI.
 - Redacted lifecycle status and an append-only audit event model.
 
 ## Integration product: initial relying-party workflow
 
-The initial integration product is a **machine-to-machine evidence path**, not a dashboard product. A provider gateway submits one self-contained bounded-speed claim package; the relying party's service obtains or receives its independently reproducible verification result and records its own accept/reject decision. A minimal operator view MAY expose the same redacted status and recovery actions, but rich search, analytics, workflow builders, policy authoring, and fleet administration are deferred. The proof package and verifier remain usable without the hosted service as required by the independent-verifier architecture.
+The initial integration product is a **machine-to-machine evidence path**, not a dashboard product. The verifier output follows the normative typed result model: proof validity remains visible when policy, replay, assurance, or receipt checks do not pass. A relying party’s accept/reject of the inspection deliverable is a separate business record made under its own authority; neither the verifier nor a convenience service disposition produces it. A provider gateway submits one self-contained bounded-speed claim package; the relying party's service obtains or receives its independently reproducible verification result and records its own accept/reject decision. A minimal operator view MAY expose the same redacted status and recovery actions, but rich search, analytics, workflow builders, policy authoring, and fleet administration are deferred. The proof package and verifier remain usable without the hosted service as required by the independent-verifier architecture.
 
 ### Minimum integration surfaces
 

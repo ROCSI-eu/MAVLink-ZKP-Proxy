@@ -60,7 +60,7 @@ The canonical public-input sequence is the registered `statement_id` sequence. I
 
 ### Optional ledger receipt
 
-When present, `ledger_receipt` is exactly `{"ledger_id": text, "transaction_id": text, "recorded_at": uint, "payload_digest": bstr, "finality": text, "proof": bstr}`. The registered ledger profile defines canonical transaction identifiers, the digest algorithm, `finality` values, and receipt-proof verification. `payload_digest` MUST bind the canonical envelope with `ledger_receipt` omitted, preventing recursion. A receipt is corroborating submission/order evidence only: it neither repairs an invalid claim nor establishes sensor truth, freshness before submission, or proof validity. Receipt failure is reported as receipt metadata alongside the primary outcome unless policy requires a valid receipt; under such a policy, cryptographically bad or inconsistent receipts are `invalid`, revoked ledger trust is `revoked`, and an unavailable ledger dependency is `temporarily_unverifiable`.
+When present, `ledger_receipt` is exactly `{"ledger_id": text, "transaction_id": text, "recorded_at": uint, "payload_digest": bstr, "finality": text, "proof": bstr}`. The registered ledger profile defines canonical transaction identifiers, the digest algorithm, `finality` values, and receipt-proof verification. `payload_digest` MUST bind the canonical envelope with `ledger_receipt` omitted, preventing recursion. A receipt is corroborating submission/order evidence only: it neither repairs an invalid claim nor establishes sensor truth, freshness before submission, or proof validity. Receipt verification and finality are reported only in the publication dimension. A policy that requires publication evaluates that dimension when deriving `policy_acceptance`; it MUST NOT rewrite `envelope_evaluation`. In particular, an absent or unavailable optional publication service never changes a cryptographically `valid` envelope into `invalid` or any other cryptographic value.
 
 ## Public disclosure and binding rules
 
@@ -68,24 +68,71 @@ The canonical envelope is public-disclosure material. Producers MUST use an expl
 
 Policy artifacts MUST state the permitted statement and suite versions, assurance tiers, public-input names and bounds, validity duration and clock/skew rules, accepted domains, key status, revocation source/freshness, nullifier retention scope, proof-reference rules, and any ledger requirement. Clock/skew rules MUST NOT reinterpret version 1's endpoint inclusivity: any tolerance is an explicit, independently tested input to the currency calculation. A relying party that requires different endpoint semantics needs a reviewed, versioned contract that cannot be represented by reinterpreting a version 1 envelope. Envelope `policy_ref.digest` and `verification_key_id.digest` MUST be compared in constant time after length validation. A policy or key selected only by a mutable name is insufficient.
 
-Before proof verification, the verifier MUST authenticate and integrity-check the referenced policy, verification key, suite parameters, and revocation state. It MUST evaluate at an explicit integer `decision_time` from its configured clock authority. Subject to the policy's explicit skew calculation, an envelope is current exactly when `not_before <= decision_time < not_after`: equality at `not_before` is current and equality at `not_after` is expired. Nullifier uniqueness MUST be checked and recorded atomically in a durable store scoped by domain, policy, and statement. A nullifier is recorded only after all required checks succeed; concurrent attempts MUST yield at most one `valid` result.
+Before proof verification, the verifier MUST authenticate and integrity-check the referenced policy, verification key, suite parameters, and revocation state. It MUST evaluate at an explicit integer `decision_time` from its configured clock authority. Subject to the policy's explicit skew calculation, an envelope is current exactly when `not_before <= decision_time < not_after`: equality at `not_before` is current and equality at `not_after` is expired. Nullifier uniqueness MUST be checked and recorded atomically in a durable store scoped by domain, policy, and statement. A nullifier is recorded only after all required checks succeed; concurrent attempts MUST yield at most one `replay=accepted` result.
 
-## Verifier outcomes
+## Typed verifier result model
 
-A verifier returns exactly one primary outcome code plus a non-sensitive reason code, evaluated facts (including `decision_time` and policy/key digests), and receipt status when applicable. It MUST NOT expose witnesses or secrets in diagnostics. Outcomes are deterministic for the same envelope and the same authenticated policy, keys, revocation snapshot, replay state, decision time, and dependency results.
+This section defines the public verifier-result contract. A verifier returns the following independent, typed dimensions, non-sensitive reason codes, and evaluated facts (including `decision_time`, authenticated artifact digests, and snapshot identifiers). It MUST NOT expose witnesses or secrets. Every dimension is deterministic for the same envelope and authenticated policy, keys, revocation snapshot, replay state, decision time, and dependency results.
 
-| Outcome | Required use |
+A result MUST contain `envelope_evaluation`, `policy_acceptance`, `freshness`, `revocation`, `replay`, and `assurance`. It MUST contain `publication` when a receipt is present, publication is required by policy, or publication was attempted. `service_disposition` MAY be emitted only as the derived convenience value defined below. A verifier result MUST NOT contain a relying-party business decision.
+
+### Envelope and cryptographic evaluation
+
+`envelope_evaluation` has exactly one value:
+
+| Value | Meaning |
 | --- | --- |
-| `valid` | Canonical/schema checks, version support, disclosure policy, domain, time, artifact authentication, revocation, replay, proof, and required receipt checks all pass, and the nullifier is atomically accepted. |
-| `invalid` | A supported, well-formed claim fails a cryptographic or binding check, uses a wrong domain/policy/key, violates disclosure or policy constraints, has altered public inputs, or has a bad proof/reference/required receipt. |
-| `expired` | The authenticated claim is outside its half-open permitted time: `decision_time >= not_after` (or violates the policy's explicit maximum-age/skew rule). A not-yet-valid claim (`decision_time < not_before`) also uses `expired` with reason `NOT_YET_VALID`; equality at `not_before` is not expired. |
-| `replayed` | The nullifier is already accepted in the applicable durable replay scope, including a losing concurrent submission. |
-| `revoked` | An otherwise addressable policy, verification key, proof suite/parameters, issuer authorization, or policy-required ledger trust anchor is revoked at the decision time. |
-| `unsupported` | The canonical envelope uses an unsupported envelope/statement/suite version, assurance tier, registered algorithm, content type, or optional feature. It does not mean a supported proof failed. |
-| `malformed` | Bytes are not canonical CBOR or violate structural schema, types, lengths, ranges, required/exclusive fields, UTF-8/NFC, or unknown-field rules. No network lookup or proof verification SHOULD occur. |
-| `temporarily_unverifiable` | Required authenticated material, replay storage, clock/revocation freshness, referenced proof, or policy-required ledger service is transiently unavailable and no definitive negative result is known. This outcome MUST NOT be cached or represented as valid. |
+| `malformed` | Bytes fail canonical decoding or the structural schema, types, lengths, ranges, required/exclusive-field, UTF-8/NFC, or unknown-field rules. No network lookup or proof verification SHOULD occur. |
+| `unsupported` | The canonical envelope uses an unsupported envelope/statement/suite version, registered algorithm, content type, or optional cryptographic feature. |
+| `invalid` | A supported, well-formed envelope fails proof parsing or verification, canonical public-input reconstruction, commitment/nullifier binding, domain separation, or policy/key identifier binding. |
+| `temporarily_unverifiable` | A proof reference or authenticated cryptographic artifact required to finish this evaluation is transiently unavailable and no definitive negative is known. |
+| `valid` | Canonical/schema, version, binding, authenticated cryptographic-artifact, and proof checks pass. This says nothing about current policy acceptance, freshness, revocation, replay, assurance sufficiency, publication, or a business decision. |
 
-Outcome precedence is: `malformed`, `unsupported`, `invalid` for locally decidable policy/binding violations other than currency, `expired`, `revoked`, `replayed`, cryptographic `invalid`, `temporarily_unverifiable`, then `valid`. Thus a structurally valid, supported, correctly bound claim at `decision_time == not_after` returns `expired`, unless a higher-precedence failure also applies; an implementation MUST NOT report that boundary as policy `invalid`. Implementations SHOULD continue safe local checks when useful but MUST return the highest-precedence applicable result and MUST NOT fetch attacker-selected resources before structural, version, domain, and policy-reference checks. No outcome other than `valid` authorizes the claimed action; retry is appropriate only for `temporarily_unverifiable`, or after the relevant inputs/state have deliberately changed.
+If more than one condition is observed, precedence is `malformed` > `unsupported` > `invalid` > `temporarily_unverifiable` > `valid`. Verifiers MUST perform safe local checks first and MUST NOT fetch attacker-selected resources before structural, version, domain, and policy-reference checks.
+
+### Acceptance dimensions
+
+Each acceptance dimension has its own closed value set and precedence. A lower-precedence positive value MUST NOT hide a higher-precedence failure or indeterminate value.
+
+| Dimension | Values in highest-to-lowest precedence | Normative rule |
+| --- | --- | --- |
+| `policy_acceptance` | `rejected` > `temporarily_unverifiable` > `accepted` | `rejected` covers a locally decidable violation of the authenticated policy, including disclosure, domain, version combination, required-publication, or other eligibility rules. Missing/stale authenticated policy material is `temporarily_unverifiable`. Proof validity never overrides rejection. |
+| `freshness` | `not_yet_valid` > `expired` > `temporarily_unverifiable` > `current` | Before `not_before` is `not_yet_valid`; at or after `not_after`, or outside an explicit maximum-age/skew rule, is `expired`; missing trustworthy clock state is `temporarily_unverifiable`; otherwise it is `current`. If inconsistent clock facts make both temporal negatives observable, `not_yet_valid` takes precedence and a diagnostic MUST record the inconsistency. |
+| `revocation` | `revoked` > `temporarily_unverifiable` > `not_revoked` | Any applicable revoked policy, key, suite/parameters, issuer authorization, or required publication trust anchor is `revoked`. Missing or stale required revocation evidence is `temporarily_unverifiable`; otherwise it is `not_revoked`. |
+| `replay` | `replayed` > `temporarily_unverifiable` > `accepted` | An already accepted nullifier, including the losing concurrent submission, is `replayed`. Unavailable durable replay state is `temporarily_unverifiable`; otherwise atomic insertion yields `accepted`. |
+
+Replay insertion MUST occur only when `envelope_evaluation=valid`, policy/freshness/revocation are positive, and assurance is sufficient. Concurrent attempts MUST yield at most one `replay=accepted`. This ordering avoids consuming a nullifier for evidence that could not otherwise be accepted.
+
+### Assurance dimension
+
+`assurance` is exactly `{"declared_tier": uint, "effective_tier": uint / "unavailable", "tier_sufficiency": text}`. `declared_tier` repeats the bound envelope claim and is never described as verifier-computed. `effective_tier` is the highest tier justified by authenticated source, policy, key, and attestation evidence under the applicable assurance registry; it MUST be `unavailable` when that evidence cannot be authenticated or evaluated. It MUST NOT exceed `declared_tier`.
+
+`tier_sufficiency` has precedence `insufficient` > `temporarily_unverifiable` > `sufficient`. It is `insufficient` when a known effective tier is below the policy-required tier or the declared tier is disallowed; `temporarily_unverifiable` when the effective tier or requirement cannot be determined; otherwise it is `sufficient`. A cryptographically valid proof can therefore carry insufficient assurance without becoming cryptographically invalid.
+
+### Optional publication dimension
+
+`publication` is exactly `{"requirement": text, "receipt_verification": text, "finality": text}`:
+
+- `requirement` is `optional` or `required` according to authenticated policy;
+- `receipt_verification` precedence is `invalid` > `temporarily_unverifiable` > `valid` > `not_present`; and
+- `finality` precedence is `failed` > `temporarily_unverifiable` > `pending` > `final` > `not_applicable`.
+
+A malformed, inconsistent, or cryptographically bad receipt is `receipt_verification=invalid`. A dependency outage is `temporarily_unverifiable`; a verified receipt is `valid`; absence is `not_present`. Finality is `not_applicable` without a verified receipt or when the ledger profile has no finality concept, `pending` before the required level, `final` at that level, `failed` for a definitive reorganization/rejection, and `temporarily_unverifiable` when finality cannot currently be established. Receipt validity and finality do not establish envelope validity. Most importantly, unavailable optional publication MUST leave `envelope_evaluation` unchanged and cannot by itself prevent acceptance; when publication is required, its negative or indeterminate state is reflected in `policy_acceptance` and the derived disposition.
+
+### Derived service disposition
+
+A service MAY expose `service_disposition` for routing or legacy clients, but it is not the proof result and MUST be recomputed solely from the typed dimensions. It has the following cross-dimension precedence:
+
+1. `malformed`, `unsupported`, `cryptographically_invalid`, or `temporarily_unverifiable`, corresponding to the non-`valid` `envelope_evaluation` value;
+2. `rejected` if policy is `rejected`, freshness is `not_yet_valid`/`expired`, revocation is `revoked`, replay is `replayed`, assurance is `insufficient`, or required publication is definitively unsatisfied;
+3. `temporarily_unverifiable` if any required acceptance, assurance, replay, or publication check is `temporarily_unverifiable`;
+4. `accepted` only when the envelope is valid, every required acceptance dimension is positive, assurance is sufficient, and required publication (if any) is verified at required finality.
+
+Optional publication values, including `invalid`, `failed`, `pending`, `temporarily_unverifiable`, and `not_present`, are diagnostic only and MUST be ignored when deriving disposition. Reason codes identify every contributing dimension rather than collapsing them into the convenience value. No value, including `accepted`, authorizes an action.
+
+### External relying-party business decision
+
+Whether to accept a deliverable, make a payment, open a gate, initiate an investigation, or take any other business action is an explicitly external relying-party decision. It may consider the verifier result alongside contracts, identity, operational evidence, risk tolerance, and human review. The cryptographic verifier MUST NOT produce, infer, default, or serialize that decision. If an application records it, the record MUST use a separate schema, authority, timestamp, and audit trail and MUST preserve the complete verifier result it considered. Thus `envelope_evaluation=valid` and even `service_disposition=accepted` can coexist with an external `business_decision=rejected`.
 
 ## Registries and conformance
 

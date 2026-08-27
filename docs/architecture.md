@@ -31,7 +31,7 @@ Begin as a modular process or small workspace. Separate deployment units, broker
 | --- | --- | --- |
 | MAVLink bridge | Transport, frame parsing, allowlist, signature result, trust classification, normalization, sequence-gap metrics | Policy decisions, proof keys, chain submission |
 | Proof worker | Immutable policy lookup, witness construction, proof generation, sensitive-input lifecycle | MAVLink parsing, operator authorization, direct chain access |
-| Verifier | Public-input reconstruction, proof verification, expiry and replay policy, verification result | Private witness access |
+| Verifier | Public-input reconstruction; typed cryptographic, policy, freshness, revocation, replay, and assurance evaluations; optional receipt verification | Private witness access or a relying-party business decision |
 | Chain adapter | Idempotent submission, external translation, mock/live implementations, transaction/finality state | Raw telemetry or witness storage |
 | Operator API/UI | Authentication/authorization boundary, redaction, lifecycle views, audit queries | Bridge sockets, private inputs, proving keys |
 | Metadata/audit port | Policies, lifecycle events, idempotency and uniqueness records | Raw telemetry by default |
@@ -43,7 +43,7 @@ These are logical components, not a requirement for multiple services.
 1. The bridge captures peer metadata, system/component IDs, sequence, parser result, signature result, and receive time.
 2. Allowlisted messages update one short-lived source snapshot. A record is emitted only when freshness and source-consistency rules pass.
 3. The proof worker obtains an immutable policy by digest, constructs the witness, and releases sensitive material after proving.
-4. The verifier reconstructs public inputs and checks proof validity, accepted versions, policy status, expiry policy, and nullifier uniqueness.
+4. The verifier reconstructs public inputs and returns the independent typed cryptographic, policy, freshness, revocation, replay, assurance, and optional publication dimensions; it does not make the relying party's business decision.
 5. Only after verification, the adapter submits an idempotency key and approved public metadata.
 6. The operator boundary receives redacted state; it never receives exact coordinates or witness material.
 
@@ -133,14 +133,14 @@ RECEIVED -> PROVING -> PROVED -> VERIFIED -> SUBMITTED -> FINALIZED
                   \-> FAILED     \-> REJECTED     \-> SUBMISSION_FAILED
 ```
 
-Transitions are monotonic; retries add attempt metadata rather than moving finalized state backward. Verification and publication are separate dimensions: `VERIFIED` records the cryptographic/policy result, while `SUBMITTED` and `FINALIZED` describe only the optional adapter outcome. Error output MUST use stable codes and exclude restricted data. Mutations require idempotency keys and requests use opaque correlation IDs.
+Transitions are monotonic; retries add attempt metadata rather than moving finalized state backward. `VERIFIED` means a typed verifier result was recorded, not that every dimension passed. Publication remains separate: `SUBMITTED` and `FINALIZED` describe only the optional adapter outcome and never rewrite `envelope_evaluation`. Any `service_disposition` is derived convenience data. The relying party records its business decision through a separate application schema and authority; the verifier never produces it. Error output MUST use stable codes and exclude restricted data. Mutations require idempotency keys and requests use opaque correlation IDs.
 
 The following operations define behavior, not a commitment to HTTP, gRPC, or particular paths:
 
 | Illustrative operation | Input and authorization | Result and invariant |
 | --- | --- | --- |
 | `SubmitClaim` | Provider-submitter credential, opaque idempotency key/correlation ID, canonical proof package, reviewed public inputs and all independently interpreted versions, policy reference, and opaque caller reference. | Creates or returns exactly one claim resource. It rejects raw telemetry/witness fields, conflicting reuse of the key, unsupported version combinations, unauthorized policy scope, and oversize input before proving success is implied. |
-| `GetClaimStatus` | Claim ID and a submitter, relying-party, or reviewer credential scoped to that claim/tenant. | Returns the redacted lifecycle, verification outcome, safe error code, expiry, version identifiers, and publication state. Restricted values and private inputs are absent; not-found and not-authorized responses SHOULD resist cross-tenant enumeration. |
+| `GetClaimStatus` | Claim ID and a submitter, relying-party, or reviewer credential scoped to that claim/tenant. | Returns the redacted lifecycle, typed verifier dimensions, any derived service disposition, safe reason codes, expiry, version identifiers, and publication state. Restricted values and private inputs are absent; not-found and not-authorized responses SHOULD resist cross-tenant enumeration. |
 | `GetVerificationPackage` | Claim ID and relying-party-verifier permission. | Returns only the self-contained proof, canonical approved public inputs, authenticated verification artifacts or immutable references, and compatibility/status material necessary for independent verification. It never returns a vendor interpretation in place of verifiable inputs. |
 | `StreamLifecycleEvents` | Authorized webhook subscription or event cursor with a tenant, event-type, and purpose scope. | Emits redacted immutable events with unique IDs and monotonic per-resource ordering metadata. Delivery is at least once; duplicate and out-of-order cross-resource delivery is expected, and API state is authoritative. |
 | `ExportAuditEvents` | Auditor permission plus bounded tenant, time/cursor, and purpose parameters. | Produces a paginated JSON Lines-equivalent stream of allowlisted events and integrity/ordering metadata. Export creation and access are audited; no raw telemetry, witness, exact protected values, secrets, or stable source identity is serialized. |
@@ -149,7 +149,7 @@ The following operations define behavior, not a commitment to HTTP, gRPC, or par
 
 The wire contract has an explicit major version, while schema, claim, circuit, policy, encoding/domain, and proof-system versions remain separate fields. A compatibility document enumerates supported combinations; missing, unknown, revoked, or incompatible security-relevant versions fail closed without conversion. Within a major API version only additive optional fields are allowed, and deprecation/sunset metadata precedes removal.
 
-Errors have a transport status and a structured safe body with stable code, retryable flag, opaque correlation ID, and optional field pointer. At minimum, the contract distinguishes unauthenticated, unauthorized, malformed, unsupported-version, policy-ineligible, verification-rejected, idempotency-conflict, rate-limited, dependency-unavailable, and internal failures. `REJECTED` is a completed negative verification outcome, not a transient service error. `FAILED` never aliases acceptance, and adapter failure never rewrites `VERIFIED`.
+Errors have a transport status and a structured safe body with stable code, retryable flag, opaque correlation ID, and optional field pointer. At minimum, the contract distinguishes unauthenticated, unauthorized, malformed, unsupported-version, policy-ineligible, verification-rejected, idempotency-conflict, rate-limited, dependency-unavailable, and internal failures. `REJECTED` is a completed negative derived service disposition, not a cryptographic outcome or transient service error. `FAILED` never aliases acceptance, and adapter failure never rewrites `VERIFIED`.
 
 Submission, status, webhook delivery, and export have separately published per-tenant and per-credential quotas, concurrency/payload bounds, and retry guidance. A throttle supplies `Retry-After`; clients use bounded jittered backoff and preserve the idempotency key. Numeric limits remain **Open** pending measurement, but implementations and contract tests MUST exercise throttling and recovery rather than promise an unbounded or “real-time” service.
 
