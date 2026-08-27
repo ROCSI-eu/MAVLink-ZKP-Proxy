@@ -31,6 +31,7 @@ Roles identify accountability until named people are assigned. Review triggers a
 | --- | --- |
 | New contributor | Root [README](../README.md) → [product scope](product-scope.md) → [delivery plan](delivery-plan.md) |
 | Product or safety | [Product scope](product-scope.md) → [security and privacy](security-and-privacy.md) → [delivery plan](delivery-plan.md) |
+| Commercial/product strategy | [Product scope](product-scope.md) → [commercial model](commercial-model.md) → [architecture](architecture.md) |
 | Engineering/platform | [Architecture](architecture.md) → [data and proof model](data-and-proof-model.md) → [testing and operations](testing-and-operations.md) |
 | Cryptography | [Data and proof model](data-and-proof-model.md) → [security and privacy](security-and-privacy.md) → [decisions](decisions.md) |
 | Security/privacy | [Security and privacy](security-and-privacy.md) → [data and proof model](data-and-proof-model.md) → [testing and operations](testing-and-operations.md) |
@@ -46,6 +47,7 @@ Roles identify accountability until named people are assigned. Review triggers a
 | [Security and privacy](security-and-privacy.md) | Assets, trust assumptions, threats, controls, data handling, safety boundary | Security lead |
 | [Delivery plan](delivery-plan.md) | Phases, dependencies, evidence, acceptance, definition of done | Delivery lead |
 | [Testing and operations](testing-and-operations.md) | Test layers, benchmarks, observability, deployment/readiness gates | Service owner/SRE |
+| [Commercial model](commercial-model.md) | Open-core boundary, optional managed capabilities, and edition compatibility | Product owner |
 | [Decision register](decisions.md) | Decision state, ADR process, accountable deciders | Architecture lead |
 
 ## Maintenance rules
