@@ -80,6 +80,7 @@ If any criterion is missed, the gate remains closed: narrow or change the workfl
 - One vehicle in a local SITL environment and one operator workflow.
 - MAVLink 2 ingestion over development-only UDP, with an allowlist for `GLOBAL_POSITION_INT` and `VFR_HUD`.
 - Explicit source trust state; unsigned or invalidly signed input never silently becomes trusted.
+- An explicit assurance tier on every policy and verification result, governed by the [telemetry assurance model](security-and-privacy.md#telemetry-assurance-model); the product must fail closed on missing or insufficient tiers and must not present low-assurance evidence as physical or regulatory compliance.
 - Versioned normalized telemetry, deterministic fixtures, and deterministic encoding requirements.
 - One proof that horizontal speed in centimetres per second is at or below a public policy maximum.
 - Independent local verification including version, policy, expiry, and replay checks.
