@@ -21,6 +21,7 @@ Store the first accepted ADR under `docs/adr/NNNN-short-title.md` and add it to 
 | Topic | State | Due gate | Accountable owner | Required reviewers | Required evidence |
 | --- | --- | --- | --- | --- | --- |
 | Observational, single-vehicle SITL MVP with no command path | Proposed scope baseline | Phase 0 exit | Product owner | Safety owner | Scope and hazard-boundary review |
+| Beachhead: industrial-site inspection speed-policy evidence; buyer is the drone provider's compliance director, producer is its flight-operations gateway, and relying party is the site owner's contract-compliance officer | Selected for discovery; not commercially validated | Before broad implementation or Phase 1 entry | Product owner | Buyer, relying-party, privacy, and safety representatives | Product-scope commercial validation gate: interview record, two written design-partner commitments, at least six successful workflow demonstrations, disclosure review, and purchasing evidence |
 | Initial SITL/autopilot, dialect, message and signing profile | Open | Phase 1 entry | Telemetry lead | — | Executable compatibility matrix and fixture |
 | Canonical schema, encoding, commitment fields and snapshot freshness | Open | Phase 1 exit / Phase 2 entry | Architecture lead | Cryptography and security leads | Reviewed specification and golden vectors |
 | Trust-state claim eligibility | Open | Phase 1 exit | Security lead | — | Threat analysis and signed/unsigned/invalid tests |
