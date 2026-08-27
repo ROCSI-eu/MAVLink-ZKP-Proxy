@@ -37,6 +37,12 @@ For every case, assertions MUST cover the externally visible outcome/reason and 
 
 ## Claim-envelope interoperability
 
+Interoperability evidence is staged so that early discovery does not imply a stable contract:
+
+1. **Phase 0 discovery/spike:** one reference codec plus an independently authored lightweight decoder or vector checker MUST consume the format-spike fixtures and detect the specified canonical-encoding, field, public-input-ordering, mutation, and typed-outcome failures. The checker MAY be throwaway and MAY use the same language as the reference codec. The released-corpus requirements below do not block synthetic discovery fixtures, paper/non-cryptographic prototypes, or an intentionally disposable schema spike.
+2. **Released interoperable envelope/public API:** before an envelope is described as released or interoperable, or its public API as stable, at least two genuinely independent implementations in different languages MUST pass the released vector corpus. They MUST share neither an envelope codec nor verification business-logic library. This two-language requirement remains a release gate, not a Phase 0 entry requirement.
+3. **Proof-system/edition compatibility:** before claiming cross-proof-system or cross-edition verification, independent implementations MUST exchange and verify the corresponding proofs and public inputs in every claimed direction and pass the applicable version, suite, key, and negative vectors. Evidence for one proof system or edition MUST NOT be generalized into a compatibility claim for another.
+
 Every supported envelope major/minor, statement, proof suite, assurance tier, policy schema, and ledger profile MUST have a version-controlled golden-vector set. Each vector bundle MUST contain:
 
 - a human-readable case manifest and the exact canonical CBOR envelope bytes;
@@ -49,7 +55,7 @@ Privacy vectors MUST cover every `A0`–`A5` evidence row and assert that privat
 
 Positive vectors MUST cover attached and referenced proofs and optional receipt absence/presence. Boundary vectors MUST include distinct equality-at-`not_before`, equality-at-`not_after`, just-before, and just-after cases for each endpoint, with expected results demonstrating `not_before <= decision_time < not_after`; they MUST also cover permitted skew without changing endpoint inclusivity, assurance tiers, integer and length bounds, and equality in the proved predicate. Empty and inverted window vectors MUST be rejected as `malformed`. Vectors MUST independently cover every value and precedence collision in the [typed verifier result model](claim-envelope.md#typed-verifier-result-model). Required cross-dimension vectors are: valid proof with policy rejection; valid proof with replay; valid proof with an invalid optional receipt while cryptographic evaluation remains valid; valid proof with insufficient effective assurance; and verifier-valid/service-accepted evidence followed by a separately authored relying-party business rejection. They MUST also show that absent or unavailable optional publication does not change cryptographic validity or derived acceptance, while an unavailable policy-required publication makes policy acceptance/disposition indeterminate without rewriting cryptographic evaluation. They MUST also cover non-minimal CBOR, reordered/non-canonical maps, duplicate/unknown/missing fields, invalid UTF-8/NFC, forbidden null/float/tag/indefinite values, altered domain/policy/key/public input/commitment/nullifier/proof, proof-reference size and digest mismatch, disclosure-policy violations, concurrent replay, revoked or stale artifacts, and unavailable dependencies. Mutation cases MUST change one property at a time where possible.
 
-At least two independently maintained implementations in different languages, with no shared envelope codec or verification business-logic library, MUST consume the same checked-in vectors. Each implementation MUST:
+For the released-envelope/public-API gate, the two independent, different-language implementations MUST consume the same checked-in vectors. Each implementation MUST:
 
 1. decode accepted bytes and re-encode byte-for-byte identically;
 2. reconstruct identical public-input bytes without prover-supplied ordering;
