@@ -26,7 +26,8 @@ Store the first accepted ADR under `docs/adr/NNNN-short-title.md` and add it to 
 | Canonical schema, encoding, commitment fields and snapshot freshness | Open | Phase 1 exit / Phase 2 entry | Architecture lead | Cryptography and security leads | Reviewed specification and golden vectors |
 | Trust-state claim eligibility | Open | Phase 1 exit | Security lead | — | Threat analysis and signed/unsigned/invalid tests |
 | Proof system, circuit toolchain, setup and key lifecycle | Open | Phase 2 exit | Cryptography lead | Security lead | Benchmark/compatibility ADR and independent review |
-| Clock authority, skew/window and replay policy | Open | Phase 2 exit | Security lead | — | Threat analysis, restart and negative tests |
+| Envelope version 1 validity-window boundary semantics | Current; [ADR-0001](adr/0001-half-open-validity-windows.md) | Before envelope v1 and canonical-vector freeze | Cryptography lead | Security lead | Cross-document review; boundary golden-vector requirements; no contrary relying-party requirement recorded |
+| Clock authority, skew tolerance values and replay policy | Open | Phase 2 exit | Security lead | — | Threat analysis, restart and negative tests |
 | Internal/API contract technology | Open | Before public API implementation | Architecture lead | — | Compatibility/ergonomics spike and contract tests |
 | Rust/Tokio and MAVLink library | Proposed candidate | Phase 0/1 | Engineering lead | Telemetry lead | Maintained-library review, signing compatibility, fuzz/benchmark result |
 | UI technology and event transport | Proposed candidate | Phase 3 | Engineering lead | — | Auth/redaction/accessibility design evidence |
@@ -82,7 +83,7 @@ The canonical claim, public-input ordering, proof bytes, policy/key selection, c
 
 ## Current invariants versus decisions
 
-The only `Current` claims concern repository reality and documentation governance: the repository is documentation-only, this register is the decision process, and no implementation ADR exists. MVP scope and architecture are Proposed constraints to guide the first implementation; they become accepted decisions only through accountable review. Open items block their stated gates. Deferred items are not implied future commitments.
+The `Current` claims concern repository reality, documentation governance, and the envelope version 1 validity-window semantics in ADR-0001: the repository is documentation-only, this register is the decision process, and no implementation-technology ADR exists. MVP scope and architecture are Proposed constraints to guide the first implementation; they become accepted decisions only through accountable review. Open items block their stated gates. Deferred items are not implied future commitments.
 
 ## Validation and related documents
 

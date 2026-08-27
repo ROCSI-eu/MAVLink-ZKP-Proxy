@@ -55,7 +55,7 @@ This JSON is not the proof encoding and its values do not define production iden
 
 Before circuit implementation, a versioned specification MUST define field order, widths, signedness, bounds, absence semantics, byte order, byte-to-field conversion, field-reduction rejection, hash/commitment parameters, and domain-separation tags. Floating-point proof inputs are prohibited. Golden vectors MUST cover minimum, maximum, negative where allowed, overflow, absent, malformed, and cross-language cases.
 
-A record commitment binds every field needed to interpret the claim, including schema/circuit version, policy digest, trust state where eligibility depends on it, speed, source commitment, nonce, and approved time-window representation. The final bound-field list remains **Open** pending privacy and circuit review.
+A record commitment binds every field needed to interpret the claim, including schema/circuit version, policy digest, trust state where eligibility depends on it, speed, source commitment, nonce, and the version 1 half-open time-window representation `[not_before, not_after)`. The final bound-field list remains **Open** pending privacy and circuit review.
 
 ## First proof statement
 
@@ -100,7 +100,7 @@ Policy status has the following closed state model:
 | `revoked` | Withdrawn by an authorized, signed revocation, normally for compromise, defect, or invalid approval. It MUST NOT authorize a verification decision at or after the revocation's effective time. Revocation has no implicit end. |
 | `expired` | The decision time is at or after `not_after`. It MUST NOT authorize new proving or acceptance. Expiry follows from the signed effective window and does not require a separate status event. |
 
-Transitions are normally `draft` → `approved` → `active` → `deprecated` → `expired`; `approved` or `active` may transition directly to `revoked`, and deprecated policy may also be revoked. States MUST NOT be moved backward in place. Activation cannot precede both approval and `not_before`, and no state event may extend the immutable effective window. Verifiers use an authenticated decision-time authority and require `not_before <= decision_time < not_after`; future-dated, ambiguous, or missing windows fail closed. A proof also fails closed when the policy's compatibility tuple does not explicitly admit every schema, statement, circuit, proof suite, verification key, and domain used by the claim, even if the proof is cryptographically valid.
+Transitions are normally `draft` → `approved` → `active` → `deprecated` → `expired`; `approved` or `active` may transition directly to `revoked`, and deprecated policy may also be revoked. States MUST NOT be moved backward in place. Activation cannot precede both approval and `not_before`, and no state event may extend the immutable effective window. Verifiers use an authenticated decision-time authority and require the version 1 rule `not_before <= decision_time < not_after`: equality at `not_before` is eligible, while equality at `not_after` is expired. Future-dated, empty (`not_before == not_after`), inverted, ambiguous, or missing windows fail closed. A proof also fails closed when the policy's compatibility tuple does not explicitly admit every schema, statement, circuit, proof suite, verification key, and domain used by the claim, even if the proof is cryptographically valid.
 
 Rollback means publishing a new, signed status decision that selects a previously approved immutable policy digest as the active target; it never edits history, resurrects a revoked/expired digest, or makes claims under an incompatible circuit valid. The approval authority MUST authorize the rollback, state its scope and effective time, confirm current circuit/key compatibility, and identify the superseded digest. Emergency rollback uses the same controls and produces the same audit evidence. When no non-revoked compatible predecessor exists, proving and acceptance stop rather than fall back to an unsigned, draft, expired, or prover-selected policy.
 
@@ -118,7 +118,7 @@ Every decision MUST audit the policy digest/revision, resolved state, issuer and
 
 ## Recency, replay, and limitations
 
-A timestamp alone does not prove recency. Until trustworthy time attestation exists, the verifier applies an external policy using a named clock authority, maximum skew, accepted window, sequence evidence, and durable nullifier uniqueness. Those values and the handling of resets/reordering are **Open** and owned by security.
+A timestamp alone does not prove recency. Until trustworthy time attestation exists, the verifier applies an external policy using a named clock authority, maximum skew, the half-open accepted window, sequence evidence, and durable nullifier uniqueness. Skew may affect the currency calculation but MUST NOT change which endpoint is inclusive. The tolerance values and handling of resets/reordering are **Open** and owned by security.
 
 MAVLink signing, if validated and provisioned, authenticates protocol frames; it does not validate sensors. UDP provides neither confidentiality nor reliable delivery. A chain may timestamp and durably order submission metadata; it does not authenticate the original reading.
 
