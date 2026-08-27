@@ -8,6 +8,8 @@
 | Review trigger | Supported message, unit, schema, encoding, circuit, commitment, nullifier, or disclosure change |
 | Authority | Normative requirements; JSON record is illustrative and non-canonical |
 
+The public wire contract, disclosure boundary, artifact references, and verifier result semantics are defined by the normative [claim envelope specification](claim-envelope.md). If an illustrative representation in this document conflicts with that specification, the claim envelope specification governs.
+
 ## Canonical telemetry model
 
 The MVP snapshot draws only from the selected MAVLink dialect's `GLOBAL_POSITION_INT` and `VFR_HUD`. Compatibility with a pinned SITL and exact field selection MUST be demonstrated before schema approval. The internal record uses integers and rejects overflow or unavailable values rather than coercing them.
@@ -97,4 +99,4 @@ Schema, circuit, policy, proving/verifying key, commitment, nullifier, and domai
 
 ## Acceptance and related documents
 
-Acceptance requires reviewed golden vectors; circuit boundary/overflow/altered-input tests; an independent verifier without witness access; replay, wrong-policy, wrong-domain, and unsupported-version rejection; and benchmark evidence identifying hardware and parameters. [Architecture](architecture.md) owns component flow, [security and privacy](security-and-privacy.md) owns eligibility and handling controls, and [decisions](decisions.md) owns closure evidence.
+Acceptance requires reviewed golden vectors; circuit boundary/overflow/altered-input tests; an independent verifier without witness access; replay, wrong-policy, wrong-domain, and unsupported-version rejection; and benchmark evidence identifying hardware and parameters. The [claim envelope specification](claim-envelope.md) owns the canonical public exchange format and verifier outcomes. [Architecture](architecture.md) owns component flow, [security and privacy](security-and-privacy.md) owns eligibility and handling controls, and [decisions](decisions.md) owns closure evidence.
