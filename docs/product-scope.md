@@ -152,6 +152,37 @@ Ranks 2–6 remain discovery candidates and enter implementation only when the p
 
 If any category is absent, unresolved, or relies on an implicit assumption, the candidate stays deferred. Promotion requires a dated decision-register entry naming the accountable product, privacy, engineering/cryptography, and security approvers, linking the evidence above, fixing the claim's rank or recording why order changed, and defining an implementation acceptance gate. Composite mission compliance cannot be promoted until each included component claim has independently met these criteria and the composition-specific correlation and anti-splicing risks have been reviewed.
 
+## Post-MVP control plane
+
+A managed multi-tenant control plane is a future product surface, not part of the MVP. Its purpose would be to manage authorization, policy assignment, service limits, and privacy-preserving operational accounting around the proof workflow; it would not become a telemetry inventory or a source of proof truth. Implementation stays outside Phases 0–3 unless the selected design partner documents that it is necessary for the agreed workflow and the product, security, and privacy owners approve the resulting scope change.
+
+### Future concepts
+
+| Concept | Post-MVP meaning |
+| --- | --- |
+| Tenant | The top-level security, authorization, audit, quota, and billing boundary for one managed customer relationship. A tenant identifier is opaque and must not encode a customer, mission, or vehicle identity. |
+| Organization | A tenant-scoped grouping for business ownership and delegated administration, potentially representing a provider, relying party, or business unit; its cross-organization sharing rules remain an explicit decision. |
+| Environment | An isolated tenant-scoped deployment context, such as development, test, or production, with separate credentials, policy assignments, quotas, and audit scope. Moving data or configuration between environments is not implicit. |
+| Policy owner | A tenant- or organization-scoped principal accountable for proposing, approving, versioning, assigning, and retiring policy definitions and verifier allowlists; ownership does not grant access to witnesses or source telemetry. |
+| Verifier | A human or service principal authorized for specified tenants, organizations, environments, policies, and purposes to verify proof packages or consume results; verification authority does not imply policy ownership or administration. |
+| Administrator | A human or service principal with explicitly delegated control-plane permissions. Administration is separated by function and scope, does not imply verifier or policy-owner authority, and never grants access to private proof inputs. |
+| Quota | A versioned, scoped limit on allowed control-plane or proof-service operations, such as submissions, verifications, concurrency, storage, or audit export. A quota is an enforcement and service-protection rule, not evidence about vehicle activity or compliance. |
+| Usage record | A minimal, append-only accounting event for an authorized service operation, containing only an opaque tenant/environment scope, operation class, coarse time bucket where possible, quantity, outcome class, and applicable quota or pricing version. It is not a claim, proof, audit substitute, or telemetry record. |
+
+Raw telemetry, witnesses, and stable vehicle or source identifiers **MUST NOT** be billing dimensions or control-plane metadata. They must not be copied into tenant profiles, organization or environment records, role bindings, policy ownership, quota keys, usage records, invoices, dashboards, support views, or control-plane logs. Accounting must use allowlisted operation-level measures and opaque, scoped identifiers; commercial requirements that cannot be met within that boundary require a new privacy and product decision rather than expanding collection silently.
+
+### Managed-pilot decision gates
+
+Before any managed multi-tenant pilot, accountable owners must resolve and record the following questions in ADRs and executable acceptance evidence:
+
+- **Isolation:** What are the tenant and environment isolation boundaries for identity, authorization, compute, queues, caches, persistence, cryptographic keys, logs, metrics, exports, backups, and support access? How are cross-tenant object references denied, tested, monitored, and handled during incident response and restore?
+- **Audit:** Which control-plane and data-access actions are recorded, who may read or export each scope, how are ordering and integrity demonstrated, and how are redaction, retention, legal hold, clock authority, and administrator actions handled without turning the audit trail into sensitive telemetry?
+- **Delegated administration:** Which roles may create organizations and environments, bind principals, assign policies, manage verifiers and credentials, set quotas, or delegate narrower authority? Which operations require separation of duties, step-up authentication, expiry, approval, or emergency-access review, and how are privilege escalation and confused-deputy paths tested?
+- **Data residency:** In which jurisdictions may each metadata class, key, audit event, usage record, support artifact, replica, and backup be processed or stored? How are routing, subprocessors, failover, export, migration, and verifiable residency enforcement represented in the contract?
+- **Deletion:** What is the deletion authority and schedule for every control-plane record and derived copy; how do tenant closure, user erasure, policy retirement, backup expiry, caches, exports, legal holds, and externally held proof packages interact; and what evidence demonstrates deletion without claiming recall of already distributed artifacts?
+
+The pilot gate must also fix the resource hierarchy and identifier model, role and delegation matrix, isolation architecture, audit schema, residency map, deletion/retention schedule, and quota/usage schema. Negative cross-tenant authorization tests, restore and deletion exercises, audit-integrity checks, residency/failover tests, and verification that prohibited billing fields are absent are required before onboarding more than one managed tenant.
+
 ## Deferred
 
 - Polygon/geofence proofs, aggregation, recursion, batching, and private policy parameters.
@@ -160,6 +191,7 @@ If any category is absent, unresolved, or relies on an implicit assumption, the 
 - Hardware telemetry, hardware-backed attestation, and production key ceremonies.
 - High availability, multi-region recovery, Kubernetes, raw-log storage, and historical analytics.
 - Final production SLOs and retention periods, which require measured and legal evidence.
+- Managed multi-tenant control-plane implementation, including its identity hierarchy, delegated administration, quota enforcement, and usage accounting, subject to the managed-pilot decision gates above.
 
 ## Non-goals and safety constraint
 
