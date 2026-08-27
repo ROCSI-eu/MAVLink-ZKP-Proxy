@@ -57,6 +57,8 @@ Before circuit implementation, a versioned specification MUST define field order
 
 A record commitment binds every field needed to interpret the claim, including schema/circuit version, policy digest, trust state where eligibility depends on it, speed, source commitment, nonce, and the version 1 half-open time-window representation `[not_before, not_after)`. The final bound-field list remains **Open** pending privacy and circuit review.
 
+Tier establishment follows the evidence classifications in [security and privacy](security-and-privacy.md#tier-evidence-disclosure-classification). Authenticated source and attestation details may be private witnesses, verifier trust-store artifacts, or committed facts without becoming envelope metadata. The public numeric tier uses the canonical mapping in the [claim envelope](claim-envelope.md#envelope-fields). Source pseudonyms remain private commitment inputs. A source key identifier is a trust-store lookup or committed fact by default and may be selectively disclosed only as an opaque, domain-scoped rotating value under the statement and policy allowlists; `verification_key_id` identifies the proof verifier artifact and is not a source-key identifier.
+
 ## First proof statement
 
 Given a versioned committed record and policy, the prover knows a valid opening whose normalized horizontal speed `speed_cm_s` is within the supported integer range and satisfies `speed_cm_s <= maximum_speed_cm_s`. Successful verification represents the pass claim; it does not prove source truth or recency by itself.
@@ -64,8 +66,8 @@ Given a versioned committed record and policy, the prover knows a valid opening 
 ### Private witness
 
 - normalized horizontal speed;
-- source pseudonym/commitment opening;
-- record nonce and commitment opening; and
+- source pseudonym and source-commitment opening (the pseudonym is never public);
+- fresh high-entropy record nonce and record-commitment opening; and
 - only those additional fields approved by the threat model.
 
 ### Public inputs
@@ -74,7 +76,7 @@ Given a versioned committed record and policy, the prover knows a valid opening 
 - policy digest and public `maximum_speed_cm_s`;
 - approved coarse time-window identifier;
 - record commitment;
-- domain-separated nullifier; and
+- domain-separated, pseudorandom nullifier output; and
 - deployment/domain identifier required to prevent cross-context replay.
 
 ### Circuit constraints
@@ -82,7 +84,7 @@ Given a versioned committed record and policy, the prover knows a valid opening 
 - `speed_cm_s` and `maximum_speed_cm_s` have explicit bit widths and range constraints.
 - The circuit enforces the non-strict upper bound, including equality.
 - Commitment and nullifier calculations use the versioned, domain-separated encoding.
-- The nullifier binds at least deployment domain, policy, source pseudonym, and nonce.
+- The nullifier binds the private source-commitment, fresh private record nonce, deployment domain, policy digest, statement ID, and nullifier version/tag; it MUST reveal neither the pseudonym nor a stable per-source value and MUST be unlinkable across nonces and scopes except when the identical scoped claim is replayed.
 - Unsupported versions or non-canonical encodings cannot verify.
 
 ## Policy lifecycle and verifier trust
@@ -126,7 +128,7 @@ MAVLink signing, if validated and provisioned, authenticates protocol frames; it
 
 Classification and retention controls are authoritative in [security and privacy](security-and-privacy.md). Witness and opening material MUST be released after proving and never logged. Exact position is not required by the first speed statement and MUST NOT become a public input. Hashing stable identity is pseudonymization, not anonymization.
 
-Schema, circuit, policy, proving/verifying key, commitment, nullifier, and domain versions require compatibility rules and migration/revocation procedures before persistence or live-chain work. Key-generation/setup assumptions depend on the selected proof system and remain **Open**.
+Schema, circuit, policy, proving/verifying key, commitment, nullifier, and domain versions require compatibility rules and migration/revocation procedures before persistence or live-chain work. The tier and nullifier registries remain Proposed until explicit product/privacy and security approval and an ADR cover their freeze. Key-generation/setup assumptions depend on the selected proof system and remain **Open**.
 
 ## Acceptance and related documents
 
