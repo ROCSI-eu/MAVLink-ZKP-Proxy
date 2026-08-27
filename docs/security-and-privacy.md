@@ -76,7 +76,18 @@ Sequence tracking is evidence, not a complete replay defense. Policy MUST combin
 
 ### Authorization, logging, and redaction
 
-The proposed initial roles are `operator` (redacted lifecycle) and `auditor` (approved proof metadata). Administrative policy/key privileges need a separate design. Authentication technology is Open; selecting a token format is not authorization design. Logs and traces use opaque correlation IDs, avoid stable vehicle IDs, and are tested for restricted fields.
+The proposed initial operational roles are `operator` (redacted claim lifecycle) and `auditor` (read-only approved proof, policy-decision, and integrity metadata). Policy lifecycle adds the following roles:
+
+| Role | Permitted responsibility | Prohibited combination or action |
+| --- | --- | --- |
+| `policy_author` | Draft immutable policy content and propose compatibility/effective windows. | Cannot approve, activate, publish as authoritative, revoke, or approve its own rollback. |
+| `policy_issuer` | Attest organizational ownership and sign an exact policy digest for submission to approval. | Cannot self-approve unless an explicitly approved emergency governance profile requires and records it. |
+| `policy_approver` | As the approval authority, approve, activate, deprecate, revoke, and authorize rollback for exact digests within delegated scope. | Cannot alter policy bytes, status history, or publication records; routine approval MUST be separate from author and publisher. |
+| `policy_publisher` | Publish approved bytes, signed status events, checkpoints, and availability endpoints exactly as authorized. | Cannot create approval/status authority, rewrite history, or choose rollback targets. |
+| `policy_verifier` | Resolve policy/status from configured trust anchors, validate signatures, freshness, compatibility, and windows, and issue a decision. | Cannot accept prover-selected trust anchors or override a failed/unknown state. |
+| `policy_auditor` | Read and reconcile policy, approval, publication, cache, rollback, revocation, and decision evidence. | Has no authoring, status-changing, publication, or verification-override privilege. |
+
+Production authorization MUST use least privilege, scoped issuer/approval delegations, multi-party approval for revocation and rollback where time permits, and recorded break-glass credentials for emergencies. Break-glass use MUST be time bounded, independently reviewed, and cannot bypass signed exact-digest decisions or append-only audit. Publisher, approver, and verifier credentials use separate keys and service identities; compromise of a transport or publication key does not grant policy approval. Authentication technology remains Open; selecting a token format is not authorization design. Logs and traces use opaque correlation IDs, avoid stable vehicle IDs, and are tested for restricted fields. The lifecycle semantics, trusted publication, outage behavior, and required decision evidence are normative in [data and proof model](data-and-proof-model.md#policy-lifecycle-and-verifier-trust).
 
 ### Data classification and retention
 
@@ -94,7 +105,7 @@ Jurisdiction, lawful purpose, data-subject handling, deletion, and concrete rete
 - Signing profile, trust-state eligibility, and key provisioning.
 - Clock authority, skew/window limits, sequence reset behavior, and nullifier store durability.
 - Proof system/setup, hash/commitment/nullifier primitives, and key lifecycle.
-- Authentication mechanism, administrative roles, and separation of duties.
+- Authentication mechanism, role-assignment workflow, quorum/delegation rules, and break-glass custody.
 - Public metadata allowlist, pseudonym rotation, retention, and incident contact/process.
 
 These are tracked with evidence and due gates in [decisions](decisions.md); none should be inferred from candidate technology names.
