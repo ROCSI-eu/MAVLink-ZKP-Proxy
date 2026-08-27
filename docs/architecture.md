@@ -133,9 +133,29 @@ RECEIVED -> PROVING -> PROVED -> VERIFIED -> SUBMITTED -> FINALIZED
                   \-> FAILED     \-> REJECTED     \-> SUBMISSION_FAILED
 ```
 
-Transitions are monotonic; retries add attempt metadata rather than moving finalized state backward. Error output MUST use stable codes and exclude restricted data. Mutations require idempotency keys and requests use opaque correlation IDs.
+Transitions are monotonic; retries add attempt metadata rather than moving finalized state backward. Verification and publication are separate dimensions: `VERIFIED` records the cryptographic/policy result, while `SUBMITTED` and `FINALIZED` describe only the optional adapter outcome. Error output MUST use stable codes and exclude restricted data. Mutations require idempotency keys and requests use opaque correlation IDs.
 
-Illustrative API operations are a proof request by record reference and policy version, a redacted proof-status query, and an authorized lifecycle-event stream. Contract format (including Protobuf/gRPC, HTTP, SSE, or WebSocket) is **Open**, not an implemented commitment.
+The following operations define behavior, not a commitment to HTTP, gRPC, or particular paths:
+
+| Illustrative operation | Input and authorization | Result and invariant |
+| --- | --- | --- |
+| `SubmitClaim` | Provider-submitter credential, opaque idempotency key/correlation ID, canonical proof package, reviewed public inputs and all independently interpreted versions, policy reference, and opaque caller reference. | Creates or returns exactly one claim resource. It rejects raw telemetry/witness fields, conflicting reuse of the key, unsupported version combinations, unauthorized policy scope, and oversize input before proving success is implied. |
+| `GetClaimStatus` | Claim ID and a submitter, relying-party, or reviewer credential scoped to that claim/tenant. | Returns the redacted lifecycle, verification outcome, safe error code, expiry, version identifiers, and publication state. Restricted values and private inputs are absent; not-found and not-authorized responses SHOULD resist cross-tenant enumeration. |
+| `GetVerificationPackage` | Claim ID and relying-party-verifier permission. | Returns only the self-contained proof, canonical approved public inputs, authenticated verification artifacts or immutable references, and compatibility/status material necessary for independent verification. It never returns a vendor interpretation in place of verifiable inputs. |
+| `StreamLifecycleEvents` | Authorized webhook subscription or event cursor with a tenant, event-type, and purpose scope. | Emits redacted immutable events with unique IDs and monotonic per-resource ordering metadata. Delivery is at least once; duplicate and out-of-order cross-resource delivery is expected, and API state is authoritative. |
+| `ExportAuditEvents` | Auditor permission plus bounded tenant, time/cursor, and purpose parameters. | Produces a paginated JSON Lines-equivalent stream of allowlisted events and integrity/ordering metadata. Export creation and access are audited; no raw telemetry, witness, exact protected values, secrets, or stable source identity is serialized. |
+
+`SubmitClaim` is the primary product operation. The service MUST support non-interactive service credentials; dashboard sessions are neither required nor privileged. Canonical request hashing binds an idempotency key to tenant, principal, operation, and content. Identical retries return the original resource/outcome, different content returns `IDEMPOTENCY_CONFLICT`, and a timeout is reconciled by retrying with the same key or reading status. Webhook consumers deduplicate immutable event IDs.
+
+The wire contract has an explicit major version, while schema, claim, circuit, policy, encoding/domain, and proof-system versions remain separate fields. A compatibility document enumerates supported combinations; missing, unknown, revoked, or incompatible security-relevant versions fail closed without conversion. Within a major API version only additive optional fields are allowed, and deprecation/sunset metadata precedes removal.
+
+Errors have a transport status and a structured safe body with stable code, retryable flag, opaque correlation ID, and optional field pointer. At minimum, the contract distinguishes unauthenticated, unauthorized, malformed, unsupported-version, policy-ineligible, verification-rejected, idempotency-conflict, rate-limited, dependency-unavailable, and internal failures. `REJECTED` is a completed negative verification outcome, not a transient service error. `FAILED` never aliases acceptance, and adapter failure never rewrites `VERIFIED`.
+
+Submission, status, webhook delivery, and export have separately published per-tenant and per-credential quotas, concurrency/payload bounds, and retry guidance. A throttle supplies `Retry-After`; clients use bounded jittered backoff and preserve the idempotency key. Numeric limits remain **Open** pending measurement, but implementations and contract tests MUST exercise throttling and recovery rather than promise an unbounded or “real-time” service.
+
+All boundary schemas are allowlists. URLs, logs, traces, metrics, errors, lifecycle events, webhooks, and exports exclude raw telemetry, witnesses, exact speed/position, unapproved precise times, stable source identity, salts/openings, secrets, and credentials. Proof bytes and reviewed public inputs are available only through the verification-package permission and are not included in routine status or webhook payloads. Opaque resource IDs carry no vehicle, customer, or mission meaning.
+
+Contract format (including Protobuf/gRPC, HTTP, SSE, or WebSocket) remains **Open**. The contract cannot be labeled stable until executable provider/consumer contract tests cover authorization denial, canonical serialization, idempotency, error families, version combinations, lifecycle, cursor/event behavior, throttling, and redaction, and one versioned reference relying-party integration passes them end to end against the release candidate.
 
 ## Failure and backpressure behavior
 
