@@ -45,6 +45,19 @@ A minimal local Compose profile may be added when dependencies exist. PostgreSQL
 
 Backups/restores apply only when durable state is introduced. Retry, reconciliation, restart, overload, dependency outage, and corrupt-state behavior must be exercised before their corresponding environment gate.
 
+## Deployment-mode acceptance checks
+
+Every supported mode MUST have reproducible evidence for its applicable checks. Packet captures, logs, traces, crash artifacts, queues, and persisted records used as evidence MUST be inspected to confirm that raw telemetry, exact position, stable identity, salts/openings, and witnesses remain inside the approved proving boundary.
+
+| Mode | Required acceptance evidence |
+| --- | --- |
+| Local developer | Run the pinned synthetic fixture, proof generation, independent verification, lifecycle query, and mock submission with external network access denied. Confirm only reviewed public inputs and redacted metadata cross the logical prover/verifier and mock boundaries; confirm disposable keys are used and restart/failure states do not expose restricted values. |
+| Edge agent plus managed control plane | Capture both directions at the customer/vendor boundary and confirm the permitted proof envelope, redacted signals, signed policy/update material, and no restricted fields. Disconnect vendor networking while continuing bounded ingestion and proving, exercise outbox overflow, then reconnect and prove idempotent drain. Reject invalid server identity, unsigned/revoked updates, expired policy state, altered proofs, and incompatible versions. |
+| Fully customer-managed | Install and operate from an exportable, integrity-checked artifact bundle with vendor DNS, APIs, credentials, and networks blocked. Exercise proof, verification, policy lookup, audit, backup/restore where applicable, and mock submission; confirm vendor outage has no runtime effect. Test customer-controlled key rotation/revocation, segmented-network partition, bounded queues, rollback, and optional chain outage independently. |
+| Independent relying-party verifier | On a machine with no vendor or general network route, import a self-contained proof package and authenticated verification/policy/revocation artifacts, reconstruct canonical public inputs, and obtain the expected result without witness or prover access. Repeat for altered inputs, missing/revoked/expired/incompatible artifacts, and confirm each fails closed. Demonstrate that optional chain/receipt lookup failure is reported separately from proof validity. |
+
+The offline tests MUST block traffic rather than merely omit configuration, assert that no DNS or connection attempt targets a vendor endpoint, and retain the verifier command, artifact digests, trust-store/policy snapshot, decision time, and result. A cached vendor verdict is not independent verification. Acceptance also requires update and rollback ownership to match the selected topology, documented key custody, stated connectivity assumptions, and observed failure behavior consistent with [architecture](architecture.md#deployment-modes).
+
 ## SLOs, retention, and readiness
 
 Availability, latency, recovery objectives, data-loss tolerance, capacity, retention durations, and alert thresholds are **Open/TBD**, not zero or unlimited. The service owner proposes values from workload and benchmark evidence; product/privacy approves retention and security reviews exposure.
