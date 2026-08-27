@@ -6,7 +6,7 @@
 | Audience | Delivery, engineering, cryptography, security, product, platform, and operations |
 | Accountable role | Delivery lead; named discipline roles approve their evidence |
 | Review trigger | Scope, dependency, phase, gate, evidence, or ownership change |
-| Authority | Normative phase order and gates for the proposed MVP |
+| Authority | Normative phase order and gates; Phases 0–3 define the proposed MVP, and Phases 4–5 are post-MVP |
 
 ## Delivery rules
 
@@ -42,7 +42,7 @@ Phases are evidence gates, not calendar promises. A phase cannot exit solely bec
 
 **Accountable:** cryptography lead.
 
-## Phase 3 — mock adapter and operator boundary
+## Phase 3 — mock adapter and operator boundary (MVP cutoff)
 
 **Depends on:** Phase 2 accepted local proof semantics.
 
@@ -52,7 +52,11 @@ Phases are evidence gates, not calendar promises. A phase cannot exit solely bec
 
 **Accountable:** engineering lead, with security and product approval.
 
-## Phase 4 — Midnight compatibility test environment
+Completion of the Phase 3 exit evidence and the MVP definition of done marks the
+MVP cutoff. The remaining phases are optional post-MVP progression and are not
+required to complete or accept the MVP.
+
+## Phase 4 — post-MVP Midnight compatibility test environment
 
 **Entry gate:** an ADR identifies a supported SDK/network/contract language, proof-verification route, disclosure behavior, expected cost model, and finality semantics using executable spike evidence.
 
@@ -62,7 +66,7 @@ Phases are evidence gates, not calendar promises. A phase cannot exit solely bec
 
 **Accountable:** chain lead. Live production deployment remains Deferred.
 
-## Phase 5 — hardening and controlled hardware pilot
+## Phase 5 — post-MVP hardening and controlled hardware pilot
 
 **Entry gate:** Phases 0–4 evidence complete; service objectives/capacity proposal based on measurements; product/privacy obligations defined; safety owner approves hazard analysis and controlled hardware test plan.
 
@@ -82,7 +86,7 @@ Phases are evidence gates, not calendar promises. A phase cannot exit solely bec
 - All lifecycle transitions, drops, failures, duplicates, and retries are observable and bounded.
 - Accepted ADRs, supported versions, known limitations, and residual risks are recorded.
 
-Hardware, live-chain, or production work requires the explicit entry evidence above; completion of the preceding code alone is insufficient.
+Phases 4–5 are outside the MVP. Hardware, live-chain, or production work requires the explicit post-MVP entry evidence above; completion of the preceding code alone is insufficient.
 
 ## Related documents and validation
 
