@@ -60,6 +60,70 @@ SITL/UDP, proving, verification, operator, persistence, and external-chain bound
 - Schema, circuit, policy, commitment, and domain-separation versions are explicit.
 - State mutations are idempotent and lifecycle transitions are auditable.
 
+## Deployment modes
+
+Deployment placement does not change the data-minimization invariant. The **approved proving boundary** is the host, enclave, or customer-controlled network segment authorized to ingest raw telemetry and construct a witness. Raw telemetry, exact position, stable source identity, salts/openings, and witnesses MUST remain inside that boundary in every mode. Only the proof, explicitly reviewed public inputs, opaque correlation/idempotency identifiers, redacted lifecycle events, and approved aggregate operational signals may leave it. A verifier is always outside the proving trust boundary and MUST be able to reconstruct public inputs and validate a proof without telemetry, witness access, or a call to a vendor service.
+
+### Local developer
+
+```text
+[untrusted SITL/UDP] -> | developer workstation: bridge + prover | -> | local verifier + mock adapter |
+                              approved proving boundary                    separate logical trust
+```
+
+| Concern | Definition |
+| --- | --- |
+| Trust boundaries and crossing data | Untrusted UDP crosses into the workstation with MAVLink frames and peer metadata. The logical prover-to-verifier boundary carries only the proof, reviewed public inputs, version/policy identifiers, and opaque request identifiers; the mock receives only approved public metadata. Process separation SHOULD be used to exercise the boundary even when all components share one host. |
+| Key ownership | The developer owns disposable source-signing and proving keys. Test verification keys/parameters are pinned repository artifacts or locally generated fixtures; production keys MUST NOT be used. |
+| Connectivity | Loopback or a controlled local network is sufficient. Fixture proving, verification, lifecycle inspection, and mock submission MUST work with external networking disabled. |
+| Updates | The developer updates the pinned workspace, fixtures, circuit artifacts, and local configuration; incompatible versions fail before processing. |
+| Failure behavior | Loss of SITL stops new records; prover or mock failure produces an explicit local state without blocking ingestion. Restart may discard non-durable development state, but MUST NOT leak restricted values or turn a failed verification into success. |
+
+### Edge agent plus managed control plane
+
+```text
+[vehicle/SITL] -> | customer edge: bridge + prover | -> | managed control plane: verifier + API + adapter |
+                        approved proving boundary              vendor-operated trust boundary
+```
+
+| Concern | Definition |
+| --- | --- |
+| Trust boundaries and crossing data | Raw MAVLink enters only the customer-approved edge boundary. Across the customer/vendor boundary, the agent sends mutually authenticated envelopes containing proofs, reviewed public inputs, version/policy identifiers, opaque correlation/idempotency identifiers, and redacted health/lifecycle signals. Policy bundles, verification artifacts, revocation state, and update metadata cross toward the edge; raw telemetry and witnesses never do. |
+| Key ownership | The customer owns source-authentication keys and authorizes the edge identity. Proving keys remain on the edge and are customer-owned or customer-authorized; the managed operator owns service transport/API keys. Verification material is public, version-pinned, and independently exportable. |
+| Connectivity | Telemetry ingestion and proving tolerate loss of the vendor link using a bounded encrypted outbox containing only permitted boundary outputs. Submission and managed status are eventually connected; inbound vehicle-network access from the control plane is neither required nor allowed. |
+| Updates | The vendor publishes signed agent, policy, circuit, and verifier compatibility metadata and operates control-plane rollout/rollback. The customer approves and schedules edge installation and key rotation; the agent rejects unsigned, revoked, or incompatible updates. |
+| Failure behavior | A control-plane outage does not stop bounded local ingestion/proving or erase locally determined results. Outbox overflow follows configured drop/fail-closed policy with redacted audit evidence. Expired policy/revocation material, invalid proofs, and version mismatch fail closed; reconnect drains permitted artifacts idempotently. |
+
+### Fully customer-managed
+
+```text
+[vehicle/SITL] -> | customer proving segment: bridge + prover | -> | customer service segment: verifier + API + adapter |
+                       approved proving boundary                         separate customer trust boundary
+```
+
+| Concern | Definition |
+| --- | --- |
+| Trust boundaries and crossing data | The customer defines network and administrative separation between the proving segment and verifier/service segment. Only proofs, reviewed public inputs, version/policy identifiers, opaque identifiers, and redacted signals cross it; any chain boundary receives only approved public metadata. No operational data path to the vendor is required. |
+| Key ownership | The customer generates, stores, rotates, backs up, and revokes source, proving, transport, operator, and submission keys. Verification keys/parameters may be obtained as signed public artifacts and are pinned and auditable by the customer. |
+| Connectivity | Private networking is sufficient. All runtime components, verification, policy resolution, audit, and optional mock submission operate without vendor network or credentials; external-chain connectivity is required only when the customer enables live submission. |
+| Updates | The customer owns artifact validation, compatibility testing, maintenance windows, rollout, rollback, migrations, and incident response. The vendor may publish signed releases and advisories but has no deployment access or automatic-update dependency. |
+| Failure behavior | Private-network partitions isolate stages: the prover retains only a bounded queue of permitted outputs, while verification and local audit continue for available artifacts. Vendor unavailability has no runtime effect. Customer persistence or chain failures are explicit and reconcile idempotently; unsupported or stale security material fails closed. |
+
+### Independent relying-party verifier
+
+```text
+| any approved proving deployment | -> proof package -> | relying-party verifier |
+        approved proving boundary                         independent trust boundary
+```
+
+| Concern | Definition |
+| --- | --- |
+| Trust boundaries and crossing data | A prover or distribution channel supplies a self-contained package with the proof, canonical reviewed public inputs, policy/circuit/schema and domain identifiers, required public verification artifacts or immutable references, and optional approved submission receipt. It supplies no raw telemetry, stable identity, salt/opening, or witness. The relying party trusts neither the prover's interpretation nor a vendor verdict. |
+| Key ownership | The original operator retains source and proving keys. The relying party owns its trust store and policy/version allowlist and pins authenticated public verification keys/parameters; no vendor-held secret or credential is necessary. |
+| Connectivity | Verification MUST run offline after approved artifacts and revocation/status snapshots have been imported. Vendor DNS, API, telemetry, license, and control-plane access are not verification dependencies; fetching chain state is optional and separately reported. |
+| Updates | Artifact publishers sign and version circuit, schema, policy, verification, and revocation material. The relying party decides when to import it, validates provenance and compatibility, retains evidence for the decision epoch, and can roll back its local verifier according to policy. |
+| Failure behavior | Missing, unauthenticated, revoked, expired, or incompatible artifacts yield an explicit indeterminate/rejected result, never an online fallback or acceptance. Network loss has no effect on a complete package. Receipt or chain lookup failure is reported separately and does not rewrite the cryptographic verification result. |
+
 ## Lifecycle and API direction
 
 Normative lifecycle states are:
