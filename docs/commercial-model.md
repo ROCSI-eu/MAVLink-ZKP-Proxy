@@ -12,7 +12,7 @@
 
 The project uses an open-core model in which the complete standard proof path remains open, inspectable, and independently usable. Commercial value may be created by operating, integrating, governing, and supporting that path at organizational scale; it must not come from making a proprietary service necessary to understand, produce, or verify a standard proof.
 
-“Open” in this document means available under the repository's open-source license, with sufficient source, schemas, documentation, and test material to use the capability without an account, network call, commercial credential, or managed control plane. Final license selection and any third-party-license constraints require an explicit decision before distribution.
+“Open” in this document means available under the repository's open-source license, with sufficient source, schemas, documentation, and test material to use the capability without an account, network call, commercial credential, or managed control plane. The contents currently authored in this repository are licensed under the repository's MIT license. That statement does not determine the licenses or obligations of third-party dependencies, which still require review, and it does not pre-license any future, separately authored commercial component; its ownership, licensing, and dependency obligations must be reviewed before distribution.
 
 ## Capabilities that must remain open
 
@@ -77,6 +77,8 @@ Feature parity is not required: managed editions may provide better scale, avail
 ## Governance and validation
 
 A change that moves an existing open capability behind a commercial boundary, alters standard proof portability, or creates a managed-only dependency requires product, architecture, cryptography, and community review plus an accepted ADR. The review must include an offline verification demonstration, cross-edition conformance results, export/exit analysis, and an inventory of proprietary extensions.
+
+The existing MIT license MUST NOT be changed without a separately stated business objective, legal review, community impact assessment, and an accepted ADR recording the decision and its consequences. Commercial discovery or interest in proprietary future components is not, by itself, a license-change decision.
 
 Release acceptance requires testing both directions: community-produced proof to managed verifier, and managed-produced proof to community verifier. It also requires proving that the documented local CLI or SDK completes the standard fixture path with hosted endpoints disabled.
 

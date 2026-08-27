@@ -22,6 +22,7 @@ Store the first accepted ADR under `docs/adr/NNNN-short-title.md` and add it to 
 | --- | --- | --- | --- | --- | --- |
 | Observational, single-vehicle SITL MVP with no command path | Proposed scope baseline | Phase 0 exit | Product owner | Safety owner | Scope and hazard-boundary review |
 | Beachhead: industrial-site inspection speed-policy evidence; buyer is the drone provider's compliance director, producer is its flight-operations gateway, and relying party is the site owner's contract-compliance officer | Selected for staged discovery; not commercially validated | Gate 1 before Phase 1; Gate 2 after Phase 2 artifacts; Gate 3 after Phase 3 package and before pilot | Product owner | Buyer, relying-party, privacy, safety, cryptography, and security representatives as assigned by each gate | Product-scope staged gates: (1) interviews, role/workflow and disclosure mapping, snapshot-versus-coverage acceptance, purchasing route, and labelled prototype comprehension; (2) at least six successful real-proof workflows with authenticated artifacts, privacy checks, and independent verification; (3) two paired design partners, offline-package integration/performance evidence, buyer preference, and completed purchasing evidence |
+| Commercial offering discovery: determine whether customers will pay for integration, assurance design, supported self-hosting, or managed verification | Open discovery decision; no offering or license change selected | Before commercial packaging, pricing, or implementation commitment | Product owner | Engineering, security, operations, legal, community, and target-buyer representatives | For every option: named buyer and workflow evidence, requested deliverables and delivery burden, procurement preference, and evidenced willingness to pay; comparative decision record and, for any license change, a separate business objective, legal review, community impact assessment, and ADR |
 | Initial SITL/autopilot, dialect, message and signing profile | Open | Phase 1 entry | Telemetry lead | — | Executable compatibility matrix and fixture |
 | Canonical schema, encoding, commitment fields and snapshot freshness | Open | Phase 1 exit / Phase 2 entry | Architecture lead | Cryptography and security leads | Reviewed specification and golden vectors |
 | Trust-state claim eligibility | Open | Phase 1 exit | Security lead | — | Threat analysis and signed/unsigned/invalid tests |
@@ -51,6 +52,32 @@ Store the first accepted ADR under `docs/adr/NNNN-short-title.md` and add it to 
 | SLOs and production topology | Deferred until measurements | Phase 5 entry | Service owner | SRE | Load results, workload and capacity model |
 | Hardware pilot safety case | Deferred | Before hardware connection | Safety owner | — | Hazard analysis and approved controlled test plan |
 | Live-chain production, HA, Kubernetes, brokers, cache, object storage, multi-region | Deferred | Separate post-MVP decision | Architecture lead | Product, security, privacy, and operations leads | Demonstrated requirement and operational evidence |
+
+## Commercial offering discovery decision
+
+### Objective and options
+
+The objective is to determine whether customers will pay for one or more of these distinct offers rather than assuming that technical interest establishes a market:
+
+1. **Integration:** implementation services, adapters, workflow integration, migration, and customer-specific deployment assistance.
+2. **Assurance design:** threat and trust analysis, claim and policy design, evidence mapping, privacy review, and verification guidance.
+3. **Supported self-hosting:** customer-operated software with release guidance, updates, deployment validation, incident support, and agreed support terms.
+4. **Managed verification:** a vendor-operated verification service with appropriate operational, security, privacy, tenancy, and service commitments.
+
+Discovery may select multiple offers, one offer, or no commercial offer. It MUST keep service demand separate from demand to restrict the open proof path.
+
+### Evidence record and decision rule
+
+For each option, the product owner MUST record:
+
+- **Buyer evidence:** the named buyer role and organization segment, the workflow and decision being improved, current alternative and cost, urgency, required outcome, and evidence from interviews, design-partner work, or purchasing behavior.
+- **Delivery burden:** customer-specific engineering, assurance and security review, deployment and upgrade work, support coverage, incident response, infrastructure, compliance, data handling, and ongoing operations, including who bears each burden.
+- **Procurement preference:** services, fixed-scope project, annual support, customer-hosted subscription, usage-based managed service, or another stated route, plus budget owner, vendor/security review, contracting constraints, and expected purchasing timeline.
+- **Willingness to pay:** the tested price or range, unit and term, volume assumptions, buyer response, conditions, and strength of evidence, distinguishing a stated opinion from a budgeted pilot, letter of intent, paid engagement, or executed contract.
+
+The comparative decision must identify which option, buyer, packaging hypothesis, price basis, and delivery assumptions are selected or rejected and cite the underlying evidence. No commercial implementation commitment is justified when buyer evidence, sustainable delivery burden, procurement preference, or willingness-to-pay evidence is missing.
+
+This decision does not change the repository license. The existing MIT license MUST NOT be changed unless a separate license-change proposal states its business objective and completes legal review, a community impact assessment, and an accepted ADR. Any future separately authored commercial component and all third-party dependency licenses and obligations still require review.
 
 ## Publication-substrate decision
 
