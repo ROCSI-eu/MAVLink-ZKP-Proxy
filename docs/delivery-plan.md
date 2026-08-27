@@ -35,9 +35,21 @@ Failed or inconclusive criteria remain recorded learning and keep the applicable
 
 **Entry:** documentation baseline approved.
 
-**Deliverables:** minimal workspace/toolchain; one documented format/lint/test/schema command; dependency policy; ADR template/process; canonical schema draft; synthetic fixtures; refreshed threat review.
+### Executable format spike gate
 
-**Exit evidence:** clean checkout passes the documented command; product, telemetry, cryptography, and security approve public/private fields and trust vocabulary; owners and due gates exist for all Open MVP-blocking decisions; no unhandled critical threat blocks Phase 1. The product-scope Gate 1 problem/workflow record is accepted: interview counts and problem confirmations pass; buyer, producer, relying-party, workflow, disclosure map, snapshot-versus-coverage acceptance, purchasing route/budget holder, observed volume/review time, failure handling, and prototype comprehension are documented. Any paper or non-cryptographic prototype bears the required no-proof label.
+Before the claim-envelope format can be treated as a released version, the Phase 0 spike MUST provide executable evidence for all of the following using placeholder proof bytes:
+
+- strict decoding that rejects non-canonical encodings, duplicate or unknown fields, invalid types and bounds, and unsupported versions;
+- deterministic re-encoding with byte-for-byte comparison against the input and shared golden vectors;
+- reconstruction of the ordered public inputs from envelope fields rather than acceptance of a caller-supplied public-input byte sequence;
+- rejection of mutations to each interpretation-critical field, proof attachment/reference shape, and expected verifier outcome; and
+- cross-language comparison by independent codecs that agree on accepted bytes, reconstructed public inputs, rejection cases, and typed outcomes.
+
+This is a format and interoperability spike. It MUST NOT require a circuit implementation, proof generation, or cryptographic proof verification; opaque placeholder proof bytes are sufficient. Field numbers and names, the canonical profile, proof attachment rules, and the outcome schema remain pre-standard and MAY change incompatibly until the gate passes. Promotion to a released format version requires an accepted ADR that identifies the frozen contract and links the executable vectors, mutation results, and independent-codec evidence; documentation edits or use of a version number alone cannot promote it.
+
+**Deliverables:** minimal workspace/toolchain; one documented format/lint/test/schema command; dependency policy; ADR template/process; canonical schema draft; synthetic fixtures; executable format-spike vectors and independent codecs; refreshed threat review.
+
+**Exit evidence:** clean checkout passes the documented command; the executable format spike passes every strict-decode, deterministic re-encoding, public-input reconstruction, mutation-rejection, and cross-language comparison case with placeholder proof bytes; the release ADR is accepted before any format version is described as released; product, telemetry, cryptography, and security approve public/private fields and trust vocabulary; owners and due gates exist for all Open MVP-blocking decisions; no unhandled critical threat blocks Phase 1. The product-scope Gate 1 problem/workflow record is accepted: interview counts and problem confirmations pass; buyer, producer, relying-party, workflow, disclosure map, snapshot-versus-coverage acceptance, purchasing route/budget holder, observed volume/review time, failure handling, and prototype comprehension are documented. Any paper or non-cryptographic prototype bears the required no-proof label.
 
 **Accountable:** architecture and delivery leads. This is the **next implementation step**.
 

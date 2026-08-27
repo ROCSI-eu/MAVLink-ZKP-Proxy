@@ -2,11 +2,13 @@
 
 | Metadata | Value |
 | --- | --- |
-| Status | Normative baseline; registered algorithms and concrete proof suites remain Open |
+| Status | Pre-standard executable draft; not a released compatibility contract |
 | Audience | Prover, verifier, relying-party, policy, ledger, and interoperability implementers |
 | Accountable role | Cryptography lead, with security and protocol-owner approval |
 | Review trigger | Envelope, encoding, proof suite, policy, key, revocation, disclosure, replay, or receipt change |
 | Authority | Normative wire contract and verifier result model |
+
+Until the Phase 0 executable spike gate is passed and a release ADR is accepted, the field numbers and names, canonical profile, proof attachment rules, and outcome schema in this draft are subject to incompatible change. They are not released compatibility commitments. Passing requires the specified vectors and independent codecs to demonstrate strict decoding, deterministic re-encoding, public-input reconstruction, mutation rejection, and cross-language agreement. The `[1, 0]` value and `v=1` media-type parameter below identify the current draft for testing; they do not by themselves promote it to a released version.
 
 The key words **MUST**, **MUST NOT**, **REQUIRED**, **SHOULD**, **SHOULD NOT**, and **MAY** are to be interpreted as normative requirements. An envelope conveys a privacy-preserving claim and the material needed to evaluate it; it is not evidence that the underlying sensor was truthful.
 
