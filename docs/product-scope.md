@@ -14,6 +14,23 @@ Selected telemetry can reveal location, identity, and mission details even when 
 
 The intended outcome is a deterministic demonstration that one SITL vehicle's normalized horizontal speed satisfies a configured upper bound, while exact position is not exposed to the operator view or mock chain record. A proof establishes only that its witness satisfies its circuit and public inputs. It does not establish sensor truth, airworthiness, operator identity, or physical compliance.
 
+## Product positioning
+
+The system is a **privacy-preserving telemetry attestation gateway**. It accepts eligible telemetry at an explicit trust boundary and produces narrowly scoped, independently verifiable evidence that private telemetry satisfies a public policy while withholding unrelated or sensitive source data. MAVLink is the first telemetry adapter rather than the outer boundary of the product, and bounded speed is the first claim type rather than the limit of the claim model.
+
+A ledger is optional. If configured, it provides a publication or timestamp boundary for approved proof metadata; it is not the source of truth for telemetry, vehicle state, or proof validity. The source record, its explicitly represented trust state, the claim definition, and independent verification retain their respective authority whether or not metadata is published to a ledger.
+
+This positioning explicitly excludes the following product categories:
+
+- **MAVLink router:** the system does not provide general message routing or protocol forwarding.
+- **Telemetry archive:** it does not serve as a flight-log repository, system of record for raw telemetry, or historical analytics platform.
+- **Flight controller:** it does not navigate, stabilize, or otherwise control a vehicle.
+- **Command-authority system:** it does not approve, originate, authorize, or relay vehicle commands.
+- **Anonymous tracking service:** privacy-preserving claims must not become a means to track vehicles, operators, or missions anonymously or pseudonymously.
+- **General-purpose blockchain bridge:** the optional ledger adapter does not transport arbitrary messages or assets and does not provide cross-chain infrastructure.
+
+The repository name and any eventual product name are branding concerns, not implicit scope changes. A rename requires a separate, explicit branding decision and coordinated terminology migration; product documentation must not silently rename the system.
+
 ## Stakeholders and actors
 
 | Actor | Need or responsibility |
