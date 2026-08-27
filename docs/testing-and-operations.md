@@ -21,6 +21,29 @@
 
 Fixtures MUST be synthetic or approved for redistribution. Randomized failures print reproducible seeds. Test output must not contain restricted or secret data.
 
+## Claim-envelope interoperability
+
+Every supported envelope major/minor, statement, proof suite, assurance tier, policy schema, and ledger profile MUST have a version-controlled golden-vector set. Each vector bundle MUST contain:
+
+- a human-readable case manifest and the exact canonical CBOR envelope bytes;
+- decoded field values, canonical public-input sequence/bytes, commitment, nullifier, policy and verification-key artifact bytes and digests, proof bytes (or referenced bytes, digest, and size), and receipt bytes when applicable;
+- the authenticated clock, policy, key, revocation, replay-store, reference-fetch, and ledger inputs needed to make evaluation deterministic;
+- the expected primary outcome and non-sensitive reason code, including the expected receipt status; and
+- provenance: specification/registry versions, generator source revision, reproducible command, and artifact digests.
+
+Positive vectors MUST cover attached and referenced proofs and optional receipt absence/presence. Boundary vectors MUST cover both validity endpoints, permitted skew, assurance tiers, integer and length bounds, and equality in the proved predicate. Negative vectors MUST independently cover every `malformed`, `unsupported`, `invalid`, `expired`/not-yet-valid, `replayed`, `revoked`, and `temporarily_unverifiable` branch defined by the [claim envelope specification](claim-envelope.md#verifier-outcomes). They MUST also cover non-minimal CBOR, reordered/non-canonical maps, duplicate/unknown/missing fields, invalid UTF-8/NFC, forbidden null/float/tag/indefinite values, altered domain/policy/key/public input/commitment/nullifier/proof, proof-reference size and digest mismatch, disclosure-policy violations, concurrent replay, revoked or stale artifacts, and unavailable dependencies. Mutation cases MUST change one property at a time where possible.
+
+At least two independently maintained implementations in different languages, with no shared envelope codec or verification business-logic library, MUST consume the same checked-in vectors. Each implementation MUST:
+
+1. decode accepted bytes and re-encode byte-for-byte identically;
+2. reconstruct identical public-input bytes without prover-supplied ordering;
+3. produce identical commitment and nullifier bytes from approved opening fixtures;
+4. verify proofs produced by the other implementation and return the specified outcome/reason for every negative vector;
+5. reject non-canonical encodings rather than normalize and accept them; and
+6. demonstrate atomic replay behavior under concurrent submission.
+
+CI MUST run both implementations against the immutable released vector corpus and publish a compatibility matrix keyed by envelope, statement, suite, policy, and key versions. A vector may change only to correct a documented defect; the original remains as a regression fixture when its bytes were released. Adding or changing a registry entry blocks release until vectors, both implementations, and the matrix agree. Implementations MUST additionally exchange at least one freshly generated, non-golden proof in each direction so that hard-coded vector acceptance cannot satisfy the gate.
+
 ## Benchmark methodology
 
 Measure ingestion, queue wait, proving, verification, submission, and end-to-end stages separately. Reports state commit, schema/circuit/policy version, proof parameters, machine CPU/memory, operating system, concurrency, queue settings, fixture, warm-up, sample count, and p50/p95/p99 where meaningful. Record proofs/second, peak memory per worker, dropped-frame rate, proof size, and failure rate.
