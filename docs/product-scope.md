@@ -63,17 +63,43 @@ The relying party makes one evidence-acceptance decision for each inspection-fli
 
 Ordinary signed reports are inadequate because a signature authenticates the reporter and protects report integrity but does not demonstrate that the private values satisfy the speed bound; the relying party must either trust the provider's assertion or request the underlying log. Contractual access controls are also inadequate because they reduce authorized access but still require sensitive data to be copied into another organization's systems, where retention, breach, subpoena, insider access, and onward-use risks remain. Neither mechanism provides the same minimal, independently verifiable claim, although signatures, contracts, authentication, and audit controls remain necessary around the proof workflow.
 
-### Commercial validation gate
+### Commercial validation gates
+
+Commercial validation is staged so that a criterion is not demanded before the artifact needed to test it exists. Passing one gate authorizes only the next evaluation stage; it is not production, regulatory, safety, or whole-flight-compliance evidence. If any criterion is missed, that gate remains closed: narrow or change the workflow, record the learning in the decision register, and repeat the applicable discovery rather than expanding implementation.
+
+#### Gate 1 — problem and workflow validation (before Phase 1)
 
 Before broad implementation begins or Phase 1 is entered, the product owner must record evidence that all of the following criteria are met:
 
 - Complete at least **15 documented problem interviews across at least 10 organizations**, including at least **8 buyer-role interviews** with budget or procurement visibility and **5 relying-party interviews**; at least 10 interviewees must confirm that current speed-evidence disclosure or review creates a material problem.
-- Secure at least **2 written design-partner commitments**, each covering a drone inspection provider and a participating industrial-site relying party, a named workflow owner, access to representative synthetic or appropriately governed data, and agreement to evaluate the workflow. A non-binding expression of interest alone does not count.
-- For each design partner, complete at least **3 end-to-end workflow demonstrations** (at least **6 total**) from an eligible fixture through proof production, independent verification, and a recorded human accept/reject decision, with **100% correct outcomes** for the agreed positive and negative cases and no restricted field exposed in the verifier input, operator view, audit output, or mock-chain record.
-- Obtain documented confirmation from both design-partner buyer owners that the workflow is preferable to raw-log disclosure for the tested case, identify the purchasing route and budget holder, and record a credible paid-pilot price or a signed paid-pilot commitment.
-- Record observed decision volume, acceptable review time, false-acceptance and false-rejection handling, minimum public disclosure, and the objections or failure reasons from every demonstration.
+- Confirm the actual buyer, proof-producing actor, relying party, workflow owner, evidence-acceptance decision, handoffs, current alternative, observed decision volume, acceptable review time, and consequences and handling of false acceptance, false rejection, and unverifiable outcomes. The working **5–50 decisions per buyer per month** hypothesis must be replaced with observed buyer data.
+- Complete a field-by-field disclosure map of the current workflow and proposed claim, including the minimum public disclosure and restricted fields, reviewed by buyer and relying-party representatives.
+- Obtain explicit buyer and relying-party acceptance that the proposed evidence is for an eligible telemetry **snapshot**, not continuous or whole-flight coverage; record whether snapshot evidence is sufficient for the decision or what sampling/coverage claim would instead be required.
+- Identify the purchasing route and budget holder. This is route validation only; willingness to pay is reserved for Gate 3.
+- Test the exact accepted, rejected, and unverifiable claim wording and adjacent limitations with representative relying-party reviewers, and record uncoached comprehension, objections, failure reasons, and revisions.
 
-If any criterion is missed, the gate remains closed: narrow or change the workflow, document the learning in the decision register, and repeat discovery rather than expanding the implementation. Product discovery may use mockups and the existing synthetic vertical-slice plan; it does not relax the SITL-only or no-command constraints.
+Gate 1 discovery MAY use paper mockups or a non-cryptographic offline UX prototype. Every screen, package, result, and research record used that way MUST be conspicuously labelled **“paper mockup — no proof generated”** or **“non-cryptographic UX prototype — no proof generated or verified,”** as applicable, and MUST NOT be represented as technical validation or independent verification.
+
+#### Gate 2 — technical workflow validation (after Phase 2 artifacts exist)
+
+After Phase 2 has produced the circuit, real proofs, canonical public inputs, authenticated verification/policy/revocation artifacts, and an independent verifier, the product owner, cryptography lead, and security lead must record:
+
+- At least **3 end-to-end technical workflow demonstrations for each of 2 paired provider/relying-party evaluation teams** (at least **6 total**), including agreed positive and negative cases, from an eligible SITL fixture through real proof production, authenticated artifact handling, independent verification, and a recorded human accept/reject decision, with **100% correct outcomes**. The teams need not yet have made the Gate 3 design-partner or purchasing commitments.
+- Evidence that the verifier receives no witness and that no restricted field appears in the proof package, authenticated artifacts, or verifier input; the provider and relying party must confirm from the tested artifacts that disclosure is preferable to raw-log disclosure for this case.
+- Relying-party confirmation that the demonstrated source trust, provenance, policy, freshness, replay, snapshot limitation, and independent-verification controls are sufficient for the stated decision, plus observed reviewer comprehension, review time, objections, and every failure reason.
+
+Paper mockups and non-cryptographic prototypes cannot satisfy Gate 2. A vendor assertion, self-verification by the proof producer, or a demonstration without authenticated portable artifacts also cannot satisfy it.
+
+#### Gate 3 — commercial pilot validation (after Phase 3 offline package exists)
+
+After Phase 3 has produced the versioned offline evidence package, and before a pilot begins, the product owner must record:
+
+- At least **2 written paired design-partner commitments**, each naming a drone inspection provider and a participating industrial-site relying party, their workflow owners, the decision and scope, access to representative synthetic or appropriately governed data, timing, resources, success/stop criteria, and agreement to evaluate the offline workflow. A non-binding expression of interest alone does not count.
+- Integration evidence for both pairs using the self-contained offline package without a vendor service or network dependency, including positive and negative cases, a human accept/reject interpretation, elapsed engineering time, code/configuration changes, dependencies, deployment/support steps, blockers, and comparison with pre-agreed integration and performance thresholds.
+- Evidence that no restricted field appears in the Phase 3 operator view, API, logs, audit output, or mock publication record during either paired integration.
+- Documented confirmation from both design-partner buyer owners that the packaged workflow is preferable to raw-log disclosure for the tested case, plus purchasing evidence: the validated route and budget holder, a credible paid-pilot price, and either an executed paid-pilot agreement or another completed purchase. Pilot intent alone is not purchasing evidence.
+
+All three gates preserve the SITL-only, no-command, privacy, snapshot-limitation, authenticated-artifact, and independent-verification constraints. No gate authorizes hardware, command handling, disclosure of restricted fields, or reliance on a vendor service as the verifier.
 
 ## MVP scope
 
@@ -130,7 +156,7 @@ Before the API is declared stable, one reference relying-party integration owned
 
 ## Ranked claim roadmap
 
-The roadmap ranks claims by the order in which the product should investigate and, if promoted, implement them. Rank is not a commitment or an assertion that a claim is feasible. **Bounded horizontal speed remains the Phase 1 proof primitive**; later claims must not broaden Phase 1 or bypass the commercial validation gate. Every claim proves only that authenticated, eligible inputs satisfy its versioned policy and time semantics. It does not by itself prove that a sensor reported physical truth or authorize an operational, safety, payment, or command decision.
+The roadmap ranks claims by the order in which the product should investigate and, if promoted, implement them. Rank is not a commitment or an assertion that a claim is feasible. **Bounded horizontal speed remains the Phase 1 proof primitive**; later claims must not broaden Phase 1 or bypass the staged commercial validation gates. Every claim proves only that authenticated, eligible inputs satisfy its versioned policy and time semantics. It does not by itself prove that a sensor reported physical truth or authorize an operational, safety, payment, or command decision.
 
 | Rank and candidate claim | Relying-party decision enabled | Required private witness | Minimum public disclosure | Source-authenticity requirement | Time semantics | Expected proof frequency | Principal correlation risk |
 | --- | --- | --- | --- | --- | --- | --- | --- |

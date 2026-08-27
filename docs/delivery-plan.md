@@ -14,9 +14,11 @@ Phases are evidence gates, not calendar promises. A phase cannot exit solely bec
 
 Technical completion and product discovery are parallel evidence tracks. Passing a discovery gate establishes only that the selected workflow deserves the next round of evaluation; it does not establish security, safety, operational, regulatory, commercial, or production readiness. Conversely, passing technical tests does not establish user value, adoption, pilot intent, or willingness to pay. A phase exits only when both its technical evidence and its stated product-discovery evidence are accepted.
 
+The three product-discovery gates occur at the first point their required artifacts exist: the problem/workflow gate before Phase 1, the real-proof technical-workflow gate after the Phase 2 artifacts exist, and the paired-design-partner commercial gate after the Phase 3 offline package exists and before a pilot. Evidence from a later gate cannot be presumed at an earlier gate, and passing technical evidence cannot substitute for commercial evidence.
+
 ### Product-discovery evidence rubric
 
-Discovery records MUST identify the participant and role, workflow and decision tested, representative inputs, method, pre-agreed acceptance threshold, observed result, objections, and product-owner disposition. Evaluations use the self-contained **offline evidence package**: positive and negative claim fixtures, proofs and canonical public inputs, authenticated verification/policy/revocation artifacts, the independent verifier, claim wording and limitations, and instructions for import and verification without a vendor service or network dependency.
+Discovery records MUST identify the participant and role, workflow and decision tested, representative inputs, method, pre-agreed acceptance threshold, observed result, objections, and product-owner disposition. Before Phase 1, comprehension research MAY use paper mockups or a non-cryptographic offline UX prototype only when every surface and research record is conspicuously labelled **“paper mockup — no proof generated”** or **“non-cryptographic UX prototype — no proof generated or verified.”** Such research cannot count as proof production, authenticated-artifact handling, or independent verification. Post-Phase-2 technical evaluations use real proofs, canonical public inputs, authenticated verification/policy/revocation artifacts, and an independent verifier. Post-Phase-3 commercial evaluations use the self-contained **offline evidence package**, including positive and negative claim fixtures, those proof and verification materials, claim wording and limitations, and instructions for import and verification without a vendor service or network dependency.
 
 | Question | Evidence required |
 | --- | --- |
@@ -35,7 +37,7 @@ Failed or inconclusive criteria remain recorded learning and keep the applicable
 
 **Deliverables:** minimal workspace/toolchain; one documented format/lint/test/schema command; dependency policy; ADR template/process; canonical schema draft; synthetic fixtures; refreshed threat review.
 
-**Exit evidence:** clean checkout passes the documented command; product, telemetry, cryptography, and security approve public/private fields and trust vocabulary; owners and due gates exist for all Open MVP-blocking decisions; no unhandled critical threat blocks Phase 1.
+**Exit evidence:** clean checkout passes the documented command; product, telemetry, cryptography, and security approve public/private fields and trust vocabulary; owners and due gates exist for all Open MVP-blocking decisions; no unhandled critical threat blocks Phase 1. The product-scope Gate 1 problem/workflow record is accepted: interview counts and problem confirmations pass; buyer, producer, relying-party, workflow, disclosure map, snapshot-versus-coverage acceptance, purchasing route/budget holder, observed volume/review time, failure handling, and prototype comprehension are documented. Any paper or non-cryptographic prototype bears the required no-proof label.
 
 **Accountable:** architecture and delivery leads. This is the **next implementation step**.
 
@@ -45,7 +47,7 @@ Failed or inconclusive criteria remain recorded learning and keep the applicable
 
 **Deliverables:** pinned SITL scenario; allowlisted parser; trust classification; normalizer; bounded channel; deterministic record/replay fixture; ingress metrics; fuzz target.
 
-**Exit evidence:** repeated fixture runs produce identical canonical records; supported units/ranges are verified; malformed, unsupported, mixed-source, stale, and invalid-signature inputs reject; sequence gaps and overload drops are observable; fuzzing runs in CI or scheduled automation. Before exit, the product owner and a representative relying-party workflow owner accept (1) a documented end-to-end workflow naming the actors, evidence-acceptance decision, current alternative, handoffs, frequency, failure consequences, minimum disclosure, and handling of verification outcomes, and (2) the exact claim wording and adjacent limitations shown for accepted, rejected, and unverifiable outcomes. The acceptance record MUST include verifier-comprehension evidence from the rubric; a product-authored workflow or wording draft alone is insufficient.
+**Exit evidence:** repeated fixture runs produce identical canonical records; supported units/ranges are verified; malformed, unsupported, mixed-source, stale, and invalid-signature inputs reject; sequence gaps and overload drops are observable; fuzzing runs in CI or scheduled automation. Gate 1 remains valid or is reopened if Phase 1 findings change the actors, workflow, disclosure map, snapshot limitation, or claim wording; Phase 1 telemetry output is not presented as a proof or independently verified result.
 
 **Accountable:** telemetry lead.
 
@@ -53,9 +55,9 @@ Failed or inconclusive criteria remain recorded learning and keep the applicable
 
 **Depends on:** Phase 1 golden canonical records and approved encoding draft.
 
-**Deliverables:** candidate benchmark harness; bounded-speed circuit; golden vectors; independent verifier; proof-system ADR; version/key lifecycle draft.
+**Deliverables:** candidate benchmark harness; bounded-speed circuit; golden vectors and real proofs; authenticated, portable verification/policy/revocation artifacts; independent verifier; proof-system ADR; version/key lifecycle draft.
 
-**Exit evidence:** valid, equality-boundary, altered-input, overflow, stale, replay, wrong-version/policy/domain cases behave as specified; verifier receives no witness; report states hardware, parameters, p50/p95/p99, memory, proof size, and throughput; cryptography/security review accepts the ADR.
+**Exit evidence:** valid, equality-boundary, altered-input, overflow, stale, replay, wrong-version/policy/domain cases behave as specified; verifier receives no witness; report states hardware, parameters, p50/p95/p99, memory, proof size, and throughput; cryptography/security review accepts the ADR. Product-scope Gate 2 then passes at least three real-proof workflows for each of two paired provider/relying-party evaluation teams (at least six total), with 100% correct agreed positive/negative outcomes, authenticated artifacts, independent verification, human interpretation, restricted-field absence from the proof and verification materials, tested disclosure preference, assurance sufficiency, snapshot limitations, comprehension, review time, objections, and failure reasons. Mockups, non-cryptographic prototypes, producer self-verification, or vendor-only verification do not qualify.
 
 **Accountable:** cryptography lead.
 
@@ -65,7 +67,7 @@ Failed or inconclusive criteria remain recorded learning and keep the applicable
 
 **Deliverables:** chain port and deterministic mock; only the persistence needed for lifecycle/idempotency; authenticated redacted API; minimal status UI if justified; versioned offline evidence package.
 
-**Exit evidence:** the synthetic fixture reaches `FINALIZED` offline; duplicates do not duplicate state; retry/restart/outage tests pass; UI, API, logs, and mock records contain no restricted data; accessibility baseline is reviewed if a UI exists. Before exit, at least one version-controlled reference relying-party integration or one documented design-partner evaluation MUST use the offline evidence package end to end, without a vendor service or network dependency, to process agreed positive and negative cases and record a human accept/reject interpretation. The milestone record MUST report all six rubric results: privacy improvement, verifier comprehension, acceptable integration effort, assurance sufficiency, performance fit, and pilot intent. Every criterion must meet its pre-agreed threshold or the gate remains closed; a successful demonstration alone is insufficient.
+**Exit evidence:** the synthetic fixture reaches `FINALIZED` offline; duplicates do not duplicate state; retry/restart/outage tests pass; UI, API, logs, and mock records contain no restricted data; accessibility baseline is reviewed if a UI exists. The milestone record reports all six rubric results: Gate 2 supplies privacy improvement, verifier comprehension, and assurance sufficiency; Gate 3 supplies acceptable integration effort, performance fit, and pilot intent. After the offline package exists and before a pilot, product-scope Gate 3 requires two written paired provider/relying-party design-partner commitments, both pairs' package integrations without a vendor service or network dependency, positive and negative cases with human interpretation, pre-agreed integration/performance results, restricted-field absence across the Phase 3 surfaces, buyer preference, and purchasing evidence consisting of the validated route and budget holder, a credible paid-pilot price, and an executed paid-pilot agreement or another completed purchase. Every criterion must pass; a demonstration, informal interest, or pilot intent alone is insufficient.
 
 **Accountable:** engineering lead, with security and product approval.
 
