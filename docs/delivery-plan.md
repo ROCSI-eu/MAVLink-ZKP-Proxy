@@ -35,9 +35,196 @@ Failed or inconclusive criteria remain recorded learning and keep the applicable
 
 This is the named next milestone. This plan owns the milestone's entry conditions, workstream, required evidence, and exit rules. The repository remains documentation only, and this milestone describes proposed validation work; it does not state or imply that a prototype, verifier, proof circuit, or production component has been implemented.
 
-**Entry:** the documentation baseline is approved, the bounded-speed claim and relying-party decision to be tested are identified, and accountable product, architecture, cryptography, security, and delivery roles agree on the questions that the Phase 0 evidence must resolve.
+### Milestone entry criteria
 
-**Workstream:** refine the claim envelope, canonical public-input reconstruction, typed verifier outcomes, trust vocabulary, test-only offline policy profile, and product-discovery record. Bounded, disposable Phase 0 spikes are permitted solely to answer those questions and produce reviewable evidence. They may include throwaway codecs, vector checkers, schema experiments, synthetic fixtures, paper mockups, or conspicuously labelled non-cryptographic offline UX prototypes. They are not production foundations and MUST NOT be represented as implemented product capabilities.
+Entry requires all of the following; an unassigned discipline or an implicit approval keeps the milestone closed.
+
+- Named individuals are recorded for the product, delivery, architecture, cryptography, security, privacy, safety, telemetry, discovery, and relying-party roles. The relying-party role represents the owner of the decision being researched, not the producer or project team acting as a proxy. Each person acknowledges their accountability and the reviews assigned below.
+- The documentation baseline is approved as a **documentation-only maturity state**. No prototype, proof, verifier, telemetry integration, operational control, or product capability is claimed to exist merely because its contract is described.
+- The candidate bounded-speed claim and relying-party decision are identified only as hypotheses to validate. Entry authorizes no hardware integration or testing, vehicle command path, live ledger/network publication, production authorization, or multi-tenant service or identity boundary.
+- Discovery uses synthetic inputs or inputs covered by documented, approved governance for consent or other lawful basis, minimization, access, retention, and deletion. Raw or restricted participant/customer telemetry is not copied into fixtures, research reports, logs, or prototype outputs.
+- `A0_SYNTHETIC` is the milestone's only demonstrator assurance tier. A relying party may state a higher required future tier, but that request neither upgrades demonstration evidence nor authorizes work needed to attain it.
+- Every paper output is conspicuously labelled **“paper mockup — no proof generated”** and every non-cryptographic prototype output is conspicuously labelled **“non-cryptographic UX prototype — no proof generated or verified.”** The label appears on every screen, export, result, screenshot, recording, and research record, not only in accompanying instructions.
+
+### Dependency graph and work items
+
+The identifiers below are gates, not dates. An arrow means that accepted evidence from the item on the left is a prerequisite for the item on the right. Parallel branches may proceed only where the individual prerequisites permit.
+
+```text
+M1 -> M2 -> M3 -> M4 -> M5 -> M6 -> M7 --\
+                    \          \-> M8 -> M9 -> M10 -> M11
+                     \--------------^       /             ^
+                      \--------------------/--------------/
+```
+
+More precisely: `M1 → M2 → M3`; `M3 → M4`; `M4 → M5`; `M4 + M5 → M6`; `M2 + M4 + M5 + M6 → M7`; `M3 + M4 + M5 + M6 → M8`; `M3 + M5 + M8 → M9`; `M4 + M8 + M9 → M10`; and `M1…M10 → M11`.
+
+#### M1 — Reconcile the documentation baseline
+
+- **Objective and rationale:** produce one contradiction register and an agreed authority map for claim, wire, result, assurance, discovery, testing, and decision language, so later executable evidence tests one contract rather than silently choosing among documents. This file remains the sole milestone-plan authority.
+- **Existing documentation files affected:** `docs/delivery-plan.md`, `docs/README.md`, `docs/system-plan.md`, `docs/product-scope.md`, `docs/architecture.md`, `docs/data-and-proof-model.md`, `docs/claim-envelope.md`, `docs/security-and-privacy.md`, `docs/testing-and-operations.md`, `docs/discovery-research-plan.md`, and `docs/decisions.md`.
+- **Proposed future artifacts/modules:** **Proposed:** `docs/reviews/validated-claim-contract/reconciliation-register.md` and `docs/reviews/validated-claim-contract/authority-map.md`.
+- **Accountable role and required reviewers:** delivery lead accountable; product, architecture, cryptography, security, privacy, safety, telemetry, discovery, and relying-party role holders review.
+- **Prerequisites:** milestone entry criteria satisfied.
+- **Deliverables and acceptance evidence:** line-addressable conflict/duplication inventory, disposition and owner for every conflict, explicit normative-document precedence, and reviewer sign-off showing no unresolved contradiction can change a downstream test interpretation.
+- **Principal risks:** paper agreement hides semantic conflict; a proposed artifact becomes a competing plan; broad editorial cleanup obscures substantive changes.
+- **Relative size:** `S`.
+- **Category:** documentation governance.
+- **Decision or gate closed:** documentation-baseline approval and authority-map gate.
+- **ADR requirement:** no new ADR unless reconciliation changes a previously accepted architectural decision; any such change amends or supersedes that ADR before acceptance.
+- **Implementation exclusions:** no code, schema freeze, dependency selection, prototype, discovery claim, or production-readiness assertion.
+
+#### M2 — Run paired provider/relying-party discovery
+
+- **Objective and rationale:** observe both sides of the same evidence handoff and the actual relying-party decision, alternatives, harms, purchasing route, minimum disclosure, and assurance need; unpaired interest cannot validate a workflow.
+- **Existing documentation files affected:** `docs/delivery-plan.md`, `docs/product-scope.md`, `docs/discovery-research-plan.md`, `docs/commercial-model.md`, `docs/security-and-privacy.md`, and `docs/decisions.md`.
+- **Proposed future artifacts/modules:** **Proposed:** `docs/research/validated-claim-contract/paired-round/`, containing a sampling rationale, governed-input register, paired session records, disclosure comparisons, contradiction log, and evidence-to-decision summary.
+- **Accountable role and required reviewers:** discovery lead accountable with product owner; relying-party, privacy, security, safety, and delivery role holders review, and the paired provider and relying-party participants validate factual notes.
+- **Prerequisites:** accepted `M1`; approved research protocol and synthetic-or-governed input handling.
+- **Deliverables and acceptance evidence:** rubric-complete paired records, contradictory and inconclusive cases, buyer/procurement visibility, workflow volumes and failure handling, unaided comprehension observations, and the product owner's explicit evidence-sufficiency disposition. Paper and non-cryptographic outputs carry the entry labels everywhere.
+- **Principal risks:** recruiting convenience participants; producer answers substituted for relying-party authority; sensitive data capture; coached comprehension; overclaiming a small sample.
+- **Relative size:** `L`.
+- **Category:** product discovery.
+- **Decision or gate closed:** whether evidence is sufficient to select, narrow, or reject the candidate workflow for claim contracting; this does not by itself pass product-scope Gate 1.
+- **ADR requirement:** none; material product decisions are recorded in `docs/decisions.md`, not an architecture ADR.
+- **Implementation exclusions:** no real proof, authenticated-artifact claim, hardware, command, live-ledger, production, multi-tenant, pricing, pilot, or willingness-to-pay claim.
+
+#### M3 — Bound the claim and relying-party decision
+
+- **Objective and rationale:** select an exact observation unit and predicate and state what the result can and cannot support, preventing a speed snapshot from being promoted into interval, segment, whole-flight, safety, contractual, or regulatory compliance.
+- **Existing documentation files affected:** `docs/delivery-plan.md`, `docs/product-scope.md`, `docs/data-and-proof-model.md`, `docs/claim-envelope.md`, `docs/security-and-privacy.md`, `docs/discovery-research-plan.md`, and `docs/decisions.md`.
+- **Proposed future artifacts/modules:** **Proposed:** `docs/contracts/bounded-speed/claim-scope-draft.md`, `schemas/claims/bounded-speed-draft.cddl`, and `testdata/synthetic/bounded-speed/README.md`.
+- **Accountable role and required reviewers:** product owner accountable; relying-party, telemetry, architecture, cryptography, privacy, safety, and security role holders review.
+- **Prerequisites:** accepted `M2` evidence-sufficiency disposition.
+- **Deliverables and acceptance evidence:** selected-or-rejected workflow decision; named producer, relying party, decision and false-accept/false-reject consequences; predicate, units, bounds, observation/coverage semantics, public/private field map, non-claims, and synthetic examples reviewed against discovery evidence.
+- **Principal risks:** ambiguous coverage; unit or integer-bound errors; policy language implies physical truth; restricted disclosure; a research hypothesis is mistaken for a supported product claim.
+- **Relative size:** `M`.
+- **Category:** product and claim contract.
+- **Decision or gate closed:** claim-scope portion of product-scope Gate 1 and the bounded-speed statement candidate decision.
+- **ADR requirement:** an ADR is required only if the selected scope changes an architectural boundary; statement identifier/version freeze remains a later ADR-backed release decision.
+- **Implementation exclusions:** no circuit, prover, verifier, parser, SITL integration, continuous/aggregate claim, hardware provenance, or external authorization.
+
+#### M4 — Freeze draft result and time semantics for testing
+
+- **Objective and rationale:** reconcile typed independent verifier dimensions, precedence, explicit decision time, observation/validity windows, freshness, replay, revocation, and the external business-decision boundary so every later fixture has one deterministic expected result.
+- **Existing documentation files affected:** `docs/delivery-plan.md`, `docs/claim-envelope.md`, `docs/data-and-proof-model.md`, `docs/architecture.md`, `docs/testing-and-operations.md`, `docs/decisions.md`, `docs/adr/0001-half-open-validity-windows.md`, and `docs/adr/0002-typed-verifier-result-model.md`.
+- **Proposed future artifacts/modules:** **Proposed:** `schemas/verifier/result-draft.cddl`, `testdata/contracts/result-time/`, and `docs/contracts/verifier/result-time-crosswalk.md`.
+- **Accountable role and required reviewers:** cryptography lead accountable; architecture, security, product, relying-party, privacy, telemetry, and delivery role holders review.
+- **Prerequisites:** accepted `M3` claim boundary and `M1` authority map.
+- **Deliverables and acceptance evidence:** cross-document semantic matrix; boundary and cross-dimensional expected-result vectors; explicit clock authority and integer decision times; deterministic precedence; proof result kept separate from service disposition and business decision; reviewers reproduce expected outcomes without oral interpretation.
+- **Principal risks:** collapsing independent dimensions; wall-clock nondeterminism; consuming replay state too early; treating cryptographic validity as policy or business acceptance.
+- **Relative size:** `M`.
+- **Category:** verifier contract.
+- **Decision or gate closed:** testable draft result/time contract and typed-outcome precedence gate.
+- **ADR requirement:** required; accept or amend ADR-0001 and ADR-0002 before this item closes, with a new ADR for any incompatible semantic choice.
+- **Implementation exclusions:** no public API stability, production clock/replay store, UI approval action, real proof verification, or relying-party business automation.
+
+#### M5 — Define assurance and disclosure presentation
+
+- **Objective and rationale:** keep declared, effective, required, and demonstrator assurance distinct and make exclusions and public disclosure understandable; proof strength must not be presented as telemetry provenance or truth.
+- **Existing documentation files affected:** `docs/delivery-plan.md`, `docs/security-and-privacy.md`, `docs/claim-envelope.md`, `docs/data-and-proof-model.md`, `docs/product-scope.md`, `docs/discovery-research-plan.md`, and `docs/decisions.md`.
+- **Proposed future artifacts/modules:** **Proposed:** `docs/contracts/assurance/a0-disclosure-profile.md`, `schemas/registries/assurance-tier-draft.json`, and `testdata/contracts/assurance-disclosure/`.
+- **Accountable role and required reviewers:** security lead accountable with privacy lead; product, cryptography, safety, telemetry, discovery, and relying-party role holders review.
+- **Prerequisites:** accepted `M2`, `M3`, and `M4`.
+- **Deliverables and acceptance evidence:** field-by-field disclosure map; canonical `A0_SYNTHETIC` presentation and non-claims; separate record of any relying-party requested future tier and evidence gap; linkage/re-identification review; positive/negative presentation examples; unaided reviewer correctly distinguishes proof validity, assurance sufficiency, and business decision.
+- **Principal risks:** ordinal tiers imply guaranteed truth; hidden linkability; requested future tier is presented as attained; prototype labels are lost in exports.
+- **Relative size:** `M`.
+- **Category:** security and privacy contract.
+- **Decision or gate closed:** milestone assurance/disclosure vocabulary and `A0_SYNTHETIC` demonstrator-profile gate.
+- **ADR requirement:** required before the assurance registry is frozen; the ADR records alternatives, linkage and migration consequences, with explicit product/privacy and security approval. The milestone may test a visibly draft registry before that freeze.
+- **Implementation exclusions:** no `A1`–`A5` attainment, device/gateway keys, attestation, sensor-truth claim, hardware work, stable assurance registry, or production authorization.
+
+#### M6 — Specify executable offline policy fixtures
+
+- **Objective and rationale:** turn policy lifecycle and explicit-time rules into deterministic, authenticated test evidence without a registry, network dependency, ambient trust store, or production authority.
+- **Existing documentation files affected:** `docs/delivery-plan.md`, `docs/data-and-proof-model.md`, `docs/claim-envelope.md`, `docs/security-and-privacy.md`, `docs/testing-and-operations.md`, and `docs/decisions.md`.
+- **Proposed future artifacts/modules:** **Proposed:** `schemas/fixtures/offline-policy-v0.json`, `testdata/policy/offline-v0/`, and `tools/fixture-checker/` (disposable Phase 0 checker).
+- **Accountable role and required reviewers:** security lead accountable; cryptography, architecture, privacy, testing/operations, delivery, and relying-party role holders review.
+- **Prerequisites:** accepted `M4` and `M5` semantics.
+- **Deliverables and acceptance evidence:** fixture schema; immutable policy bytes and recomputed digests; conspicuously test-only trust anchors and deterministic signatures; explicit decision-time vectors for approval, activation, both half-open boundaries, deprecation, revocation/recheck, expiry, rollback, ordering, tampering, missing and incompatible evidence; checker output proving fail-closed behavior and `TEST_ONLY_NOT_PRODUCTION_AUTHORIZATION` on every result.
+- **Principal risks:** fixture keys mistaken for secrets or production roots; expected labels trusted instead of signatures/digests; nondeterminism; offline fixture semantics diverge from the contract.
+- **Relative size:** `L`.
+- **Category:** security test infrastructure.
+- **Decision or gate closed:** deterministic test-only offline policy-profile readiness gate.
+- **ADR requirement:** no ADR for disposable fixture mechanics; an ADR is required before any policy schema, trust topology, or lifecycle contract is frozen for release.
+- **Implementation exclusions:** no network registry, mutable `latest`, production keys, production authorization, online freshness claim, operational key ceremony, or reusable production policy service.
+
+#### M7 — Validate verifier UX and relying-party interpretation
+
+- **Objective and rationale:** test whether a relying-party reviewer can independently explain accepted, rejected, and temporarily unverifiable outcomes, scope, assurance, time/replay limits, and non-claims before an implementation interface is selected.
+- **Existing documentation files affected:** `docs/delivery-plan.md`, `docs/product-scope.md`, `docs/discovery-research-plan.md`, `docs/claim-envelope.md`, `docs/security-and-privacy.md`, `docs/testing-and-operations.md`, and `docs/architecture.md`.
+- **Proposed future artifacts/modules:** **Proposed:** `prototypes/verifier-ux-noncrypto/`, `docs/research/validated-claim-contract/verifier-ux/`, and `testdata/ux/verifier-results/`.
+- **Accountable role and required reviewers:** product owner accountable with discovery lead; relying-party, accessibility, privacy, security, safety, cryptography, and delivery role holders review.
+- **Prerequisites:** accepted `M2`, `M4`, `M5`, and `M6`; only synthetic fixture outputs used.
+- **Deliverables and acceptance evidence:** labelled paper/non-cryptographic prototype; task script and pre-agreed comprehension threshold; uncoached positive and negative sessions; observed errors, accessibility notes and wording revisions; exports preserve full typed result, decision time, `A0_SYNTHETIC`, test-only classification, and the external-decision boundary.
+- **Principal risks:** polished mockup implies working verification; binary color/status hides dimensions; coaching; inaccessible presentation; research record loses mandatory label.
+- **Relative size:** `M`.
+- **Category:** verifier experience and discovery.
+- **Decision or gate closed:** verifier-comprehension evidence and presentation-language gate, not proof verification or commercial validation.
+- **ADR requirement:** none for paper or disposable non-cryptographic research; an ADR is required later only if a stable public interface or architectural UI boundary is selected.
+- **Implementation exclusions:** no cryptography, proof generation/verification, network call, vendor verdict, authorization control, production UI, account, multi-tenancy, payment, command, or pilot.
+
+#### M8 — Execute the envelope and vector spike
+
+- **Objective and rationale:** demonstrate strict canonical decoding, deterministic re-encoding, reconstructed ordered public inputs, mutation rejection, and independent format agreement before treating the draft envelope as executable. Opaque placeholder proof bytes isolate format questions from proof-system selection.
+- **Existing documentation files affected:** `docs/delivery-plan.md`, `docs/claim-envelope.md`, `docs/data-and-proof-model.md`, `docs/testing-and-operations.md`, `docs/architecture.md`, and `docs/decisions.md`.
+- **Proposed future artifacts/modules:** **Proposed:** `schemas/envelope/v0-spike.cddl`, `crates/envelope-spike/` (disposable reference codec), `tools/envelope-vector-checker/` (independently authored disposable checker), and `testdata/envelope/v0-spike/`.
+- **Accountable role and required reviewers:** architecture lead accountable; cryptography, security, privacy, telemetry, testing/operations, and delivery role holders review.
+- **Prerequisites:** accepted `M3`, `M4`, `M5`, and `M6` contracts.
+- **Deliverables and acceptance evidence:** shared golden and negative corpus; rejection of non-canonical, duplicate, unknown, invalid, out-of-bound and unsupported data; byte-identical re-encoding; field-by-field mutations including proof attachment/reference shape; public-input reconstruction; reference/checker agreement; documented clean-checkout command.
+- **Principal risks:** shared logic defeats independence; placeholder acceptance is described as proof verification; premature version/API stability; corpus omits interpretation-critical mutations.
+- **Relative size:** `L`.
+- **Category:** disposable interoperability spike.
+- **Decision or gate closed:** executable format-spike gate only; release still requires two genuinely independent implementations in different languages and its release ADR.
+- **ADR requirement:** no proof-system ADR and no released-envelope ADR are required for this disposable spike; an accepted release ADR is mandatory before the envelope is called released, interoperable, or stable.
+- **Implementation exclusions:** no circuit, proof generation, cryptographic verification, proof-system benchmark dependency, stable library/API, production hardening, or claim that placeholder bytes are a proof. In particular, `M10` does **not** block this item.
+
+#### M9 — Establish pinned SITL compatibility evidence
+
+- **Objective and rationale:** prove that a selected simulator/autopilot, MAVLink dialect, message set, units, ranges, timing and signing/trust states can supply the bounded synthetic record without widening the claim or silently coercing unavailable data.
+- **Existing documentation files affected:** `docs/delivery-plan.md`, `docs/data-and-proof-model.md`, `docs/architecture.md`, `docs/testing-and-operations.md`, `docs/security-and-privacy.md`, `docs/product-scope.md`, and `docs/decisions.md`.
+- **Proposed future artifacts/modules:** **Proposed:** `testdata/sitl/compatibility/`, `tools/sitl-compat-probe/` (disposable probe), and `docs/evidence/sitl/compatibility-matrix.md`.
+- **Accountable role and required reviewers:** telemetry lead accountable; architecture, security, safety, cryptography, product, privacy, and delivery role holders review.
+- **Prerequisites:** accepted `M3` claim fields, `M5` trust/disclosure profile, and `M8` envelope/public-input draft.
+- **Deliverables and acceptance evidence:** pinned simulator/autopilot, dialect and message/profile versions; executable compatibility matrix for `GLOBAL_POSITION_INT` and `VFR_HUD` candidate fields; synthetic capture/replay digests; unit/range/availability/signing-state results; deterministic normalization samples; documented rejection of malformed, mixed-source, stale, invalid-signature and unsupported inputs.
+- **Principal risks:** simulator behavior mistaken for flight hardware; dialect drift; mismatched clocks/units; unsigned data overstated; compatibility probe grows into an ingestion service.
+- **Relative size:** `L`.
+- **Category:** telemetry compatibility evidence.
+- **Decision or gate closed:** initial SITL/autopilot, dialect, message and signing-profile decision needed for Phase 1 entry and proof-system comparison inputs.
+- **ADR requirement:** an ADR is required only if the selected profile establishes a durable architectural or dependency commitment; the evidence-backed selection is always recorded in `docs/decisions.md`.
+- **Implementation exclusions:** no hardware/vehicle connection, command transmission, real flight, generalized MAVLink support, production parser/gateway, live network, or assurance above `A0_SYNTHETIC`.
+
+#### M10 — Benchmark candidate proof systems
+
+- **Objective and rationale:** compare candidate proof systems against the accepted claim/result/time contract and pinned SITL-derived synthetic records so the proof-system decision is evidence-based rather than chosen before statement shape and workload are known.
+- **Existing documentation files affected:** `docs/delivery-plan.md`, `docs/data-and-proof-model.md`, `docs/claim-envelope.md`, `docs/testing-and-operations.md`, `docs/architecture.md`, `docs/security-and-privacy.md`, and `docs/decisions.md`.
+- **Proposed future artifacts/modules:** **Proposed:** `benchmarks/proof-systems/`, `testdata/proof-benchmarks/bounded-speed/`, `docs/evidence/cryptography/proof-system-comparison.md`, and `docs/adr/0003-proof-system-selection.md`.
+- **Accountable role and required reviewers:** cryptography lead accountable; architecture, security, telemetry, privacy, safety, engineering, delivery, and relying-party role holders review.
+- **Prerequisites:** accepted `M4` contract semantics, completed `M8` envelope/vector evidence, and accepted `M9` pinned SITL compatibility corpus. Contract or SITL changes invalidate affected benchmark results.
+- **Deliverables and acceptance evidence:** reproducible disposable harness; at least the viable candidates and a documented rejection rationale for excluded candidates; valid/boundary/altered-input measurements on representative declared hardware; parameters, versions, setup and sample counts; proof size, generation and verification p50/p95/p99, peak memory and throughput; security/assumption, licensing, portability, key/setup and lifecycle comparison; draft proof-system ADR with raw results.
+- **Principal risks:** toy benchmark does not constrain the real statement; incomparable tuning; unsafe candidate assumptions; benchmark prototype is promoted into product code; performance is represented as an SLO.
+- **Relative size:** `XL`.
+- **Category:** cryptographic technology decision.
+- **Decision or gate closed:** candidate proof-system selection and permission to begin real Phase 2 proof implementation. The benchmark is mandatory **after contract and SITL evidence and before real Phase 2 circuit/prover/verifier implementation**; it is deliberately **not** a prerequisite for the placeholder-proof envelope/vector spike in `M8`.
+- **ADR requirement:** required; the proof-system ADR is accepted by cryptography and security, with architecture review, before real Phase 2 proof implementation begins.
+- **Implementation exclusions:** only disposable benchmark implementations are allowed; no production circuit/prover/verifier, production parameters or ceremony, stable proof format/API, performance SLO, hardware telemetry, or production-readiness claim.
+
+#### M11 — Conduct the final stop/go review
+
+- **Objective and rationale:** decide from the complete evidence whether the validated claim/verifier contract is coherent and valuable enough to authorize only the bounded next phase, while making unresolved and residual risks explicit.
+- **Existing documentation files affected:** `docs/delivery-plan.md`, `docs/product-scope.md`, `docs/architecture.md`, `docs/data-and-proof-model.md`, `docs/claim-envelope.md`, `docs/security-and-privacy.md`, `docs/testing-and-operations.md`, `docs/discovery-research-plan.md`, and `docs/decisions.md`.
+- **Proposed future artifacts/modules:** **Proposed:** `docs/reviews/validated-claim-contract/stop-go-record.md` and `docs/reviews/validated-claim-contract/evidence-index.md`.
+- **Accountable role and required reviewers:** delivery lead accountable; named product, architecture, cryptography, security, privacy, safety, telemetry, discovery, and relying-party role holders are required approvers, with engineering consulted on feasibility.
+- **Prerequisites:** `M1` through `M10` accepted; required ADRs accepted; evidence index immutable or content-addressed for review; open blockers have owners and closure gates.
+- **Deliverables and acceptance evidence:** item-by-item evidence index; approval/rejection and dissent; threat and privacy review; discovery sufficiency decision; selected claim, SITL and proof-system dispositions; recorded approvers, unresolved risks and accepted residual risk; explicit scope authorized by a go and explicit stop conditions.
+- **Principal risks:** schedule pressure waives evidence; conditional approvals hide blockers; technical evidence substitutes for discovery; go language is read as production, safety, or commercial approval.
+- **Relative size:** `M`.
+- **Category:** milestone governance.
+- **Decision or gate closed:** final **stop/go** for the Validated claim and verifier contract milestone and, only on go, authorization for the bounded Phase 1 scope plus subsequent real Phase 2 proof work in dependency order.
+- **ADR requirement:** all ADRs required by `M4`, `M5`, `M8` release claims (if any), and `M10` must be accepted; the review record is not itself an ADR.
+- **Implementation exclusions:** no waiver of prerequisites; no declaration of production/security/safety/regulatory/commercial readiness; no hardware, command, live ledger, multi-tenant service, pilot, or deployment authorization.
+
+Bounded, disposable Phase 0 spikes are permitted solely where an item above allows them and solely to answer its named questions. They are not production foundations and MUST NOT be represented as implemented product capabilities. `docs/delivery-plan.md` remains the milestone authority: proposed evidence indexes, research records, contracts, ADRs, fixtures, and review records support this plan and MUST link back here rather than restating or superseding its sequence or gates.
 
 **Required evidence:** the applicable Phase 0 deliverables and exit evidence below, including strict-decoding and mutation vectors, independent format checking, deterministic test-only policy artifacts, reviewed public/private fields and trust terms, closure plans for MVP-blocking decisions, threat review, and accepted product-scope Gate 1 evidence. Each artifact records its disposable or test-only status where applicable.
 
