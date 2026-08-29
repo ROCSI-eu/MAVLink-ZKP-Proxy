@@ -61,6 +61,8 @@ The objective is to determine whether customers will pay for one or more distinc
 
 > A workflow/assurance assessment plus an offline verification pilot using synthetic positive and negative packages.
 
+The assessment may occur during earlier discovery, but the pilot component MUST NOT begin until the Phase 3 offline package exists and every prerequisite, evidence item, and required review in [product-scope Gate 3](product-scope.md#gate-3--commercial-pilot-validation-after-phase-3-offline-package-exists) has been satisfied. Earlier discovery remains limited to the labelled paper mockups or non-cryptographic prototypes permitted by product-scope Gate 1; synthetic packages do not waive or satisfy the Gate 3 controls.
+
 Evaluate later differentiation in this order, advancing only when evidence from the preceding work justifies the next evaluation:
 
 1. **Workflow and assurance consulting/integration:** workflow assessment, threat and trust analysis, claim and policy design, evidence mapping, privacy review, implementation services, adapters, migration, and customer-specific integration assistance.
