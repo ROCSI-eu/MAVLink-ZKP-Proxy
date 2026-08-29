@@ -33,11 +33,11 @@ All root reading paths lead to the named next milestone, [**Validated claim and 
 | --- | --- |
 | New contributor | Root [README](../README.md) → [product scope](product-scope.md) → [delivery plan](delivery-plan.md) |
 | Product or safety | [Product scope](product-scope.md) → [security and privacy](security-and-privacy.md) → [delivery plan](delivery-plan.md) |
-| Commercial/product strategy | [Product scope](product-scope.md) → [commercial model](commercial-model.md) → [architecture](architecture.md) |
-| Discovery researcher | [Discovery research plan](discovery-research-plan.md) → [product scope](product-scope.md) → [decisions](decisions.md) |
-| Engineering/platform | [Architecture](architecture.md) → [data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [testing and operations](testing-and-operations.md) |
-| Cryptography | [Data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [security and privacy](security-and-privacy.md) → [decisions](decisions.md) |
-| Security/privacy | [Security and privacy](security-and-privacy.md) → [data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [testing and operations](testing-and-operations.md) |
+| Commercial/product strategy | [Product scope](product-scope.md) → [commercial model](commercial-model.md) → [architecture](architecture.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
+| Discovery researcher | [Discovery research plan](discovery-research-plan.md) → [product scope](product-scope.md) → [decisions](decisions.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
+| Engineering/platform | [Architecture](architecture.md) → [data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [testing and operations](testing-and-operations.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
+| Cryptography | [Data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [security and privacy](security-and-privacy.md) → [decisions](decisions.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
+| Security/privacy | [Security and privacy](security-and-privacy.md) → [data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [testing and operations](testing-and-operations.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
 | Decision maker | [Decisions](decisions.md) → [delivery gates](delivery-plan.md) |
 
 ## Authority map
