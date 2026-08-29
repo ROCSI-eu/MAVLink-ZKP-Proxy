@@ -22,7 +22,7 @@ Store the first accepted ADR under `docs/adr/NNNN-short-title.md` and add it to 
 | --- | --- | --- | --- | --- | --- |
 | Observational, single-vehicle SITL MVP with no command path | Proposed scope baseline | Phase 0 exit | Product owner | Safety owner | Scope and hazard-boundary review |
 | Claim/vertical: industrial-site inspection speed-policy evidence; hypothesized buyer is the provider compliance director, producer is its flight-operations gateway, and relying party/decision owner is the site owner's inspection-contract compliance officer | **Claim selection reopened.** The site owner's inspection-contract compliance officer owns the hypothesized evidence-acceptance decision; the product owner owns this discovery determination, but no named individual or approved determination is recorded. Coverage unit and contractual minimum assurance are unresolved; `A0_SYNTHETIC` is only the demonstrator tier. Bounded speed remains a technical primitive, not a snapshot, interval, segment, sampled, whole-flight, aggregate, recursive, or composite compliance product. | Gate 1 before Phase 1; no workflow promotion until an approved paired round supports snapshot acceptance, a narrower workflow, or a new claim selection | Product owner | Product, discovery-method, delivery, relying-party, buyer, privacy, safety, cryptography, and security representatives as assigned by each gate | Evidence refs: [`DRP-CURRENT`](discovery-research-plan.md#current-state-and-evidence-boundary) records no interviews/findings and contradicts the premise that an approved paired round is available; [`DRP-E2D`](discovery-research-plan.md#evidence-to-decision-rule) defines the evidence required to decide. Identified decision: accept speed-policy evidence for one inspection-flight deliverable. Current-alternative hypothesis: exported flight log or manual signed report. False-accept hypothesis: contractual exception passes and may cause investigation/reinspection; false-reject hypothesis: acceptance/payment delay, analyst work or repeat inspection, and trust damage. Candidate minimum disclosure: versions, public maximum/unit, result, trust class, policy, freshness/validity, and replay-resistant identifier, with exact speed/location/identity/trajectory/fine time and unrelated telemetry restricted. Contradiction/sample limit: zero recorded provider-side, relying-party, paired, buyer, artifact, or coverage observations, so disclosure, consequences, coverage, tier, volume, and workflow remain unvalidated. |
-| Commercial offering discovery: determine whether customers will pay for integration, assurance design, supported self-hosting, or managed verification | Open discovery decision; no offering or license change selected | Before commercial packaging, pricing, or implementation commitment | Product owner | Engineering, security, operations, legal, community, and target-buyer representatives | For every option: named buyer and workflow evidence, requested deliverables and delivery burden, procurement preference, and evidenced willingness to pay; comparative decision record and, for any license change, a separate business objective, legal review, community impact assessment, and ADR |
+| Commercial offering discovery: evaluate workflow and assurance services first, followed by supported customer-managed deployment, enterprise support, and only then evidence-backed managed operations | Open discovery sequence; no demand, price, managed-service commitment, offering, or license change selected | Before commercial packaging, pricing, or implementation commitment | Product owner | Engineering, security, operations, legal, community, and target-buyer representatives | For every option: named buyer and workflow evidence, requested deliverables and delivery burden, procurement preference, and evidenced willingness to pay; comparative decision record and, for any license change, a separate business objective, legal review, community-impact analysis, dependency review, and ADR |
 | Initial SITL/autopilot, dialect, message and signing profile | Open | Before any Phase 1 parser implementation begins | Telemetry lead | Architecture, security, cryptography, and safety reviewers | Executable compatibility matrix and synthetic fixtures covering the pinned SITL/autopilot version, dialect, exact accepted messages and fields, UDP connection/profile, signing behavior, and trust-state mapping; an explicit assertion, enforced by negative fixtures, that no command message is accepted |
 | Canonical schema, encoding, commitment fields and snapshot freshness | Open | Phase 1 exit / Phase 2 entry | Architecture lead | Cryptography and security leads | Reviewed specification and golden vectors |
 | Trust-state claim eligibility | Open | Phase 1 exit | Security lead | Telemetry, cryptography, product/privacy, and safety reviewers | Threat analysis and signed/unsigned/invalid tests |
@@ -55,16 +55,22 @@ Store the first accepted ADR under `docs/adr/NNNN-short-title.md` and add it to 
 
 ## Commercial offering discovery decision
 
-### Objective and options
+### Objective and discovery sequence
 
-The objective is to determine whether customers will pay for one or more of these distinct offers rather than assuming that technical interest establishes a market:
+The objective is to determine whether customers will pay for one or more distinct offers rather than assuming that technical interest establishes a market. The smallest initial offer to evaluate is:
 
-1. **Integration:** implementation services, adapters, workflow integration, migration, and customer-specific deployment assistance.
-2. **Assurance design:** threat and trust analysis, claim and policy design, evidence mapping, privacy review, and verification guidance.
-3. **Supported self-hosting:** customer-operated software with release guidance, updates, deployment validation, incident support, and agreed support terms.
-4. **Managed verification:** a vendor-operated verification service with appropriate operational, security, privacy, tenancy, and service commitments.
+> A workflow/assurance assessment plus an offline verification pilot using synthetic positive and negative packages.
 
-Discovery may select multiple offers, one offer, or no commercial offer. It MUST keep service demand separate from demand to restrict the open proof path.
+The assessment may occur during earlier discovery, but the pilot component MUST NOT begin until the Phase 3 offline package exists and every prerequisite, evidence item, and required review in [product-scope Gate 3](product-scope.md#gate-3--commercial-pilot-validation-after-phase-3-offline-package-exists) has been satisfied. Earlier discovery remains limited to the labelled paper mockups or non-cryptographic prototypes permitted by product-scope Gate 1; synthetic packages do not waive or satisfy the Gate 3 controls.
+
+Evaluate later differentiation in this order, advancing only when evidence from the preceding work justifies the next evaluation:
+
+1. **Workflow and assurance consulting/integration:** workflow assessment, threat and trust analysis, claim and policy design, evidence mapping, privacy review, implementation services, adapters, migration, and customer-specific integration assistance.
+2. **Supported customer-managed deployment:** customer-operated software with deployment guidance, updates, validation, incident support, and agreed support terms.
+3. **Enterprise support and upgrade validation:** ongoing support coverage, compatibility and migration planning, and validation of releases and upgrades in the customer's environment.
+4. **Managed verification or policy operations:** vendor-operated verification or policy services with appropriate operational, security, privacy, tenancy, and service commitments, evaluated only after repeated evidence-backed demand.
+
+This ordering is a discovery sequence only. It is **not** evidence of demand, a selected price, a managed-service commitment, or a license decision. Discovery may select multiple offers, one offer, or no commercial offer. It MUST keep service demand separate from demand to restrict the open proof path.
 
 ### Evidence record and decision rule
 
@@ -77,7 +83,7 @@ For each option, the product owner MUST record:
 
 The comparative decision must identify which option, buyer, packaging hypothesis, price basis, and delivery assumptions are selected or rejected and cite the underlying evidence. No commercial implementation commitment is justified when buyer evidence, sustainable delivery burden, procurement preference, or willingness-to-pay evidence is missing.
 
-This decision does not change the repository license. The existing MIT license MUST NOT be changed unless a separate license-change proposal states its business objective and completes legal review, a community impact assessment, and an accepted ADR. Any future separately authored commercial component and all third-party dependency licenses and obligations still require review.
+This decision does not change the repository license. The existing MIT license MUST NOT be changed unless a separate license-change proposal states its business objective and completes legal review, community-impact analysis, dependency review, and an accepted ADR. Any future separately authored commercial component and all third-party dependency licenses and obligations still require review.
 
 ## Publication-substrate decision
 

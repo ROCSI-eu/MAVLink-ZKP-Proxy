@@ -30,6 +30,8 @@ These artifacts must be usable together as a complete local path. Publishing iso
 
 ## Optional commercial capabilities
 
+Commercial-offering exploration follows the staged [commercial offering discovery decision](decisions.md#commercial-offering-discovery-decision). Its smallest initial offer is a workflow/assurance assessment plus an offline verification pilot using synthetic positive and negative packages. The assessment may occur during earlier discovery, but the pilot MUST NOT begin until the Phase 3 offline package exists and every prerequisite, evidence item, and required review in [product-scope Gate 3](product-scope.md#gate-3--commercial-pilot-validation-after-phase-3-offline-package-exists) has been satisfied; synthetic packages do not waive or satisfy those controls. Before then, discovery remains limited to the labelled paper mockups or non-cryptographic prototypes permitted by Gate 1. Later differentiation proceeds through consulting/integration, supported customer-managed deployment, enterprise support and upgrade validation, and only then managed verification or policy operations after repeated evidence-backed demand. That sequence is for discovery, not evidence of demand, a selected price, a managed-service commitment, or a license decision.
+
 Commercial community support, self-hosted enterprise packages, and managed services may add capabilities that reduce operational burden or meet organizational requirements, including:
 
 - hosted policy authoring, approval workflows, distribution, version history, and revocation management;
@@ -78,7 +80,7 @@ Feature parity is not required: managed editions may provide better scale, avail
 
 A change that moves an existing open capability behind a commercial boundary, alters standard proof portability, or creates a managed-only dependency requires product, architecture, cryptography, and community review plus an accepted ADR. The review must include an offline verification demonstration, cross-edition conformance results, export/exit analysis, and an inventory of proprietary extensions.
 
-The existing MIT license MUST NOT be changed without a separately stated business objective, legal review, community impact assessment, and an accepted ADR recording the decision and its consequences. Commercial discovery or interest in proprietary future components is not, by itself, a license-change decision.
+The existing MIT license MUST NOT be changed without a separately stated business objective, legal review, community-impact analysis, dependency review, and an accepted ADR recording the decision and its consequences. Commercial discovery or interest in proprietary future components is not, by itself, a license-change decision.
 
 Release acceptance requires testing both directions: community-produced proof to managed verifier, and managed-produced proof to community verifier. It also requires proving that the documented local CLI or SDK completes the standard fixture path with hosted endpoints disabled.
 
