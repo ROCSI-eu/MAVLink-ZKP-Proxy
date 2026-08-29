@@ -48,13 +48,15 @@ Components are proposed boundaries, not deployed services. Development begins wi
 
 ## Start here
 
-The [documentation index](docs/README.md) provides audience-specific reading paths and explains document authority. Key references are:
+The [documentation index](docs/README.md) provides audience-specific reading paths and explains document authority. The named next milestone is [**Validated claim and verifier contract**](docs/delivery-plan.md#next-milestone--validated-claim-and-verifier-contract). `docs/delivery-plan.md` owns that milestone's entry conditions, workstream, required evidence, and exit rules. This is a planning milestone in a documentation-only repository; it does not imply that a prototype has been implemented.
+
+Key references are:
 
 - [product scope](docs/product-scope.md) — MVP, deferred work, non-goals, and success measures;
 - [architecture](docs/architecture.md) — boundaries, responsibilities, data flow, and failure behavior;
 - [data and proof model](docs/data-and-proof-model.md) — telemetry units, encoding, and proof semantics;
 - [security and privacy](docs/security-and-privacy.md) — trust assumptions, threats, controls, and safety boundary;
-- [delivery plan](docs/delivery-plan.md) — phases, evidence, owners, and the next implementation step;
+- [delivery plan](docs/delivery-plan.md) — the next milestone, phases, evidence, owners, and stop/go rules;
 - [testing and operations](docs/testing-and-operations.md) — validation layers and readiness gates; and
 - [decision register](docs/decisions.md) — proposed, open, deferred, and accepted decisions.
 
