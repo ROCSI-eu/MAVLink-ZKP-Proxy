@@ -45,6 +45,8 @@ Recruit both sides of the same real decision wherever possible:
 
 Track role coverage and organization coverage without publishing identities. Separate interviews are preferred so commercial relationships and hierarchy do not suppress disagreement. Ask first about the most recent concrete decision, then test alternatives; do not introduce zero-knowledge proofs, speed, local verification, or a preferred pilot structure before documenting the unaided workflow.
 
+Recruitment targets are planning controls used to manage coverage and surface gaps; they are not validation evidence, do not establish that a problem is confirmed, and MUST NOT be converted into prevalence claims. Evidence sufficiency depends on the documented sampling rationale, paired decision coverage, provenance, buyer or procurement visibility, contradictions, missing coverage, and limitations rather than attainment of a target count.
+
 The interviewer MUST distinguish direct experience from opinion, future preference, and hearsay. Quantitative answers require a period, unit, range or count, and the participant's basis for knowing. One statement is a reported observation, not a market prevalence claim.
 
 ## Core interview guide
@@ -95,6 +97,8 @@ If the privacy gate authorizes a discovery evidence area, its first commit MUST 
 Do not commit names, contact details, employer names where identifying, exact sites, flight paths, customer or mission identifiers, raw telemetry, recordings, transcripts, consent forms, procurement documents, credentials, or sensitive contract terms. Hashing an identity does not anonymize it. Small-cell combinations and distinctive quotations require suppression or coarsening.
 
 Round-level findings MUST report the denominator and role mix, supporting and contradicting observations, missing coverage, source type, and limitations. They MUST NOT convert recruitment criteria into findings, extrapolate prevalence from a convenience sample, combine unlike units, or describe stated intent as purchasing behavior.
+
+Any change to this protocol, its sampling rationale, or its evidence-sufficiency rule requires product-owner review and discovery-method review before use. Any change affecting what evidence is collected, transformed, retained, disclosed, or stored also requires privacy-owner review before the change is applied to stored evidence.
 
 ## Evidence-to-decision rule
 
