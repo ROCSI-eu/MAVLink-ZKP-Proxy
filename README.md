@@ -23,9 +23,11 @@ The product is **not**:
 
 The repository and product names are branding decisions separate from this positioning. Any rename requires an explicit branding decision and coordinated migration; terminology must not be silently changed as though a rename were part of the product scope.
 
-## Proposed first release
+## Proposed MVP target
 
-The first implementation target is one deterministic, single-vehicle SITL vertical slice:
+The deterministic, single-vehicle SITL vertical slice below is the eventual proposed MVP target after the [**Validated claim and verifier contract**](docs/delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) milestone passes its stop/go review; it is not presently authorized implementation work.
+
+Until that review passes, current work is limited to documentation reconciliation, governed discovery, conspicuously labelled non-cryptographic UX research, and disposable proof-system-neutral format/vector spikes. Telemetry parsing, a circuit, real proof verification, and publication are not presently authorized.
 
 1. ingest MAVLink 2 traffic over local UDP and preserve its trust state;
 2. normalize the required `GLOBAL_POSITION_INT` and `VFR_HUD` fields;
