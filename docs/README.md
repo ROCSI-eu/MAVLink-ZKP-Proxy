@@ -27,15 +27,17 @@ Roles identify accountability until named people are assigned. Review triggers a
 
 ## Reading paths
 
+All root reading paths lead to the named next milestone, [**Validated claim and verifier contract**](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract). The [delivery plan](delivery-plan.md) is the owner of its entry conditions, workstream, required evidence, and exit rules. It permits bounded, disposable Phase 0 spikes while blocking broad Phase 1 production engineering until the milestone stop/go review passes; this remains planning for a documentation-only repository, not a claim that any prototype exists.
+
 | Reader | Recommended path |
 | --- | --- |
 | New contributor | Root [README](../README.md) → [product scope](product-scope.md) → [delivery plan](delivery-plan.md) |
 | Product or safety | [Product scope](product-scope.md) → [security and privacy](security-and-privacy.md) → [delivery plan](delivery-plan.md) |
-| Commercial/product strategy | [Product scope](product-scope.md) → [commercial model](commercial-model.md) → [architecture](architecture.md) |
-| Discovery researcher | [Discovery research plan](discovery-research-plan.md) → [product scope](product-scope.md) → [decisions](decisions.md) |
-| Engineering/platform | [Architecture](architecture.md) → [data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [testing and operations](testing-and-operations.md) |
-| Cryptography | [Data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [security and privacy](security-and-privacy.md) → [decisions](decisions.md) |
-| Security/privacy | [Security and privacy](security-and-privacy.md) → [data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [testing and operations](testing-and-operations.md) |
+| Commercial/product strategy | [Product scope](product-scope.md) → [commercial model](commercial-model.md) → [architecture](architecture.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
+| Discovery researcher | [Discovery research plan](discovery-research-plan.md) → [product scope](product-scope.md) → [decisions](decisions.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
+| Engineering/platform | [Architecture](architecture.md) → [data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [testing and operations](testing-and-operations.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
+| Cryptography | [Data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [security and privacy](security-and-privacy.md) → [decisions](decisions.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
+| Security/privacy | [Security and privacy](security-and-privacy.md) → [data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [testing and operations](testing-and-operations.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
 | Decision maker | [Decisions](decisions.md) → [delivery gates](delivery-plan.md) |
 
 ## Authority map
@@ -47,7 +49,7 @@ Roles identify accountability until named people are assigned. Review triggers a
 | [Data and proof model](data-and-proof-model.md) | Units, canonical encoding, witness/public inputs, circuit semantics | Cryptography lead |
 | [Claim envelope](claim-envelope.md) | Public wire contract, disclosure rules, proof/receipt references, verifier outcomes | Cryptography lead |
 | [Security and privacy](security-and-privacy.md) | Assets, trust assumptions, threats, controls, data handling, safety boundary | Security lead |
-| [Delivery plan](delivery-plan.md) | Phases, dependencies, evidence, acceptance, definition of done | Delivery lead |
+| [Delivery plan](delivery-plan.md) | Next-milestone entry, workstream, evidence, and exit rules; phases, dependencies, acceptance, and definition of done | Delivery lead |
 | [Testing and operations](testing-and-operations.md) | Test layers, benchmarks, observability, deployment/readiness gates | Service owner/SRE |
 | [Commercial model](commercial-model.md) | Open-core boundary, optional managed capabilities, and edition compatibility | Product owner |
 | [Discovery research plan](discovery-research-plan.md) | Privacy-gated interview protocol, evidence handling, and evidence-to-decision rules | Product owner |

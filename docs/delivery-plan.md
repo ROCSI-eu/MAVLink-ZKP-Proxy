@@ -31,6 +31,18 @@ Discovery records MUST identify the participant and role, workflow and decision 
 
 Failed or inconclusive criteria remain recorded learning and keep the applicable discovery gate closed; they are not converted into production-readiness claims.
 
+## Next milestone — Validated claim and verifier contract
+
+This is the named next milestone. This plan owns the milestone's entry conditions, workstream, required evidence, and exit rules. The repository remains documentation only, and this milestone describes proposed validation work; it does not state or imply that a prototype, verifier, proof circuit, or production component has been implemented.
+
+**Entry:** the documentation baseline is approved, the bounded-speed claim and relying-party decision to be tested are identified, and accountable product, architecture, cryptography, security, and delivery roles agree on the questions that the Phase 0 evidence must resolve.
+
+**Workstream:** refine the claim envelope, canonical public-input reconstruction, typed verifier outcomes, trust vocabulary, test-only offline policy profile, and product-discovery record. Bounded, disposable Phase 0 spikes are permitted solely to answer those questions and produce reviewable evidence. They may include throwaway codecs, vector checkers, schema experiments, synthetic fixtures, paper mockups, or conspicuously labelled non-cryptographic offline UX prototypes. They are not production foundations and MUST NOT be represented as implemented product capabilities.
+
+**Required evidence:** the applicable Phase 0 deliverables and exit evidence below, including strict-decoding and mutation vectors, independent format checking, deterministic test-only policy artifacts, reviewed public/private fields and trust terms, closure plans for MVP-blocking decisions, threat review, and accepted product-scope Gate 1 evidence. Each artifact records its disposable or test-only status where applicable.
+
+**Exit and stop/go rules:** the accountable reviewers conduct an explicit milestone review against the entry, workstream, and required evidence. A **go** requires acceptance of all Phase 0 exit evidence and records approvers, unresolved risks, and any accepted residual risk. A failed, incomplete, or inconclusive review is a **stop**: bounded Phase 0 investigation may continue, but broad Phase 1 production engineering MUST NOT begin. Passing this review authorizes only the proposed Phase 1 scope; it does not establish implementation, production, security, safety, commercial, or deployment readiness.
+
 ## Phase 0 — decision framing and scaffold
 
 **Entry:** documentation baseline approved.
@@ -53,11 +65,11 @@ Promotion to a released interoperable envelope or stable public API requires two
 
 **Exit evidence:** clean checkout passes the documented command; the executable format spike passes every strict-decode, deterministic re-encoding, public-input reconstruction, mutation-rejection, and reference-codec/independent-checker comparison case with placeholder proof bytes; the offline policy fixture schema validates every checked-in policy, anchor, event, checkpoint, and decision-time vector, recomputed digests and fixture signatures match, and all artifacts are visibly isolated as test-only and incapable of production authorization; the two-independent-implementation, two-language evidence and release ADR are accepted before any envelope is described as released or interoperable or any public API as stable; product, telemetry, cryptography, and security approve public/private fields and trust vocabulary; owners and due gates exist for all Open MVP-blocking decisions; no unhandled critical threat blocks Phase 1. The product-scope Gate 1 problem/workflow record is accepted: interview counts and problem confirmations pass; buyer, producer, relying-party, workflow, disclosure map, snapshot-versus-coverage acceptance, purchasing route/budget holder, observed volume/review time, failure handling, and prototype comprehension are documented. Any paper or non-cryptographic prototype bears the required no-proof label.
 
-**Accountable:** architecture and delivery leads. This is the **next implementation step**.
+**Accountable:** architecture and delivery leads. This phase supplies the bounded evidence for the [**Validated claim and verifier contract**](#next-milestone--validated-claim-and-verifier-contract) stop/go review.
 
 ## Phase 1 — telemetry vertical slice
 
-**Depends on:** Phase 0 schema/trust review and selected SITL profile.
+**Depends on:** a **go** decision at the [**Validated claim and verifier contract**](#next-milestone--validated-claim-and-verifier-contract) review, including accepted Phase 0 schema/trust evidence and a selected SITL profile. Broad Phase 1 production engineering is blocked until that decision is recorded.
 
 **Deliverables:** pinned SITL scenario; allowlisted parser; trust classification; normalizer; bounded channel; deterministic record/replay fixture; ingress metrics; fuzz target.
 
