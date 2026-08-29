@@ -45,7 +45,24 @@ The repository name and any eventual product name are branding concerns, not imp
 
 ## Product discovery: selected beachhead workflow
 
-The initial commercial hypothesis is **privacy-preserving speed-policy evidence for an industrial-site drone inspection**. This is a discovery selection, not evidence that a market has been validated and not authorization to connect hardware or make a flight-safety decision.
+The initial commercial hypothesis is **privacy-preserving speed-policy evidence for an industrial-site drone inspection**. The claim/vertical selection is **reopened**: the repository contains no approved paired-round findings with which the product owner could accept the snapshot for the identified decision or select a narrower workflow. This is not evidence that a market has been validated and not authorization to connect hardware or make a flight-safety decision. Bounded horizontal speed remains only the Phase 1 technical primitive while the selection is reopened.
+
+### Paired-discovery decision record
+
+**Outcome: claim selection reopened.** The evidence references are [`DRP-CURRENT`](discovery-research-plan.md#current-state-and-evidence-boundary), which says that no interviews or findings are recorded, and [`DRP-E2D`](discovery-research-plan.md#evidence-to-decision-rule), which requires privacy-reviewed recorded evidence, paired observations, counterevidence, coverage semantics, limitations, and product-owner acceptance before scope changes. Those references contradict the premise that an approved paired discovery round is available in this repository. Consequently, the record below fixes what is known, labels hypotheses as hypotheses, and does not manufacture an acceptance decision from an absent sample.
+
+| Decision field | Recorded value |
+| --- | --- |
+| Exact decision owner | **Industrial site owner's inspection-contract compliance officer** owns the hypothesized evidence-acceptance decision. The **product owner** owns the discovery determination under `DRP-E2D`; no named individuals or approved product-owner determination are recorded. |
+| Identified decision | Whether the industrial site owner's inspection-contract compliance officer accepts speed-policy evidence attached to one inspection-flight deliverable. This remains a hypothesis, not an observed decision. |
+| Coverage unit | **Unresolved.** No approved evidence selects snapshot, interval, segment, sampled, or whole-flight coverage. In particular, the existing snapshot statement is not reinterpreted as coverage of a flight. |
+| Current alternative | Provider export of a flight log or a manually prepared, signed compliance report through the contract document channel; this is the documented hypothesis and has not been confirmed by paired evidence. |
+| False acceptance consequence | Hypothesis: a non-compliant deliverable passes contractual review, a site-policy exception is hidden, and investigation or reinspection may follow. It is not a safety guarantee or a finding about consequence severity. |
+| False rejection consequence | Hypothesis: delayed deliverable acceptance or payment, avoidable analyst work or repeat inspection, and damaged provider/customer trust. No observed frequency, severity, or handling rule is recorded. |
+| Minimum disclosure | **Unresolved.** Candidate minimum is claim/circuit versions, public maximum and unit, result, source-trust class, policy identifier, freshness/validity bounds, and a replay-resistant proof identifier; exact speed, position, vehicle/customer identity, trajectory, fine-grained time, mission purpose, imagery, and unrelated telemetry remain restricted. No buyer or relying-party representative has approved that candidate. |
+| Minimum assurance tier | **Unresolved for the contractual decision.** The demonstrator remains `A0_SYNTHETIC`; that tier is not evidence of physical telemetry or assurance sufficient for the relying party, and no requested minimum tier has been recorded. |
+
+**Contradictory evidence and sample limitations.** `DRP-CURRENT` reports zero repository-recorded interviews or findings and no approved evidence area, so there are no provider-side observations, relying-party observations, paired decisions, buyer/procurement observations, current-artifact reviews, or coverage responses to weigh. The existing workflow, alternatives, consequences, disclosure candidate, and volume are therefore hypotheses rather than supporting evidence. An unrecorded or unavailable round cannot be audited for role or organization mix, provenance, contradiction, missing coverage, privacy review, or sampling bias and cannot support snapshot acceptance or narrowing. A new bounded round must satisfy the discovery completion checklist and cite its approved non-identifying evidence before this selection can close.
 
 | Role | Initial selection | Responsibility in the workflow |
 | --- | --- | --- |
