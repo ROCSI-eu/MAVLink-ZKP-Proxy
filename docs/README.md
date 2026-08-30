@@ -11,7 +11,7 @@
 
 This index is the navigation and authority map for a documentation-only project. It separates topics whose audiences, owners, and change cadences differ; the former [system plan](system-plan.md) is Superseded and is not an alternative baseline.
 
-For operational work-item status and external-tool mapping, see the non-normative [management coordination index](management/README.md). The [solo planning readiness record](reviews/validated-claim-contract/solo-planning-readiness-record.md) records the Current factual operating context and the resulting milestone hold.
+The [current work authorization](current-work-authorization.md) owns the conservative activity boundary while `M1` entry remains unsatisfied. For operational work-item status and external-tool mapping, see the non-normative [management coordination index](management/README.md). The [solo planning readiness record](reviews/validated-claim-contract/solo-planning-readiness-record.md) records the Current factual operating context and the resulting milestone hold.
 
 ## Status and authority
 
@@ -31,23 +31,24 @@ Roles identify required accountability until named people are assigned. A role l
 
 All root reading paths lead to the named next milestone, [**Validated claim and verifier contract**](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract). The [delivery plan](delivery-plan.md) owns its entry conditions, workstream, required evidence, and exit rules; the [operational register](management/validated-claim-contract-register.csv) owns the Current coordination status.
 
-The Current state is solo documentation planning with `M1` and `M2` blocked. No discovery execution, paper/non-cryptographic prototype research, format/vector spike, proof work, telemetry/SITL work, hardware work, publication, pilot, or production activity is authorized. Future phase permissions described in the delivery plan become available only after their accepted prerequisites and reviews are recorded.
+The Current state is solo documentation planning with `M1` and `M2` blocked. The [current work authorization](current-work-authorization.md) defines what may be done before M1 entry; the [solo planning readiness record](reviews/validated-claim-contract/solo-planning-readiness-record.md) records why that boundary applies. No discovery execution, paper/non-cryptographic prototype research, format/vector spike, proof work, telemetry/SITL work, hardware work, publication, pilot, or production activity is authorized. Future phase permissions described in the delivery plan become available only after their accepted prerequisites and reviews are recorded.
 
 | Reader | Recommended path |
 | --- | --- |
-| New contributor | Root [README](../README.md) → [product scope](product-scope.md) → [delivery plan](delivery-plan.md) |
-| Product or safety | [Product scope](product-scope.md) → [security and privacy](security-and-privacy.md) → [delivery plan](delivery-plan.md) |
+| New contributor | Root [README](../README.md) → [current work authorization](current-work-authorization.md) → [product scope](product-scope.md) → [delivery plan](delivery-plan.md) |
+| Product or safety | [Current work authorization](current-work-authorization.md) → [product scope](product-scope.md) → [security and privacy](security-and-privacy.md) → [delivery plan](delivery-plan.md) |
 | Commercial/product strategy | [Product scope](product-scope.md) → [commercial model](commercial-model.md) → [architecture](architecture.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
-| Discovery researcher | [Discovery research plan](discovery-research-plan.md) → [product scope](product-scope.md) → [decisions](decisions.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
-| Engineering/platform | [Architecture](architecture.md) → [data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [testing and operations](testing-and-operations.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
-| Cryptography | [Data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [security and privacy](security-and-privacy.md) → [decisions](decisions.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
-| Security/privacy | [Security and privacy](security-and-privacy.md) → [data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [testing and operations](testing-and-operations.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
-| Decision maker | [Decisions](decisions.md) → [delivery gates](delivery-plan.md) → [operational register](management/validated-claim-contract-register.csv) |
+| Discovery researcher | [Current work authorization](current-work-authorization.md) → [discovery research plan](discovery-research-plan.md) → [product scope](product-scope.md) → [decisions](decisions.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
+| Engineering/platform | [Current work authorization](current-work-authorization.md) → [architecture](architecture.md) → [data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [testing and operations](testing-and-operations.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
+| Cryptography | [Current work authorization](current-work-authorization.md) → [data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [security and privacy](security-and-privacy.md) → [decisions](decisions.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
+| Security/privacy | [Current work authorization](current-work-authorization.md) → [security and privacy](security-and-privacy.md) → [data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [testing and operations](testing-and-operations.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
+| Decision maker | [Current work authorization](current-work-authorization.md) → [decisions](decisions.md) → [delivery gates](delivery-plan.md) → [operational register](management/validated-claim-contract-register.csv) |
 
 ## Authority map
 
 | Document | Owns | Primary accountable role |
 | --- | --- | --- |
+| [Current work authorization](current-work-authorization.md) | Work permitted while M1 entry remains unsatisfied and the transition boundary into M1 | Repository maintainer for factual maintenance; milestone roles remain unassigned |
 | [Product scope](product-scope.md) | Problem, actors, MVP, non-goals, success measures | Product owner |
 | [Architecture](architecture.md) | Components, trust boundaries, flow, invariants, lifecycle | Architecture lead |
 | [Data and proof model](data-and-proof-model.md) | Units, canonical encoding, witness/public inputs, circuit semantics | Cryptography lead |
@@ -61,7 +62,7 @@ The Current state is solo documentation planning with `M1` and `M2` blocked. No 
 | [Repository licensing policy](../LICENSING.md) | Effective license record and proposed path classification | Repository maintainer |
 | [Dependency licensing policy](dependency-licensing-policy.md) | Dependency review and release-attribution gate | Architecture lead |
 
-The review records under `docs/reviews/` are evidence or traceability artifacts, not substitutes for the owning documents above. Their status must be read before relying on them.
+The current work authorization cannot amend, satisfy, or bypass a delivery-plan prerequisite. It controls only the narrower pre-M1 activity boundary. The review records under `docs/reviews/` are evidence or traceability artifacts, not substitutes for the owning documents above. Their status must be read before relying on them.
 
 ## Maintenance rules
 
@@ -69,6 +70,7 @@ The review records under `docs/reviews/` are evidence or traceability artifacts,
 - Use the component names and lifecycle states defined by architecture and the trust terms and units defined by the data model.
 - Record a genuinely resolved, consequential choice as an ADR. Do not manufacture ADRs for open questions.
 - A pull request changing a normative requirement identifies its owner, validation evidence, affected gates, and decision status.
+- Any expansion of pre-M1 work must update the current work authorization and must not relax a delivery-plan gate without the required evidence and approval.
 - From a clean checkout, run `python3 scripts/check_docs.py` to validate repository-relative links, anchors, and fenced JSON. This is the authoritative documentation validation command.
 - Licensing changes must update the root [licensing policy](../LICENSING.md), applicable ADR, decision register, README language, and mechanical mappings together. A Proposed mapping does not change the root `LICENSE`.
 
