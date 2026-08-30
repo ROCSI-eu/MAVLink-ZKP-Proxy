@@ -16,7 +16,7 @@ The intended outcome is a deterministic demonstration that one SITL vehicle's no
 
 ## Product positioning
 
-The system is a **privacy-preserving telemetry attestation gateway**. It accepts eligible telemetry at an explicit trust boundary and produces narrowly scoped, independently verifiable evidence that private telemetry satisfies a public policy while withholding unrelated or sensitive source data. MAVLink is the first telemetry adapter rather than the outer boundary of the product, and bounded speed is the first claim type rather than the limit of the claim model.
+**Telemetry Attestation Gateway** is a privacy-preserving telemetry attestation gateway. It accepts eligible telemetry at an explicit trust boundary and produces narrowly scoped, independently verifiable evidence that private telemetry satisfies a public policy while withholding unrelated or sensitive source data. MAVLink is the first telemetry adapter rather than the outer boundary of the product, and bounded speed is the first claim type rather than the limit of the claim model.
 
 A ledger is optional. If configured, it provides a publication or timestamp boundary for approved proof metadata; it is not the source of truth for telemetry, vehicle state, or proof validity. The source record, its explicitly represented trust state, the claim definition, and independent verification retain their respective authority whether or not metadata is published to a ledger.
 
@@ -29,7 +29,7 @@ This positioning explicitly excludes the following product categories:
 - **Anonymous tracking service:** privacy-preserving claims must not become a means to track vehicles, operators, or missions anonymously or pseudonymously.
 - **General-purpose blockchain bridge:** the optional ledger adapter does not transport arbitrary messages or assets and does not provide cross-chain infrastructure.
 
-The repository name is `telemetry-attestation-gateway`; the [branding decision](decisions.md#repository-name-and-commercial-branding-decision) records the coordinated migration and keeps any eventual commercial product brand undecided pending discovery. The repository rename does not change product scope, and the repository name must not be treated as an approved commercial brand.
+The human-readable repository name is **Telemetry Attestation Gateway**, while `telemetry-attestation-gateway` remains its hosted-repository identifier. The [branding decision](decisions.md#repository-name-and-commercial-branding-decision) records this presentation convention and the coordinated migration, while keeping any eventual commercial product brand undecided pending discovery. The repository rename does not change product scope, and neither form of the repository name may be treated as an approved commercial brand.
 
 ## Stakeholders and actors
 
