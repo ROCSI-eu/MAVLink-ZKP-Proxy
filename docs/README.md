@@ -18,10 +18,10 @@ For operational work-item status and external-tool mapping, see the non-normativ
 Every substantive document declares its purpose, audience, status, accountable role, review trigger, authority, related documents, validation method, and open decisions.
 
 - **Current** — demonstrably true of this repository or an active documentation rule.
-- **Proposed** — intended design awaiting implementation evidence and, where material, an ADR.
-- **Open** — requires evidence or accountable approval before implementation may rely on it.
-- **Deferred** — intentionally postponed beyond the current authorized work.
-- **Superseded** — retained for traceability but no longer authoritative.
+- **Proposed** — intended but unimplemented or unaccepted.
+- **Open** — unresolved and blocking.
+- **Deferred** — outside the current phase.
+- **Superseded** — traceability only; no longer authoritative.
 
 `MUST`, `MUST NOT`, and **Required** identify normative constraints for the proposed MVP. Examples, text diagrams, candidate technologies, and proposed layouts are illustrative unless explicitly marked normative. An accepted ADR supersedes a conflicting proposal; scope changes also require product approval and synchronized document updates.
 
