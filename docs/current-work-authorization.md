@@ -20,11 +20,13 @@ While `M1` entry remains unsatisfied, work is limited to:
 
 - reviewing, reconciling, correcting, and cross-linking repository documentation;
 - recording contradictions, status corrections, traceability, and non-sensitive governance findings;
-- drafting role definitions, evidence requirements, review checklists, approval templates, and privacy-safe record schemas that remain Proposed until accepted by the required people;
-- preparing non-contact recruitment criteria and outreach materials without contacting participants, collecting participant information, or representing recruitment as active;
+- drafting role definitions, evidence requirements, review checklists, approval templates, and privacy-safe record schemas that remain Proposed until accepted by the required people, including the Proposed [pre-M1 participant readiness pack](pre-m1-participant-readiness.md);
+- preparing non-contact recruitment criteria and outreach materials without contacting participants, collecting participant information, representing recruitment as active, or using the readiness pack's draft outreach message;
 - creating demonstrably synthetic, minimized, test-only planning examples that do not exercise or imply a prototype, proof, verifier, telemetry path, or production capability;
 - maintaining repository metadata, documentation navigation, issue and pull-request hygiene, and documentation validation; and
 - correcting unsupported claims in ways that reduce apparent authorization, maturity, assurance, or readiness.
+
+The pre-M1 participant readiness pack is supporting preparation material only. It does not establish a participant, approve a template, authorize contact, satisfy an M1 entry condition, or amend the delivery plan.
 
 A paper mockup or non-cryptographic UX illustration created solely as a documentation example must still carry the applicable mandatory label on every surface and associated record. Its creation does not authorize research use and does not count as discovery, proof, verification, or product evidence.
 
