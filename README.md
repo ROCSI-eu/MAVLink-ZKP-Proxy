@@ -1,5 +1,11 @@
 # Telemetry Attestation Gateway
 
+<p align="center">
+  <img src="docs/assets/telemetry-attestation-gateway-overview.webp" alt="Conceptual overview of the proposed privacy-preserving telemetry attestation gateway" width="800">
+</p>
+
+<p align="center"><em>Conceptual illustration of the Proposed architecture. Documentation-only; not implementation, proof, verification, telemetry-truth, safety, compliance, or production-readiness evidence.</em></p>
+
 > **Current maturity: documentation only.** This repository contains no working proxy, proof circuit, Midnight contract, dashboard, or deployment.
 
 Telemetry Attestation Gateway is a proposed observational gateway that turns selected telemetry into narrowly defined, privacy-preserving claims. Its first adapter uses MAVLink, and its initial claim is that a simulated vehicle's horizontal speed is at or below a policy limit, without disclosing exact position.
