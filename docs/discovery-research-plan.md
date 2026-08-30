@@ -17,6 +17,7 @@ There is intentionally no `docs/discovery/` evidence area yet. The product owner
 Until that approval exists:
 
 - researchers MAY use this guide to plan recruitment and interviews;
+- researchers MAY use the blank files in [`templates/discovery/`](templates/discovery/) as optional structural guidance, but MUST keep completed copies in the approved external research system;
 - interview data MUST NOT be committed anywhere in this repository;
 - `docs/product-scope.md` and `docs/decisions.md` MUST NOT be changed based on recollection, assumptions, recruiting conversations, or unreviewed notes; and
 - the current speed workflow, roles, volumes, costs, and market descriptions remain hypotheses rather than findings.
