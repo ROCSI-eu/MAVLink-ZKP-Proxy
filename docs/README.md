@@ -11,25 +11,27 @@
 
 This index is the navigation and authority map for a documentation-only project. It separates topics whose audiences, owners, and change cadences differ; the former [system plan](system-plan.md) is Superseded and is not an alternative baseline.
 
-For operational work-item status and external-tool mapping, see the non-normative [management coordination index](management/README.md).
+For operational work-item status and external-tool mapping, see the non-normative [management coordination index](management/README.md). The [solo planning readiness record](reviews/validated-claim-contract/solo-planning-readiness-record.md) records the Current factual operating context and the resulting milestone hold.
 
 ## Status and authority
 
 Every substantive document declares its purpose, audience, status, accountable role, review trigger, authority, related documents, validation method, and open decisions.
 
 - **Current** — demonstrably true of this repository or an active documentation rule.
-- **Proposed** — intended design awaiting implementation evidence and, where material, an ADR.
-- **Open** — requires evidence or accountable approval before implementation may rely on it.
-- **Deferred** — intentionally postponed beyond the MVP.
-- **Superseded** — retained for traceability but no longer authoritative.
+- **Proposed** — intended but unimplemented or unaccepted.
+- **Open** — unresolved and blocking.
+- **Deferred** — outside the current phase.
+- **Superseded** — traceability only; no longer authoritative.
 
 `MUST`, `MUST NOT`, and **Required** identify normative constraints for the proposed MVP. Examples, text diagrams, candidate technologies, and proposed layouts are illustrative unless explicitly marked normative. An accepted ADR supersedes a conflicting proposal; scope changes also require product approval and synchronized document updates.
 
-Roles identify accountability until named people are assigned. Review triggers are used instead of arbitrary review dates. Evidence should be linked from an ADR or milestone record when those artifacts exist.
+Roles identify required accountability until named people are assigned. A role label, placeholder, sole-maintainer acknowledgement, or AI-assisted review does not satisfy a milestone requirement for a real accountable person, independent reviewer, or relying-party decision owner. Review triggers are used instead of arbitrary review dates. Evidence should be linked from an ADR or milestone record when those artifacts exist.
 
 ## Reading paths
 
-All root reading paths lead to the named next milestone, [**Validated claim and verifier contract**](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract). The [delivery plan](delivery-plan.md) is the owner of its entry conditions, workstream, required evidence, and exit rules. It permits bounded, disposable Phase 0 spikes while blocking broad Phase 1 production engineering until the milestone stop/go review passes; this remains planning for a documentation-only repository, not a claim that any prototype exists.
+All root reading paths lead to the named next milestone, [**Validated claim and verifier contract**](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract). The [delivery plan](delivery-plan.md) owns its entry conditions, workstream, required evidence, and exit rules; the [operational register](management/validated-claim-contract-register.csv) owns the Current coordination status.
+
+The Current state is solo documentation planning with `M1` and `M2` blocked. No discovery execution, paper/non-cryptographic prototype research, format/vector spike, proof work, telemetry/SITL work, hardware work, publication, pilot, or production activity is authorized. Future phase permissions described in the delivery plan become available only after their accepted prerequisites and reviews are recorded.
 
 | Reader | Recommended path |
 | --- | --- |
@@ -40,7 +42,7 @@ All root reading paths lead to the named next milestone, [**Validated claim and 
 | Engineering/platform | [Architecture](architecture.md) → [data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [testing and operations](testing-and-operations.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
 | Cryptography | [Data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [security and privacy](security-and-privacy.md) → [decisions](decisions.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
 | Security/privacy | [Security and privacy](security-and-privacy.md) → [data and proof model](data-and-proof-model.md) → [claim envelope](claim-envelope.md) → [testing and operations](testing-and-operations.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
-| Decision maker | [Decisions](decisions.md) → [delivery gates](delivery-plan.md) |
+| Decision maker | [Decisions](decisions.md) → [delivery gates](delivery-plan.md) → [operational register](management/validated-claim-contract-register.csv) |
 
 ## Authority map
 
@@ -59,6 +61,8 @@ All root reading paths lead to the named next milestone, [**Validated claim and 
 | [Repository licensing policy](../LICENSING.md) | Effective license record and proposed path classification | Repository maintainer |
 | [Dependency licensing policy](dependency-licensing-policy.md) | Dependency review and release-attribution gate | Architecture lead |
 
+The review records under `docs/reviews/` are evidence or traceability artifacts, not substitutes for the owning documents above. Their status must be read before relying on them.
+
 ## Maintenance rules
 
 - Update the owning document and cross-link; do not copy its detailed requirements elsewhere.
@@ -70,4 +74,4 @@ All root reading paths lead to the named next milestone, [**Validated claim and 
 
 ## Acceptance
 
-This documentation system is acceptable when every authoritative topic is reachable from this page, no active page points to the superseded plan as authority, relative links resolve, and status language does not imply an implementation exists.
+This documentation system is acceptable when every authoritative topic is reachable from this page, no active page points to the superseded plan as authority, relative links resolve, and status language does not imply an implementation or authorization that does not exist.
