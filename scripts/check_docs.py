@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check local Markdown links, anchors, and JSON examples."""
+"""Check local Markdown links, anchors, JSON examples, and license-state wording."""
 
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ HTML_ANCHOR_RE = re.compile(r"<(?:a\s+[^>]*(?:id|name)|[^>]+\s+id)=[\"']([^\"']+
 
 
 def markdown_files() -> list[Path]:
-    return [ROOT / "README.md", *sorted((ROOT / "docs").rglob("*.md"))]
+    return [*sorted(ROOT.glob("*.md")), *sorted((ROOT / "docs").rglob("*.md"))]
 
 
 def slug(text: str) -> str:
@@ -127,6 +127,36 @@ def main() -> int:
     failures: list[str] = []
     for path in markdown_files():
         check_file(path, failures)
+    required = [
+        ROOT / "LICENSE",
+        ROOT / "LICENSING.md",
+        ROOT / "CONTRIBUTING.md",
+        ROOT / "docs/adr/0003-layered-licensing-model-for-the-open-proof-path.md",
+        ROOT / "docs/dependency-licensing-policy.md",
+    ]
+    for path in required:
+        if not path.is_file():
+            failures.append(f"missing required licensing document: {path.relative_to(ROOT)}")
+
+    recognized = {"MIT", "MPL-2.0", "CC-BY-4.0", "CC0-1.0"}
+    licensing = (ROOT / "LICENSING.md").read_text(encoding="utf-8")
+    mapped = set(re.findall(r"`([A-Za-z0-9.-]+)`", licensing)) & recognized
+    if mapped != recognized:
+        failures.append(f"licensing policy identifiers differ from expected SPDX set: {sorted(mapped)}")
+
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    adr = required[3].read_text(encoding="utf-8")
+    decisions = (ROOT / "docs/decisions.md").read_text(encoding="utf-8")
+    if "MIT License](LICENSE) remains the current effective license" not in readme:
+        failures.append("README must state that MIT remains the current effective license")
+    if "Status | Proposed;" not in adr or "MIT remains effective" not in decisions:
+        failures.append("ADR and decision register must agree that the proposal is not effective")
+    forbidden_effective = re.compile(r"(?:project|repository) is (?:now )?(?:MPL|CC-BY|CC0)[ -]licensed", re.I)
+    for path in markdown_files():
+        if forbidden_effective.search(path.read_text(encoding="utf-8")):
+            failures.append(f"{path.relative_to(ROOT)}: layered proposal presented as effective")
+    if (ROOT / "LICENSES").exists() or (ROOT / ".reuse/dep5").exists():
+        failures.append("proposed transition must not add LICENSES/ or .reuse/dep5 before approval")
     if failures:
         print("Documentation check failed:", file=sys.stderr)
         for failure in failures:

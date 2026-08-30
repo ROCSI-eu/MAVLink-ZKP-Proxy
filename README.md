@@ -82,4 +82,6 @@ Useful contributions are reviews, synthetic fixtures, compatibility experiments,
 
 ## Safety and license
 
-Use simulation and controlled test environments only. Do not connect an experimental build to a flight-critical command path. Hardware work requires the gates in the [delivery plan](docs/delivery-plan.md). This project uses the [MIT License](LICENSE).
+Use simulation and controlled test environments only. Do not connect an experimental build to a flight-critical command path. Hardware work requires the gates in the [delivery plan](docs/delivery-plan.md).
+
+The root [MIT License](LICENSE) remains the current effective license. A layered MPL-2.0/CC-BY-4.0/CC0-1.0 model is [Proposed, not approved or implemented](LICENSING.md), pending legal, community-impact, dependency, ownership, and ADR review. Contributors must follow the [DCO and provenance policy](CONTRIBUTING.md).

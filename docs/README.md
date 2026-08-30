@@ -56,6 +56,8 @@ All root reading paths lead to the named next milestone, [**Validated claim and 
 | [Commercial model](commercial-model.md) | Open-core boundary, optional managed capabilities, and edition compatibility | Product owner |
 | [Discovery research plan](discovery-research-plan.md) | Privacy-gated interview protocol, evidence handling, and evidence-to-decision rules | Product owner |
 | [Decision register](decisions.md) | Decision state, ADR process, accountable deciders | Architecture lead |
+| [Repository licensing policy](../LICENSING.md) | Effective license record and proposed path classification | Repository maintainer |
+| [Dependency licensing policy](dependency-licensing-policy.md) | Dependency review and release-attribution gate | Architecture lead |
 
 ## Maintenance rules
 
@@ -64,6 +66,7 @@ All root reading paths lead to the named next milestone, [**Validated claim and 
 - Record a genuinely resolved, consequential choice as an ADR. Do not manufacture ADRs for open questions.
 - A pull request changing a normative requirement identifies its owner, validation evidence, affected gates, and decision status.
 - From a clean checkout, run `python3 scripts/check_docs.py` to validate repository-relative links, anchors, and fenced JSON. This is the authoritative documentation validation command.
+- Licensing changes must update the root [licensing policy](../LICENSING.md), applicable ADR, decision register, README language, and mechanical mappings together. A Proposed mapping does not change the root `LICENSE`.
 
 ## Acceptance
 
