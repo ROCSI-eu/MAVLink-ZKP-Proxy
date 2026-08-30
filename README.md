@@ -33,7 +33,7 @@ The human-readable repository name is **Telemetry Attestation Gateway**; its hos
 
 The deterministic, single-vehicle SITL vertical slice below is the eventual proposed MVP target after the [**Validated claim and verifier contract**](docs/delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) milestone passes its stop/go review; it is not presently authorized implementation work.
 
-Until that review passes, current work is limited to documentation reconciliation, governed discovery, conspicuously labelled non-cryptographic UX research, and disposable proof-system-neutral format/vector spikes. Telemetry parsing, a circuit, real proof verification, and publication are not presently authorized.
+The Current operating state is solo documentation planning. `M1` and `M2` are blocked. Current work is limited to documentation review, reconciliation, governance correction, recruitment preparation, and demonstrably synthetic planning material under the [solo planning readiness record](docs/reviews/validated-claim-contract/solo-planning-readiness-record.md). Discovery execution, completed research records, paper or non-cryptographic prototype research, format/vector spikes, telemetry parsing, circuits, proof verification, SITL execution, hardware, and publication are not presently authorized.
 
 1. ingest MAVLink 2 traffic over local UDP and preserve its trust state;
 2. normalize the required `GLOBAL_POSITION_INT` and `VFR_HUD` fields;
@@ -56,7 +56,7 @@ Components are proposed boundaries, not deployed services. Development begins wi
 
 ## Start here
 
-The [documentation index](docs/README.md) provides audience-specific reading paths and explains document authority. The named next milestone is [**Validated claim and verifier contract**](docs/delivery-plan.md#next-milestone--validated-claim-and-verifier-contract). `docs/delivery-plan.md` owns that milestone's entry conditions, workstream, required evidence, and exit rules. This is a planning milestone in a documentation-only repository; it does not imply that a prototype has been implemented.
+The [documentation index](docs/README.md) provides audience-specific reading paths and explains document authority. The named next milestone is [**Validated claim and verifier contract**](docs/delivery-plan.md#next-milestone--validated-claim-and-verifier-contract). `docs/delivery-plan.md` owns that milestone's entry conditions, workstream, required evidence, and exit rules. The [operational register](docs/management/validated-claim-contract-register.csv) records the Current blocked status. This is a planning milestone in a documentation-only repository; it does not imply that a prototype has been implemented.
 
 Choose the shortest path for your reason for visiting:
 
@@ -84,10 +84,10 @@ Choose the shortest path for your reason for visiting:
 
 ## Contributing during discovery
 
-Useful contributions are reviews, synthetic fixtures, compatibility experiments, schema proposals, threat-model corrections, and evidence-backed ADRs. Do not describe proposed behavior as implemented. Code changes should update the relevant requirements, tests, and decision evidence.
+During the Current blocked state, useful contributions are documentation reviews, contradiction reports, governance corrections, role and evidence requirements, and synthetic-only planning examples. Do not describe proposed behavior as implemented or begin discovery execution, prototypes, proof work, telemetry/SITL work, or compatibility experiments without the accepted gate evidence required by the delivery plan.
 
 ## Safety and license
 
-Use simulation and controlled test environments only. Do not connect an experimental build to a flight-critical command path. Hardware work requires the gates in the [delivery plan](docs/delivery-plan.md).
+Use simulation and controlled test environments only after the applicable gate authorizes technical work. Do not connect an experimental build to a flight-critical command path. Hardware work requires the gates in the [delivery plan](docs/delivery-plan.md).
 
 The root [MIT License](LICENSE) remains the current effective license. A layered MPL-2.0/CC-BY-4.0/CC0-1.0 model is [Proposed, not approved or implemented](LICENSING.md), pending legal, community-impact, dependency, ownership, and ADR review. Contributors must follow the [DCO and provenance policy](CONTRIBUTING.md).
