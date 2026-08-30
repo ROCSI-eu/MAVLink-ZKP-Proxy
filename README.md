@@ -52,15 +52,29 @@ Components are proposed boundaries, not deployed services. Development begins wi
 
 The [documentation index](docs/README.md) provides audience-specific reading paths and explains document authority. The named next milestone is [**Validated claim and verifier contract**](docs/delivery-plan.md#next-milestone--validated-claim-and-verifier-contract). `docs/delivery-plan.md` owns that milestone's entry conditions, workstream, required evidence, and exit rules. This is a planning milestone in a documentation-only repository; it does not imply that a prototype has been implemented.
 
-Key references are:
+Choose the shortest path for your reason for visiting:
+
+| Audience | Start with | Then read |
+| --- | --- | --- |
+| First-time visitor or contributor | [Product scope](docs/product-scope.md) | [Architecture](docs/architecture.md) and [delivery plan](docs/delivery-plan.md) |
+| Potential customer, partner, or other third party | [Product scope](docs/product-scope.md) | [Commercial model](docs/commercial-model.md), [claim envelope](docs/claim-envelope.md), and [security and privacy](docs/security-and-privacy.md) |
+| Manager or decision maker | [Delivery plan](docs/delivery-plan.md) | [Management coordination](docs/management/README.md) and [decision register](docs/decisions.md) |
+| Engineer or technical reviewer | [Architecture](docs/architecture.md) | [Data and proof model](docs/data-and-proof-model.md), [claim envelope](docs/claim-envelope.md), and [testing and operations](docs/testing-and-operations.md) |
+| Product or discovery researcher | [Discovery research plan](docs/discovery-research-plan.md) | [Product scope](docs/product-scope.md), [commercial model](docs/commercial-model.md), and [decision register](docs/decisions.md) |
+
+### Document directory
 
 - [product scope](docs/product-scope.md) — MVP, deferred work, non-goals, and success measures;
 - [architecture](docs/architecture.md) — boundaries, responsibilities, data flow, and failure behavior;
 - [data and proof model](docs/data-and-proof-model.md) — telemetry units, encoding, and proof semantics;
+- [claim envelope](docs/claim-envelope.md) — public wire contract, disclosure rules, and verifier outcomes;
 - [security and privacy](docs/security-and-privacy.md) — trust assumptions, threats, controls, and safety boundary;
 - [delivery plan](docs/delivery-plan.md) — the next milestone, phases, evidence, owners, and stop/go rules;
 - [testing and operations](docs/testing-and-operations.md) — validation layers and readiness gates; and
-- [decision register](docs/decisions.md) — proposed, open, deferred, and accepted decisions.
+- [commercial model](docs/commercial-model.md) — open capabilities, optional services, and anti-lock-in rules;
+- [discovery research plan](docs/discovery-research-plan.md) — research protocol, privacy gate, and evidence rules;
+- [decision register](docs/decisions.md) — proposed, open, deferred, and accepted decisions; and
+- [management coordination](docs/management/README.md) — operational work-item status and external-tool mapping.
 
 ## Contributing during discovery
 
