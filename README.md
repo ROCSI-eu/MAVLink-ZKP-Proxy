@@ -1,7 +1,7 @@
 # Telemetry Attestation Gateway
 
 <p align="center">
-  <img src="docs/assets/telemetry-attestation-gateway-overview.webp" alt="Conceptual overview of the proposed privacy-preserving telemetry attestation gateway" width="800">
+  <img src="https://opengraph.githubassets.com/f1626929dd58a72195a97787717c3aca35b4dd01/ROCSI-eu/Telemetry-Attestation-Gateway" alt="Conceptual overview of the proposed privacy-preserving telemetry attestation gateway" width="960">
 </p>
 
 <p align="center"><em>Conceptual illustration of the Proposed architecture. Documentation-only; not implementation, proof, verification, telemetry-truth, safety, compliance, or production-readiness evidence.</em></p>
