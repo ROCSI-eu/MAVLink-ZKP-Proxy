@@ -11,6 +11,8 @@
 
 This index is the navigation and authority map for a documentation-only project. It separates topics whose audiences, owners, and change cadences differ; the former [system plan](system-plan.md) is Superseded and is not an alternative baseline.
 
+For operational work-item status and external-tool mapping, see the non-normative [management coordination index](management/README.md).
+
 ## Status and authority
 
 Every substantive document declares its purpose, audience, status, accountable role, review trigger, authority, related documents, validation method, and open decisions.
