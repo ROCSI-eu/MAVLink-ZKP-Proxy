@@ -52,12 +52,11 @@ The identifiers below are gates, not dates. An arrow means that accepted evidenc
 
 ```text
 M1 -> M2 -> M3 -> M4 -> M5 -> M6 -> M7 --\
-                    \          \-> M8 -> M9 -> M10 -> M11
-                     \--------------^       /             ^
-                      \--------------------/--------------/
+                    \          \-> M8 -> M9 -+-> M11
+                     \--------------^        \-> M10
 ```
 
-More precisely: `M1 → M2 → M3`; `M3 → M4`; `M4 → M5`; `M4 + M5 → M6`; `M2 + M4 + M5 + M6 → M7`; `M3 + M4 + M5 + M6 → M8`; `M3 + M5 + M8 → M9`; `M4 + M8 + M9 → M10`; and `M1…M10 → M11`.
+More precisely: `M1 → M2 → M3`; `M3 → M4`; `M4 → M5`; `M4 + M5 → M6`; `M2 + M4 + M5 + M6 → M7`; `M3 + M4 + M5 + M6 → M8`; `M3 + M5 + M8 → M9`; `M1…M9 → M11`; and `M4 + M8 + M9 → M10`. `M10` is a later cryptographic-technology workstream and is not a prerequisite for the `M11` Phase 1 stop/go decision.
 
 #### M1 — Reconcile the documentation baseline
 
@@ -205,9 +204,9 @@ More precisely: `M1 → M2 → M3`; `M3 → M4`; `M4 → M5`; `M4 + M5 → M6`; 
 - **Principal risks:** toy benchmark does not constrain the real statement; incomparable tuning; unsafe candidate assumptions; benchmark prototype is promoted into product code; performance is represented as an SLO.
 - **Relative size:** `XL`.
 - **Category:** cryptographic technology decision.
-- **Decision or gate closed:** candidate proof-system selection and permission to begin real Phase 2 proof implementation. The benchmark is mandatory **after contract and SITL evidence and before real Phase 2 circuit/prover/verifier implementation**; it is deliberately **not** a prerequisite for the placeholder-proof envelope/vector spike in `M8`.
+- **Decision or gate closed:** candidate proof-system selection and permission to begin real Phase 2 proof implementation. The benchmark is mandatory **after contract and SITL evidence and before real Phase 2 circuit, prover, verifier, setup, or verification-key implementation**; it is deliberately **not** a prerequisite for the placeholder-proof envelope/vector spike in `M8`.
 - **ADR requirement:** required; the proof-system ADR is accepted by cryptography and security, with architecture review, before real Phase 2 proof implementation begins.
-- **Implementation exclusions:** only disposable benchmark implementations are allowed; no production circuit/prover/verifier, production parameters or ceremony, stable proof format/API, performance SLO, hardware telemetry, or production-readiness claim.
+- **Implementation exclusions:** only disposable benchmark implementations are allowed; no production circuit/prover/verifier, setup, verification-key implementation, production parameters or ceremony, stable proof format/API, performance SLO, hardware telemetry, or production-readiness claim. Completing `M10` does not authorize Phase 1; only the `M11` go decision can do so.
 
 #### M11 — Conduct the final stop/go review
 
@@ -215,13 +214,13 @@ More precisely: `M1 → M2 → M3`; `M3 → M4`; `M4 → M5`; `M4 + M5 → M6`; 
 - **Existing documentation files affected:** `docs/delivery-plan.md`, `docs/product-scope.md`, `docs/architecture.md`, `docs/data-and-proof-model.md`, `docs/claim-envelope.md`, `docs/security-and-privacy.md`, `docs/testing-and-operations.md`, `docs/discovery-research-plan.md`, and `docs/decisions.md`.
 - **Proposed future artifacts/modules:** **Proposed:** `docs/reviews/validated-claim-contract/stop-go-record.md` and `docs/reviews/validated-claim-contract/evidence-index.md`.
 - **Accountable role and required reviewers:** delivery lead accountable; named product, architecture, cryptography, security, privacy, safety, telemetry, discovery, and relying-party role holders are required approvers, with engineering consulted on feasibility.
-- **Prerequisites:** `M1` through `M10` accepted; required ADRs accepted; evidence index immutable or content-addressed for review; open blockers have owners and closure gates.
-- **Deliverables and acceptance evidence:** item-by-item evidence index; approval/rejection and dissent; threat and privacy review; discovery sufficiency decision; selected claim, SITL and proof-system dispositions; recorded approvers, unresolved risks and accepted residual risk; explicit scope authorized by a go and explicit stop conditions.
+- **Prerequisites:** `M1` through `M9` accepted; required ADRs for those items accepted; evidence index immutable or content-addressed for review; open blockers have owners and closure gates.
+- **Deliverables and acceptance evidence:** item-by-item evidence index; approval/rejection and dissent; threat and privacy review; discovery sufficiency decision; selected claim and pinned SITL dispositions; recorded approvers, unresolved risks and accepted residual risk; explicit bounded Phase 1 scope authorized by a go and explicit stop conditions. Delivery, telemetry, cryptography, architecture, and security review are required; their approval of Phase 1 does not select a proof system or waive `M10` for real Phase 2 proof work.
 - **Principal risks:** schedule pressure waives evidence; conditional approvals hide blockers; technical evidence substitutes for discovery; go language is read as production, safety, or commercial approval.
 - **Relative size:** `M`.
 - **Category:** milestone governance.
-- **Decision or gate closed:** final **stop/go** for the Validated claim and verifier contract milestone and, only on go, authorization for the bounded Phase 1 scope plus subsequent real Phase 2 proof work in dependency order.
-- **ADR requirement:** all ADRs required by `M4`, `M5`, `M8` release claims (if any), and `M10` must be accepted; the review record is not itself an ADR.
+- **Decision or gate closed:** final **stop/go** for the Validated claim and verifier contract milestone and, only on go, authorization for the bounded Phase 1 telemetry slice. It does not authorize real Phase 2 circuit, prover, verifier, setup, or verification-key implementation.
+- **ADR requirement:** all ADRs required by `M4`, `M5`, and `M8` release claims (if any) must be accepted; the review record is not itself an ADR. The `M10` proof-system ADR remains a separate later prerequisite for real Phase 2 proof work.
 - **Implementation exclusions:** no waiver of prerequisites; no declaration of production/security/safety/regulatory/commercial readiness; no hardware, command, live ledger, multi-tenant service, pilot, or deployment authorization.
 
 Bounded, disposable Phase 0 spikes are permitted solely where an item above allows them and solely to answer its named questions. They are not production foundations and MUST NOT be represented as implemented product capabilities. `docs/delivery-plan.md` remains the milestone authority: proposed evidence indexes, research records, contracts, ADRs, fixtures, and review records support this plan and MUST link back here rather than restating or superseding its sequence or gates.
@@ -256,7 +255,7 @@ Promotion to a released interoperable envelope or stable public API requires two
 
 ## Phase 1 — telemetry vertical slice
 
-**Depends on:** a **go** decision at the [**Validated claim and verifier contract**](#next-milestone--validated-claim-and-verifier-contract) review, including accepted Phase 0 schema/trust evidence and a selected SITL profile. Broad Phase 1 production engineering is blocked until that decision is recorded.
+**Depends on:** a milestone **go** decision at the [**Validated claim and verifier contract**](#next-milestone--validated-claim-and-verifier-contract) review and the accepted pinned SITL profile from `M9`, including its compatibility corpus. Broad Phase 1 production engineering is blocked until both are recorded; `M10` is not a Phase 1 prerequisite.
 
 **Deliverables:** pinned SITL scenario; allowlisted parser; trust classification; normalizer; bounded channel; deterministic record/replay fixture; ingress metrics; fuzz target.
 
@@ -266,9 +265,9 @@ Promotion to a released interoperable envelope or stable public API requires two
 
 ## Phase 2 — proof spike and local verification
 
-**Depends on:** Phase 1 golden canonical records and approved encoding draft.
+**Depends on:** Phase 1 golden canonical records and approved encoding draft, plus the accepted `M10` proof-system benchmark and ADR. No real Phase 2 circuit, prover, verifier, setup, or verification-key implementation begins until delivery, telemetry, cryptography, architecture, and security have reviewed the benchmark evidence and the required cryptography/security acceptance is recorded.
 
-**Deliverables:** candidate benchmark harness; bounded-speed circuit; golden vectors and real proofs; authenticated, portable verification/policy/revocation artifacts; independent verifier; executable lifecycle vectors using the Phase 0 test-only offline policy profile; proof-system ADR; version/key lifecycle draft.
+**Deliverables:** bounded-speed circuit; golden vectors and real proofs; authenticated, portable verification/policy/revocation artifacts; independent verifier; executable lifecycle vectors using the Phase 0 test-only offline policy profile; accepted proof-system ADR; version/key lifecycle draft.
 
 **Exit evidence:** valid, equality-boundary, altered-input, overflow, stale, replay, wrong-version/policy/domain cases behave as specified; against the Phase 0 offline fixture, the independent verifier exercises approval/activation ordering, both effective-window boundaries at explicit decision times, deprecation, revocation and pre-revocation-claim recheck, expiry, compatible rollback, compatibility rejection, ordered checkpoints, signature/digest tampering, and missing or unauthorized evidence, with the specified audit fields and fail-closed reason codes; the verifier rejects the fixture profile outside explicit test configuration and labels every result `TEST_ONLY_NOT_PRODUCTION_AUTHORIZATION`; verifier receives no witness; report states hardware, parameters, p50/p95/p99, memory, proof size, and throughput; cryptography/security review accepts the ADR. Product-scope Gate 2 then passes an approved technical-workflow evaluation design with at least one genuinely paired provider/relying-party workflow and a justified final case set covering positive, negative, boundary, authenticated-artifact, disclosure, assurance, comprehension, and exception paths. Every pre-agreed deterministic case produces its specified technical result; any mismatch is a defect or documented specification issue and keeps the gate closed, and results are not converted into a reliability or error-rate claim. Evidence also covers authenticated artifacts, independent verification, human interpretation, restricted-field absence from proof and verification materials, tested disclosure preference, assurance sufficiency, snapshot limitations, review time, objections, and failure reasons. Product, discovery-method, delivery, and relying-party reviewers accept the design, evidence, and sufficiency disposition. Mockups, non-cryptographic prototypes, producer self-verification, or vendor-only verification do not qualify.
 
