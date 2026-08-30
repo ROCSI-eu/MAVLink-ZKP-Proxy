@@ -53,7 +53,7 @@ No maintainer acknowledgement or AI-assisted review may be converted into eviden
 This authorization remains Current while `M1` is `blocked`. `M1` may move to `in_progress` only when the minimum start conditions in the delivery plan are satisfied by accepted, non-placeholder evidence:
 
 1. prospective real participants are recorded for every preliminary role required by the delivery plan, including a genuine relying-party representative who owns the external decision and is not the producer, maintainer, project team, or AI proxy; and
-2. the M1 safety/privacy boundary is recorded and approved through the required real role participation.
+2. the M1 safety/privacy boundary is recorded in a form that satisfies the delivery plan and is acknowledged as applicable by the real preliminary participants whose roles are required for M1 entry.
 
 The transition must be made through a scoped pull request that:
 
