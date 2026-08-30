@@ -6,6 +6,7 @@
 | Status | Current factual operating-context record |
 | Scope | Documentation planning and recruitment preparation only |
 | Evidence classification | Maintainer acknowledgement; no participant, customer, market, telemetry, proof, pilot, or production evidence |
+| Current-work authority | [`docs/current-work-authorization.md`](../../current-work-authorization.md) |
 | Related tracker | [Issue #49](https://github.com/ROCSI-eu/Telemetry-Attestation-Gateway/issues/49) |
 
 ## Actual operating context
@@ -20,7 +21,7 @@ This correction does not invalidate the substantive documentation inventory wher
 
 The maintainer acknowledges provisional responsibility for product, delivery, architecture, cryptography, security, privacy, safety, telemetry, and discovery **planning** only.
 
-This combination permits drafting, reconciliation, role-definition work, recruitment preparation, and synthetic-only planning. It does not provide independent review and does not constitute approval of cryptography, security, privacy, safety, telemetry, discovery method, product scope, or a milestone gate.
+This combination permits only the activity listed in the [Current work authorization](../../current-work-authorization.md#authorized-work), including drafting, reconciliation, role-definition work, recruitment preparation, and synthetic-only planning. It does not provide independent review and does not constitute approval of cryptography, security, privacy, safety, telemetry, discovery method, product scope, or a milestone gate.
 
 The relying-party decision-owner role remains unassigned and cannot be filled by the maintainer, the producer, the project team, or an AI system acting as a proxy.
 
@@ -45,6 +46,8 @@ Until later accepted evidence changes this record:
 - every non-cryptographic prototype states **“non-cryptographic UX prototype — no proof generated or verified”** on every surface and associated record; and
 - no prototype, proof, verifier, telemetry integration, SITL execution, hardware work, command path, live publication, pilot, or production activity is authorized.
 
+The detailed permitted and prohibited work is owned by the [Current work authorization](../../current-work-authorization.md). This record supplies the factual reason for that rule and does not independently expand authorization.
+
 ## Open hypotheses
 
 The industrial-site inspection workflow, bounded-speed claim selection or materiality, observation or coverage unit, buyer/provider need, relying-party acceptance decision, required assurance, purchasing route, pilot intent, and willingness to pay remain **Open**.
@@ -58,3 +61,5 @@ The prior M1 participation and approval claims are **Superseded** for traceabili
 M2 remains `blocked`; `gate_closed=false`. Issue #49 remains Open and blocking, issue #50 cannot begin, and no later milestone is authorized.
 
 The maintainer explicitly acknowledges that a positive M2 entry disposition cannot be issued under the current evidence state. A future transition requires real accountable role holders, required acknowledgements and reviews, an independent relying-party decision owner, paired participants, approved discovery method and privacy/input handling, an approved evidence system, and the complete non-sensitive repository evidence set required by the delivery plan.
+
+Any transition from the Current pre-M1 state must follow the [transition rule](../../current-work-authorization.md#transition-to-m1). Establishing that rule does not satisfy its conditions.
