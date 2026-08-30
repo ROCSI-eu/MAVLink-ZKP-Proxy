@@ -3,7 +3,10 @@ name: Documentation check
 on:
   pull_request:
     paths:
-      - "README.md"
+      - "*.md"
+      - "LICENSE"
+      - "LICENSES/**"
+      - ".reuse/dep5"
       - "docs/**/*.md"
       - "docs/management/validated-claim-contract-register.csv"
       - "scripts/check_docs.py"
