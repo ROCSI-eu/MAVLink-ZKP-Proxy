@@ -1,0 +1,77 @@
+name: Materialize README social preview
+
+on:
+  push:
+    branches:
+      - docs/use-final-readme-overview
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download configured repository social preview
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          query='query($owner:String!,$name:String!){repository(owner:$owner,name:$name){openGraphImageUrl}}'
+          image_url="$(gh api graphql -f query="$query" -F owner="$GITHUB_REPOSITORY_OWNER" -F name="${GITHUB_REPOSITORY#*/}" --jq '.data.repository.openGraphImageUrl')"
+
+          case "$image_url" in
+            https://repository-images.githubusercontent.com/*) ;;
+            *)
+              echo "Expected a custom repository social-preview URL, received: $image_url" >&2
+              exit 1
+              ;;
+          esac
+
+          asset='docs/assets/telemetry-attestation-gateway-overview.jpg'
+          mkdir -p "$(dirname "$asset")"
+          curl --fail --location --silent --show-error "$image_url" --output "$asset"
+
+          file_output="$(file -b "$asset")"
+          echo "$file_output"
+          grep -Eq 'JPEG image data.*1280x640|JPEG image data.*1280 x 640' <<<"$file_output"
+          sha256sum "$asset"
+
+      - name: Point README to repository-local image
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('README.md')
+          text = path.read_text(encoding='utf-8')
+          replacement = '<img src="docs/assets/telemetry-attestation-gateway-overview.jpg"'
+          updated, count = re.subn(
+              r'<img src="https://opengraph\.githubassets\.com/[^"]+/ROCSI-eu/Telemetry-Attestation-Gateway"',
+              replacement,
+              text,
+              count=1,
+          )
+          if count != 1:
+              raise SystemExit(f'Expected exactly one README social-preview reference, replaced {count}.')
+          path.write_text(updated, encoding='utf-8')
+          PY
+
+      - name: Validate and commit final files
+        run: |
+          set -euo pipefail
+          rm .github/workflows/materialize-readme-social-preview.yml
+          python3 scripts/check_docs.py
+
+          git config user.name 'Mihai Bărbulescu'
+          git config user.email 'mihai@rocsi.eu'
+          git add -A
+          git diff --cached --check
+          git commit --signoff -m 'docs: use final overview image in README'
+          git push origin "HEAD:${GITHUB_REF_NAME}"
