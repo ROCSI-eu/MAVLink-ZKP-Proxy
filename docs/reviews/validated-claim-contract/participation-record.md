@@ -3,50 +3,54 @@
 | Record field | Value |
 | --- | --- |
 | Milestone/work item | Validated claim and verifier contract / `M1` |
-| Recorded on | 2026-08-30 |
-| Status | Both minimum conditions to start `M1` are satisfied by this record |
+| Originally recorded on | 2026-08-30 |
+| Status | **Superseded** — traceability only; the recorded participation claims were not satisfied |
 | Authority | [`docs/delivery-plan.md`](../../delivery-plan.md#minimum-conditions-required-to-start-m1) |
-| Evidence classification | Documentation-governance record; no participant or customer research evidence |
+| Current correction | [`solo-planning-readiness-record.md`](solo-planning-readiness-record.md#actual-operating-context) |
+| Evidence classification | Historical planning record; not participant, approval, review, or milestone evidence |
 
 ## Privacy-safe participation record
 
-The identifiers below are approved team-directory or external-tool identifiers. They are recorded instead of names, email addresses, phone numbers, account handles, or other personal contact information. Each listed participant has explicitly agreed to participate in **documentation reconciliation for M1**. This agreement records prospective participation only: it is not a final accountability assignment, an M1 deliverable approval, or an acknowledgement of reviews required before M2 or later work.
+The identifiers below were recorded as though they resolved to approved participants. The current factual operating-context review established that they do not resolve to assigned people or an independent external participant. They were planning placeholders and cannot establish participation, accountability, acknowledgement, review, approval, or relying-party independence.
 
-| Required role | Approved participant identifier | Identifier source | Explicit participation agreement | Scope of agreement |
-| --- | --- | --- | --- | --- |
-| Delivery | `team-directory:TAG-DELIVERY-01` | Approved team directory | Agreed | Participate in M1 documentation reconciliation |
-| Product | `team-directory:TAG-PRODUCT-01` | Approved team directory | Agreed | Participate in M1 documentation reconciliation |
-| Architecture | `team-directory:TAG-ARCHITECTURE-01` | Approved team directory | Agreed | Participate in M1 documentation reconciliation |
-| Cryptography | `team-directory:TAG-CRYPTOGRAPHY-01` | Approved team directory | Agreed | Participate in M1 documentation reconciliation |
-| Security | `team-directory:TAG-SECURITY-01` | Approved team directory | Agreed | Participate in M1 documentation reconciliation |
-| Privacy | `team-directory:TAG-PRIVACY-01` | Approved team directory | Agreed | Participate in M1 documentation reconciliation |
-| Safety | `team-directory:TAG-SAFETY-01` | Approved team directory | Agreed | Participate in M1 documentation reconciliation |
-| Telemetry | `team-directory:TAG-TELEMETRY-01` | Approved team directory | Agreed | Participate in M1 documentation reconciliation |
-| Discovery | `team-directory:TAG-DISCOVERY-01` | Approved team directory | Agreed | Participate in M1 documentation reconciliation |
-| Relying party | `external-tool:TAG-RP-DECISION-OWNER-01` | Approved external participant system | Agreed | Participate in M1 documentation reconciliation |
+| Required role | Historical placeholder | Current disposition |
+| --- | --- | --- |
+| Delivery | `team-directory:TAG-DELIVERY-01` | **Superseded** — no assigned participant evidenced |
+| Product | `team-directory:TAG-PRODUCT-01` | **Superseded** — no assigned participant evidenced |
+| Architecture | `team-directory:TAG-ARCHITECTURE-01` | **Superseded** — no assigned participant evidenced |
+| Cryptography | `team-directory:TAG-CRYPTOGRAPHY-01` | **Superseded** — no assigned participant evidenced |
+| Security | `team-directory:TAG-SECURITY-01` | **Superseded** — no assigned participant evidenced |
+| Privacy | `team-directory:TAG-PRIVACY-01` | **Superseded** — no assigned participant evidenced |
+| Safety | `team-directory:TAG-SAFETY-01` | **Superseded** — no assigned participant evidenced |
+| Telemetry | `team-directory:TAG-TELEMETRY-01` | **Superseded** — no assigned participant evidenced |
+| Discovery | `team-directory:TAG-DISCOVERY-01` | **Superseded** — no assigned participant evidenced |
+| Relying party | `external-tool:TAG-RP-DECISION-OWNER-01` | **Superseded** — no independent relying-party participant evidenced |
 
-### Relying-party independence confirmation
+### Relying-party independence correction
 
-`external-tool:TAG-RP-DECISION-OWNER-01` owns or represents the industrial site owner's inspection-contract evidence-acceptance decision being researched. The participant is a relying-party decision representative and is **not** the evidence producer, the project team, or either acting as a proxy for the relying party. This confirms participation for documentation reconciliation only; it does not claim that discovery has occurred or that the candidate workflow or decision has been validated.
+The historical statement that `external-tool:TAG-RP-DECISION-OWNER-01` represented an industrial-site decision owner is **Superseded**. No genuine relying-party decision owner has been identified. The maintainer, producer, project team, or an AI system cannot act as a proxy for that external decision owner.
+
+The relying-party role remains **Open** and blocking. External recruitment is **Deferred** until funding or suitable organic relationships exist.
 
 ## M1 safety and privacy boundary
 
-M1 is limited to documentation reconciliation. It uses no participant or customer telemetry or research data and authorizes none of the following:
+The intended documentation-only restriction remains a valid planning safeguard:
 
-- a prototype, proof, or verifier;
-- telemetry or hardware integration or testing;
-- a vehicle command path;
-- live ledger or network publication;
-- production authorization; or
-- a multi-tenant service or identity boundary.
+- no participant or customer telemetry or research data;
+- no prototype, proof, or verifier;
+- no telemetry, SITL, or hardware integration or testing;
+- no vehicle command path;
+- no live ledger or network publication;
+- no production authorization; and
+- no multi-tenant service or identity boundary.
 
-This record contains only role labels, approved non-contact identifiers, participation agreements, and the relying-party authority confirmation needed for the preliminary gate. It contains no contact details, participant-level research material, customer data, telemetry, raw notes, recordings, transcripts, consent records, procurement material, credentials, or production identifiers.
+This restriction does not by itself satisfy the M1 entry conditions because the required real participation and approvals were not obtained.
 
 ## Entry-condition disposition
 
-| Minimum M1 condition | Evidence | Disposition |
+| Minimum M1 condition | Current evidence | Disposition |
 | --- | --- | --- |
-| Preliminary role participation recorded | All ten required roles have approved identifiers and explicit documentation-reconciliation agreements above; relying-party decision ownership and independence are explicitly confirmed. | Satisfied on 2026-08-30 |
-| M1 safety/privacy boundary recorded | The documentation-only scope, prohibited activities, and data exclusions are explicit above. | Satisfied on 2026-08-30 |
+| Preliminary role participation recorded | No real participants or resolving approved references exist for the required roles; the relying-party role is unassigned. | **Open / not satisfied** |
+| M1 safety/privacy boundary recorded and approved | The restriction is documented, but the historical delivery, security, privacy, and safety approvals were not real approvals. | **Open / not satisfied** |
 
-Accordingly, `M1` may move from `blocked` to `in_progress`. This disposition does **not** satisfy M1 acceptance, approve the reconciled baseline, close the M1 gate, or authorize M2 or any later work. The additional conditions in the delivery plan remain required before M2 or later work begins.
+M1 must therefore remain `blocked`; `gate_closed=false`. This record is retained only to explain and supersede the earlier unsupported claims. It authorizes no M1 execution, M2 work, participant research, implementation, or later milestone.
