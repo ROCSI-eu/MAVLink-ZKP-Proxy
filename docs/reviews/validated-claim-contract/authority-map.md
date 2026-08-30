@@ -4,9 +4,10 @@
 | --- | --- |
 | Work item | `M1` — Reconcile the documentation baseline |
 | Review date | 2026-08-30 |
-| Status | Approved documentation-only authority map |
-| Accountable role | Delivery lead |
+| Status | Current routing map; prior M1 approval record **Superseded** |
+| Accountable role | Delivery lead remains unassigned for accepted milestone purposes |
 | Applies to | Proposed downstream contracts, fixtures, tests, reviews, and decisions |
+| Current correction | [`solo-planning-readiness-record.md`](solo-planning-readiness-record.md#current-disposition) |
 
 ## Precedence rule
 
@@ -16,9 +17,11 @@ Authority is **area-specific**, not a single total ordering of whole files:
 2. Within an area not decided by an accepted ADR, the owning document in the table below controls semantics.
 3. `docs/delivery-plan.md` always controls milestone order, prerequisites, evidence, reviewers, and gate closure; it does not redefine a topic contract.
 4. `docs/testing-and-operations.md` controls how evidence is executed and assessed, but expected values come from the owning contract/accepted ADR.
-5. `docs/decisions.md` controls whether a choice is Current, Proposed, Open, Deferred, or superseded; descriptive repetition there does not replace the owning contract.
+5. `docs/decisions.md` controls whether a choice is Current, Proposed, Open, Deferred, or Superseded; descriptive repetition there does not replace the owning contract.
 6. `docs/README.md` controls documentation governance and routing. `docs/system-plan.md` is Superseded and has no normative precedence.
 7. Examples, diagrams, diagnostic JSON, candidates, plans, and proposed artifact paths cannot override normative prose. An unresolved Open value fails closed or waits for its closure gate; readers must not resolve it by document order.
+
+This routing rule remains useful as Current documentation governance. It is not, by itself, accepted M1 evidence.
 
 ## Downstream contract-area map
 
@@ -49,22 +52,33 @@ Under this procedure ADR-0001 supersedes inclusive `not_after` prose for envelop
 
 ## Review and approval record
 
-The participants below reviewed the complete reconciliation register and authority map, confirmed that their owned rules are represented correctly, and approved M1 **only as a documentation-only maturity state** on 2026-08-30. Approval does not assert implementation, discovery findings, proof validity, production readiness, or satisfaction of the separate M2 entry conditions. Identifiers are the approved non-contact references in the [participation record](participation-record.md#privacy-safe-participation-record).
+The historical review and approval record is **Superseded**. The listed identifiers did not resolve to assigned participants, and the approval references were not evidence of real reviews.
 
-| Required reviewer | Participant identifier | Approval/evidence reference | Review disposition |
+| Required reviewer | Historical placeholder | Historical approval reference | Current disposition |
 | --- | --- | --- | --- |
-| Product | `team-directory:TAG-PRODUCT-01` | `TAG-M1-BASELINE-PRODUCT-2026-08-30` | Approved; claim selection and relying-party assurance remain Open |
-| Architecture | `team-directory:TAG-ARCHITECTURE-01` | `TAG-M1-BASELINE-ARCHITECTURE-2026-08-30` | Approved |
-| Cryptography | `team-directory:TAG-CRYPTOGRAPHY-01` | `TAG-M1-BASELINE-CRYPTOGRAPHY-2026-08-30` | Approved; ADR-0001/0002 precedence confirmed |
-| Security | `team-directory:TAG-SECURITY-01` | `TAG-M1-BASELINE-SECURITY-2026-08-30` | Approved |
-| Privacy | `team-directory:TAG-PRIVACY-01` | `TAG-M1-BASELINE-PRIVACY-2026-08-30` | Approved |
-| Safety | `team-directory:TAG-SAFETY-01` | `TAG-M1-BASELINE-SAFETY-2026-08-30` | Approved; no safety or command authorization |
-| Telemetry | `team-directory:TAG-TELEMETRY-01` | `TAG-M1-BASELINE-TELEMETRY-2026-08-30` | Approved; SITL profile remains Open |
-| Discovery | `team-directory:TAG-DISCOVERY-01` | `TAG-M1-BASELINE-DISCOVERY-2026-08-30` | Approved; no findings are claimed |
-| Relying party | `external-tool:TAG-RP-DECISION-OWNER-01` | `TAG-M1-BASELINE-RELYING-PARTY-2026-08-30` | Approved for contract reconciliation; no workflow/tier acceptance |
+| Product | `team-directory:TAG-PRODUCT-01` | `TAG-M1-BASELINE-PRODUCT-2026-08-30` | **Superseded** — no real approval evidenced |
+| Architecture | `team-directory:TAG-ARCHITECTURE-01` | `TAG-M1-BASELINE-ARCHITECTURE-2026-08-30` | **Superseded** — no real approval evidenced |
+| Cryptography | `team-directory:TAG-CRYPTOGRAPHY-01` | `TAG-M1-BASELINE-CRYPTOGRAPHY-2026-08-30` | **Superseded** — no real approval evidenced |
+| Security | `team-directory:TAG-SECURITY-01` | `TAG-M1-BASELINE-SECURITY-2026-08-30` | **Superseded** — no real approval evidenced |
+| Privacy | `team-directory:TAG-PRIVACY-01` | `TAG-M1-BASELINE-PRIVACY-2026-08-30` | **Superseded** — no real approval evidenced |
+| Safety | `team-directory:TAG-SAFETY-01` | `TAG-M1-BASELINE-SAFETY-2026-08-30` | **Superseded** — no real approval evidenced |
+| Telemetry | `team-directory:TAG-TELEMETRY-01` | `TAG-M1-BASELINE-TELEMETRY-2026-08-30` | **Superseded** — no real approval evidenced |
+| Discovery | `team-directory:TAG-DISCOVERY-01` | `TAG-M1-BASELINE-DISCOVERY-2026-08-30` | **Superseded** — no real approval evidenced |
+| Relying party | `external-tool:TAG-RP-DECISION-OWNER-01` | `TAG-M1-BASELINE-RELYING-PARTY-2026-08-30` | **Superseded** — no independent decision owner evidenced |
+
+The sole maintainer may use the routing map for planning, but maintainer review cannot be counted as independent discipline or relying-party approval.
 
 ## M1 gate disposition and later-work hold
 
-The required reviewers found no unresolved contradiction capable of changing a downstream test interpretation. The delivery lead records `TAG-M1-ACCEPTED-DOC-BASELINE-2026-08-30` as the status-change reference and accepts the reconciled baseline as documentation-only.
+The historical status-change reference `TAG-M1-ACCEPTED-DOC-BASELINE-2026-08-30` is **Superseded** because its prerequisite participation and reviewer approvals did not occur.
 
-M2 remains closed. In particular, the repository has role identifiers rather than the named individuals and accountability acknowledgements required by `docs/delivery-plan.md`; the claim and relying-party decision remain hypotheses; and the later-work governance/input conditions have not been evidenced as a complete set. M1 approval authorizes none of the excluded activities in the [M1 boundary record](m1-boundary-record.md).
+The Current disposition is:
+
+- the routing map and reconciliation inventory may remain Current as maintainer planning artifacts;
+- M1 is `blocked`; `gate_closed=false`;
+- the preliminary participation and M1 boundary approval conditions remain Open;
+- the complete required reviewer set has not approved the reconciliation baseline;
+- M2 remains `blocked`, and issue #49 remains Open and blocking; and
+- no participant research, prototype, proof, verifier, telemetry/SITL integration, hardware, command path, live publication, pilot, or production work is authorized.
+
+A future M1 acceptance requires real, resolving role references, the required participation and approval evidence, and a delivery-lead disposition under `docs/delivery-plan.md`. The maintainer's provisional combined planning roles do not satisfy those conditions.
