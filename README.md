@@ -1,14 +1,14 @@
-# telemetry-attestation-gateway
+# Telemetry Attestation Gateway
 
 > **Current maturity: documentation only.** This repository contains no working proxy, proof circuit, Midnight contract, dashboard, or deployment.
 
-`telemetry-attestation-gateway` is a proposed observational gateway that turns selected telemetry into narrowly defined, privacy-preserving claims. Its first adapter uses MAVLink, and its initial claim is that a simulated vehicle's horizontal speed is at or below a policy limit, without disclosing exact position.
+Telemetry Attestation Gateway is a proposed observational gateway that turns selected telemetry into narrowly defined, privacy-preserving claims. Its first adapter uses MAVLink, and its initial claim is that a simulated vehicle's horizontal speed is at or below a policy limit, without disclosing exact position.
 
 Zero-knowledge proofs can limit disclosure; they do not prove that telemetry reflects physical reality. Chain inclusion does not authenticate an off-chain sensor reading. Source authentication, replay controls, trustworthy time, and vehicle integrity remain separate concerns.
 
 ## Product positioning
 
-The `telemetry-attestation-gateway` repository is positioned as a **privacy-preserving telemetry attestation gateway**: the proposed system accepts eligible telemetry, preserves and evaluates its declared trust context, and produces narrowly scoped evidence that a private telemetry value satisfies a public policy without publishing the underlying sensitive data. MAVLink is the first telemetry adapter, not the product boundary, and bounded speed is the first claim type, not a commitment to a single-purpose proof system. This repository name is not a commercial product brand; that brand remains undecided pending discovery.
+The Telemetry Attestation Gateway repository is positioned as a **privacy-preserving telemetry attestation gateway**: the proposed system accepts eligible telemetry, preserves and evaluates its declared trust context, and produces narrowly scoped evidence that a private telemetry value satisfies a public policy without publishing the underlying sensitive data. MAVLink is the first telemetry adapter, not the product boundary, and bounded speed is the first claim type, not a commitment to a single-purpose proof system. This human-readable display name is not a commercial product brand; that brand remains undecided pending discovery.
 
 A ledger, when used, is an optional publication or timestamp boundary for approved proof metadata. It is not the source of truth for telemetry, vehicle state, or proof validity; verification and the explicitly modeled source-trust boundary remain authoritative for those questions.
 
@@ -21,7 +21,7 @@ The product is **not**:
 - an anonymous tracking service for vehicles, operators, or missions; or
 - a general-purpose blockchain bridge for arbitrary messages, assets, or cross-chain activity.
 
-The repository name is `telemetry-attestation-gateway`. A commercial product brand has not been selected and remains pending discovery; the repository name must not be presented as an approved commercial brand.
+The human-readable repository name is **Telemetry Attestation Gateway**; its hosted-repository identifier remains `telemetry-attestation-gateway`. A commercial product brand has not been selected and remains pending discovery, so neither form may be presented as an approved commercial brand.
 
 ## Proposed MVP target
 
