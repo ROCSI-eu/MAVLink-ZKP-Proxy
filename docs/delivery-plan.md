@@ -35,13 +35,19 @@ Failed or inconclusive criteria remain recorded learning and keep the applicable
 
 This is the named next milestone. This plan owns the milestone's entry conditions, workstream, required evidence, and exit rules. The repository remains documentation only, and this milestone describes proposed validation work; it does not state or imply that a prototype, verifier, proof circuit, or production component has been implemented.
 
-### Milestone entry criteria
+### Minimum conditions required to start M1
 
-Entry requires all of the following; an unassigned discipline or an implicit approval keeps the milestone closed.
+M1 may begin only when both of the following preliminary conditions are recorded. Until then, M1 remains blocked.
+
+- **Preliminary role participation recorded:** prospective participants are recorded for the delivery, product, architecture, cryptography, security, privacy, safety, telemetry, discovery, and relying-party roles, and they agree to participate in reconciliation. The relying-party participant represents the owner of the decision being researched, not the producer or project team acting as a proxy. Final accountability assignments and review acknowledgements are not required to start M1; they are required before M2 or later work begins.
+- **M1 safety/privacy boundary recorded:** M1 is limited to documentation reconciliation; it uses no participant/customer telemetry or research data and authorizes no prototype, proof, verifier, telemetry or hardware integration or testing, vehicle command path, live ledger/network publication, production authorization, or multi-tenant service or identity boundary.
+
+### Conditions required to begin M2 and later work
+
+M2 and later work may begin only after **the reconciled documentation baseline is approved as a documentation-only maturity state** through M1 and all of the following conditions are satisfied. An unassigned discipline, an implicit approval, or an unaccepted M1 keeps M2 and later work closed. No prototype, proof, verifier, telemetry integration, operational control, or product capability is claimed to exist merely because its contract is described.
 
 - Named individuals are recorded for the product, delivery, architecture, cryptography, security, privacy, safety, telemetry, discovery, and relying-party roles. The relying-party role represents the owner of the decision being researched, not the producer or project team acting as a proxy. Each person acknowledges their accountability and the reviews assigned below.
-- The documentation baseline is approved as a **documentation-only maturity state**. No prototype, proof, verifier, telemetry integration, operational control, or product capability is claimed to exist merely because its contract is described.
-- The candidate bounded-speed claim and relying-party decision are identified only as hypotheses to validate. Entry authorizes no hardware integration or testing, vehicle command path, live ledger/network publication, production authorization, or multi-tenant service or identity boundary.
+- The candidate bounded-speed claim and relying-party decision are identified only as hypotheses to validate. Beginning later work authorizes no hardware integration or testing, vehicle command path, live ledger/network publication, production authorization, or multi-tenant service or identity boundary.
 - Discovery uses synthetic inputs or inputs covered by documented, approved governance for consent or other lawful basis, minimization, access, retention, and deletion. Raw or restricted participant/customer telemetry is not copied into fixtures, research reports, logs, or prototype outputs.
 - `A0_SYNTHETIC` is the milestone's only demonstrator assurance tier. A relying party may state a higher required future tier, but that request neither upgrades demonstration evidence nor authorizes work needed to attain it.
 - Every paper output is conspicuously labelled **“paper mockup — no proof generated”** and every non-cryptographic prototype output is conspicuously labelled **“non-cryptographic UX prototype — no proof generated or verified.”** The label appears on every screen, export, result, screenshot, recording, and research record, not only in accompanying instructions.
@@ -51,12 +57,14 @@ Entry requires all of the following; an unassigned discipline or an implicit app
 The identifiers below are gates, not dates. An arrow means that accepted evidence from the item on the left is a prerequisite for the item on the right. Parallel branches may proceed only where the individual prerequisites permit.
 
 ```text
-M1 -> M2 -> M3 -> M4 -> M5 -> M6 -> M7 --\
-                    \          \-> M8 -> M9 -+-> M11
-                     \--------------^        \-> M10
+[preliminary role participation recorded + M1 safety/privacy boundary recorded]
+    -> M1 -> [the reconciled documentation baseline is approved as a documentation-only maturity state]
+                  -> M2 -> M3 -> M4 -> M5 -> M6 -> M7 --\
+                              \          \-> M8 -> M9 -+-> M11
+                               \--------------^        \-> M10
 ```
 
-More precisely: `M1 → M2 → M3`; `M3 → M4`; `M4 → M5`; `M4 + M5 → M6`; `M2 + M4 + M5 + M6 → M7`; `M3 + M4 + M5 + M6 → M8`; `M3 + M5 + M8 → M9`; `M1…M9 → M11`; and `M4 + M8 + M9 → M10`. `M10` is a later cryptographic-technology workstream and is not a prerequisite for the `M11` Phase 1 stop/go decision.
+More precisely: the minimum M1 start conditions permit `M1` to begin; M1 closes when **the reconciled documentation baseline is approved as a documentation-only maturity state**; and that accepted M1 plus the other conditions required to begin M2 and later work permit `M2` to begin. Then `M1 → M2 → M3`; `M3 → M4`; `M4 → M5`; `M4 + M5 → M6`; `M2 + M4 + M5 + M6 → M7`; `M3 + M4 + M5 + M6 → M8`; `M3 + M5 + M8 → M9`; `M1…M9 → M11`; and `M4 + M8 + M9 → M10`. `M10` is a later cryptographic-technology workstream and is not a prerequisite for the `M11` Phase 1 stop/go decision.
 
 #### M1 — Reconcile the documentation baseline
 
@@ -64,12 +72,12 @@ More precisely: `M1 → M2 → M3`; `M3 → M4`; `M4 → M5`; `M4 + M5 → M6`; 
 - **Existing documentation files affected:** `docs/delivery-plan.md`, `docs/README.md`, `docs/system-plan.md`, `docs/product-scope.md`, `docs/architecture.md`, `docs/data-and-proof-model.md`, `docs/claim-envelope.md`, `docs/security-and-privacy.md`, `docs/testing-and-operations.md`, `docs/discovery-research-plan.md`, and `docs/decisions.md`.
 - **Proposed future artifacts/modules:** **Proposed:** `docs/reviews/validated-claim-contract/reconciliation-register.md` and `docs/reviews/validated-claim-contract/authority-map.md`.
 - **Accountable role and required reviewers:** delivery lead accountable; product, architecture, cryptography, security, privacy, safety, telemetry, discovery, and relying-party role holders review.
-- **Prerequisites:** milestone entry criteria satisfied.
-- **Deliverables and acceptance evidence:** line-addressable conflict/duplication inventory, disposition and owner for every conflict, explicit normative-document precedence, and reviewer sign-off showing no unresolved contradiction can change a downstream test interpretation.
+- **Prerequisites:** **preliminary role participation recorded** and **M1 safety/privacy boundary recorded**.
+- **Deliverables and acceptance evidence:** line-addressable conflict/duplication inventory, disposition and owner for every conflict, explicit normative-document precedence, and reviewer sign-off showing no unresolved contradiction can change a downstream test interpretation; together this evidence must show that **the reconciled documentation baseline is approved as a documentation-only maturity state**.
 - **Principal risks:** paper agreement hides semantic conflict; a proposed artifact becomes a competing plan; broad editorial cleanup obscures substantive changes.
 - **Relative size:** `S`.
 - **Category:** documentation governance.
-- **Decision or gate closed:** documentation-baseline approval and authority-map gate.
+- **Decision or gate closed:** **the reconciled documentation baseline is approved as a documentation-only maturity state**.
 - **ADR requirement:** no new ADR unless reconciliation changes a previously accepted architectural decision; any such change amends or supersedes that ADR before acceptance.
 - **Implementation exclusions:** no code, schema freeze, dependency selection, prototype, discovery claim, or production-readiness assertion.
 
@@ -231,7 +239,7 @@ Bounded, disposable Phase 0 spikes are permitted solely where an item above allo
 
 ## Phase 0 — decision framing and scaffold
 
-**Entry:** documentation baseline approved.
+**Entry:** **preliminary role participation recorded** and **M1 safety/privacy boundary recorded** permit M1 to begin. M2 and later Phase 0 work remain closed until **the reconciled documentation baseline is approved as a documentation-only maturity state** and the other conditions required to begin M2 and later work are satisfied.
 
 ### Executable format spike gate
 
