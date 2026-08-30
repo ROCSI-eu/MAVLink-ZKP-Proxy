@@ -29,7 +29,7 @@ This positioning explicitly excludes the following product categories:
 - **Anonymous tracking service:** privacy-preserving claims must not become a means to track vehicles, operators, or missions anonymously or pseudonymously.
 - **General-purpose blockchain bridge:** the optional ledger adapter does not transport arbitrary messages or assets and does not provide cross-chain infrastructure.
 
-The repository name and any eventual product name are branding concerns, not implicit scope changes. A rename requires a separate, explicit branding decision and coordinated terminology migration; product documentation must not silently rename the system.
+The repository name is `telemetry-attestation-gateway`; the [branding decision](decisions.md#repository-name-and-commercial-branding-decision) records the coordinated migration and keeps any eventual commercial product brand undecided pending discovery. The repository rename does not change product scope, and the repository name must not be treated as an approved commercial brand.
 
 ## Stakeholders and actors
 
