@@ -11,7 +11,7 @@
 
 This index is the navigation and authority map for a documentation-only project. It separates topics whose audiences, owners, and change cadences differ; the former [system plan](system-plan.md) is Superseded and is not an alternative baseline.
 
-The [current work authorization](current-work-authorization.md) owns the conservative activity boundary while `M1` entry remains unsatisfied. For operational work-item status and external-tool mapping, see the non-normative [management coordination index](management/README.md). The [solo planning readiness record](reviews/validated-claim-contract/solo-planning-readiness-record.md) records the Current factual operating context and the resulting milestone hold.
+The [current work authorization](current-work-authorization.md) owns the conservative activity boundary while `M1` entry remains unsatisfied. The Proposed [pre-M1 participant readiness pack](pre-m1-participant-readiness.md) is supporting preparation material only and does not authorize outreach or satisfy a gate. For operational work-item status and external-tool mapping, see the non-normative [management coordination index](management/README.md). The [solo planning readiness record](reviews/validated-claim-contract/solo-planning-readiness-record.md) records the Current factual operating context and the resulting milestone hold.
 
 ## Status and authority
 
@@ -36,6 +36,7 @@ The Current state is solo documentation planning with `M1` and `M2` blocked. The
 | Reader | Recommended path |
 | --- | --- |
 | New contributor | Root [README](../README.md) → [current work authorization](current-work-authorization.md) → [product scope](product-scope.md) → [delivery plan](delivery-plan.md) |
+| Prospective participant or future recruitment coordinator | [Current work authorization](current-work-authorization.md) → [pre-M1 participant readiness pack](pre-m1-participant-readiness.md) → [delivery plan](delivery-plan.md) |
 | Product or safety | [Current work authorization](current-work-authorization.md) → [product scope](product-scope.md) → [security and privacy](security-and-privacy.md) → [delivery plan](delivery-plan.md) |
 | Commercial/product strategy | [Product scope](product-scope.md) → [commercial model](commercial-model.md) → [architecture](architecture.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
 | Discovery researcher | [Current work authorization](current-work-authorization.md) → [discovery research plan](discovery-research-plan.md) → [product scope](product-scope.md) → [decisions](decisions.md) → [next milestone](delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) |
@@ -62,7 +63,7 @@ The Current state is solo documentation planning with `M1` and `M2` blocked. The
 | [Repository licensing policy](../LICENSING.md) | Effective license record and proposed path classification | Repository maintainer |
 | [Dependency licensing policy](dependency-licensing-policy.md) | Dependency review and release-attribution gate | Architecture lead |
 
-The current work authorization cannot amend, satisfy, or bypass a delivery-plan prerequisite. It controls only the narrower pre-M1 activity boundary. The review records under `docs/reviews/` are evidence or traceability artifacts, not substitutes for the owning documents above. Their status must be read before relying on them.
+The current work authorization cannot amend, satisfy, or bypass a delivery-plan prerequisite. It controls only the narrower pre-M1 activity boundary. The pre-M1 participant readiness pack is Proposed supporting material, not an authority or participation record. The review records under `docs/reviews/` are evidence or traceability artifacts, not substitutes for the owning documents above. Their status must be read before relying on them.
 
 ## Maintenance rules
 
@@ -71,6 +72,7 @@ The current work authorization cannot amend, satisfy, or bypass a delivery-plan 
 - Record a genuinely resolved, consequential choice as an ADR. Do not manufacture ADRs for open questions.
 - A pull request changing a normative requirement identifies its owner, validation evidence, affected gates, and decision status.
 - Any expansion of pre-M1 work must update the current work authorization and must not relax a delivery-plan gate without the required evidence and approval.
+- Recruitment criteria, acknowledgement text, and outreach wording remain Proposed and unusable until the Current work authorization separately permits the bounded contact and the applicable privacy handling is approved.
 - From a clean checkout, run `python3 scripts/check_docs.py` to validate repository-relative links, anchors, and fenced JSON. This is the authoritative documentation validation command.
 - Licensing changes must update the root [licensing policy](../LICENSING.md), applicable ADR, decision register, README language, and mechanical mappings together. A Proposed mapping does not change the root `LICENSE`.
 
