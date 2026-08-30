@@ -63,7 +63,7 @@ All root reading paths lead to the named next milestone, [**Validated claim and 
 - Use the component names and lifecycle states defined by architecture and the trust terms and units defined by the data model.
 - Record a genuinely resolved, consequential choice as an ADR. Do not manufacture ADRs for open questions.
 - A pull request changing a normative requirement identifies its owner, validation evidence, affected gates, and decision status.
-- Repository-relative links and fenced JSON must be validated with every documentation change.
+- From a clean checkout, run `python3 scripts/check_docs.py` to validate repository-relative links, anchors, and fenced JSON. This is the authoritative documentation validation command.
 
 ## Acceptance
 
