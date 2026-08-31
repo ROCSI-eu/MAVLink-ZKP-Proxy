@@ -26,7 +26,7 @@ The industrial-site inspection workflow and its buyer, relying-party decision, c
 | --- | --- | --- | --- |
 | Accepted documentation-only `M1` baseline | Delivery lead and required `M1` reviewers | **Open / blocking** | Prior M1 participation and approval claims are Superseded; the required real participants and reviews are absent |
 | Named individuals for product, delivery, architecture, cryptography, security, privacy, safety, telemetry, discovery, and relying-party decision ownership | Delivery lead; each named role holder acknowledges accountability | **Open / blocking** | One maintainer holds provisional planning responsibilities only; no accepted role assignments or independent relying-party decision owner exist |
-| Provider-side and relying-party-side participants | Discovery lead, product owner, paired participants | **Deferred / blocking** | External recruitment is Deferred until funding or suitable organic relationships exist |
+| Provider-side and relying-party-side participants | Discovery lead, product owner, paired participants | **Deferred / blocking** | Bounded pre-M1 recruitment outreach is permitted, but M2 paired participation and research recruitment remain Deferred until funding or suitable organic relationships exist |
 | Approved bounded paired-discovery protocol and evidence-sufficiency method | Product owner; discovery-method and delivery review | **Deferred / blocking** | `docs/discovery-research-plan.md` remains a Proposed protocol; no independent discovery-method approval exists |
 | Approved research and input-handling arrangement | Product owner and privacy owner; security and delivery review where applicable | **Deferred / blocking** | Google Drive is only Proposed and unconfigured; no approved handling record, system, access model, retention, deletion, or disclosure control exists |
 | Synthetic-or-governed inputs | Product owner and privacy owner | **Current planning boundary only** | All present planning inputs are limited to demonstrably synthetic, minimized, test-only data; this does not authorize research execution |
@@ -60,7 +60,7 @@ Until a privacy-handling approval explicitly permits a repository evidence path,
 
 ## Deferred conditions and revisit trigger
 
-External recruitment, discovery-method approval, and research/input-handling approval are **Deferred**. They may be reconsidered when funding or suitable organic relationships make genuine paired participation realistic and when qualified reviewers and a controlled external evidence system can be established.
+M2 paired-participant research recruitment, discovery-method approval, and research/input-handling approval are **Deferred**. The separately authorized bounded pre-M1 outreach may identify prospective preliminary participants but does not authorize M2 recruitment or supply M2 evidence. The deferred M2 activities may be reconsidered when funding or suitable organic relationships make genuine paired participation realistic and when qualified reviewers and a controlled external evidence system can be established.
 
 Deferred does not mean satisfied. Each deferred item remains blocking until accepted evidence changes its status.
 

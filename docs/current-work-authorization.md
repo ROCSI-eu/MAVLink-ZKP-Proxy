@@ -34,11 +34,11 @@ Maintainer approval of this Current policy is the trigger for bounded outreach; 
 
 1. contact prospective participants only through public professional contact channels;
 2. share only the public repository and a concise, accurate project description, including its documentation-only status and the limits of the proposed role;
-3. collect outside Git only the minimum contact detail, prospective role, interest, and conflict information needed to assess possible participation;
+3. collect outside Git only the minimum contact detail, prospective role, interest, and conflict information needed to assess possible participation, and only after the privacy notice, applicable lawful basis, approved storage route, access controls, retention/deletion rules, and withdrawal route are documented and approved for those fields;
 4. conduct one initial, non-research conversation limited to role fit, decision authority, availability, conflicts, and willingness to accept the M1 boundaries; and
 5. record in Git only the minimized, non-sensitive references allowed by the readiness pack after the person agrees.
 
-Contact must be proportionate, allow an immediate decline, and stop on decline or any stop condition in the readiness pack. Outreach and the suitability conversation are recruitment administration only. They MUST NOT be designed, recorded, analyzed, cited, or represented as discovery, customer validation, independent review, product evidence, or evidence of demand, workflow fit, pilot intent, or willingness to pay.
+Before outreach begins, the maintainer must approve the minimum privacy arrangement named above and use only its governed contact and storage routes. Contact must be proportionate, provide the privacy notice when information is requested or received, allow an immediate decline and withdrawal, and stop on decline or any stop condition in the readiness pack. Outreach and the suitability conversation are recruitment administration only. They MUST NOT be designed, recorded, analyzed, cited, or represented as discovery, customer validation, independent review, product evidence, or evidence of demand, workflow fit, pilot intent, or willingness to pay.
 
 A paper mockup or non-cryptographic UX illustration created solely as a documentation example must still carry the applicable mandatory label on every surface and associated record. Its creation does not authorize research use and does not count as discovery, proof, verification, or product evidence.
 
@@ -47,7 +47,7 @@ A paper mockup or non-cryptographic UX illustration created solely as a document
 This Current authorization does not permit:
 
 - participant contact outside the lightweight policy; interviews, observation sessions, surveys, recordings, transcripts, research consent collection, procurement discussions or claims, or participant-level research records;
-- collection or use of real customer, participant, site, mission, vehicle, telemetry, identity, contact, or other restricted data, except for the minimum contact, role, interest, and conflict information held outside Git under the lightweight policy;
+- collection or use of real customer, participant, site, mission, vehicle, telemetry, identity, contact, or other restricted data, except for the minimum contact, role, interest, and conflict information handled under the approved privacy arrangement required by the lightweight policy;
 - treating Google Drive or any other system as an approved research or restricted-evidence system before its governance and approvals are accepted;
 - paper-mockup or non-cryptographic-prototype research, completed discovery records, claim-selection findings, demand findings, pilot intent, or willingness-to-pay evidence;
 - executable prototypes, format or vector spikes, parser work, MAVLink or SITL execution, telemetry integration, circuits, proving, verification, policy execution, replay state, persistence, APIs, user interfaces, publication, or external SDK integration;
