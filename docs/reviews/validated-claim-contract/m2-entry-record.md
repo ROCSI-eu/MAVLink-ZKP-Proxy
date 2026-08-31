@@ -5,7 +5,7 @@
 | Work item | `M2` — Run paired provider/relying-party discovery |
 | Record date | 2026-08-30 |
 | Status | **Open** — entry conditions are not satisfied |
-| Current disposition | `M1` and `M2` remain `blocked`; `gate_closed=false` |
+| Current disposition | `M1` is `in_progress`; `M2` remains `blocked`; `gate_closed=false` |
 | Required accountable role | Discovery lead with product owner; accepted assignees absent |
 | Primary tracker | [Issue #49](https://github.com/ROCSI-eu/Telemetry-Attestation-Gateway/issues/49) |
 | Downstream tracker | [Issue #50](https://github.com/ROCSI-eu/Telemetry-Attestation-Gateway/issues/50), blocked by issue #49 |
@@ -16,7 +16,7 @@
 
 This record coordinates the evidence required to move `M2` from `blocked` to `in_progress`. It is not an approval record and does not itself satisfy an entry condition.
 
-The repository is in a solo, documentation-planning state. The prior M1 participant and approval claims are Superseded, so M1 is not accepted. This record does not authorize participant-data collection, interviews, completed research records, a prototype, proof generation or verification, telemetry or SITL integration, hardware, a vehicle command path, live publication, a pilot, pricing, or production activity.
+The repository is in a solo, documentation-planning state. The prior independent M1 approval claim is Superseded; M1 is proceeding at solo concept level and may finish only as a solo-maintainer provisional baseline. This record does not authorize participant-data collection, interviews, completed research records, a prototype, proof generation or verification, telemetry or SITL integration, hardware, a vehicle command path, live publication, a pilot, pricing, or production activity.
 
 The industrial-site inspection workflow and its buyer, relying-party decision, coverage unit, disclosure need, assurance requirement, volume, purchasing path, pilot intent, and willingness to pay remain hypotheses or **Open** questions. Bounded horizontal speed remains a Proposed synthetic technical primitive, not an approved compliance product.
 
@@ -24,7 +24,7 @@ The industrial-site inspection workflow and its buyer, relying-party decision, c
 
 | Entry condition | Required owner or reviewers | Current status | Evidence or blocker |
 | --- | --- | --- | --- |
-| Accepted documentation-only `M1` baseline | Delivery lead and required `M1` reviewers | **Open / blocking** | Prior M1 participation and approval claims are Superseded; the required real participants and reviews are absent |
+| Solo-maintainer provisional `M1` baseline | Repository maintainer | **Open / blocking M2 until M1 review** | M1 is in progress; no independent approval is required or claimed |
 | Named individuals for product, delivery, architecture, cryptography, security, privacy, safety, telemetry, discovery, and relying-party decision ownership | Delivery lead; each named role holder acknowledges accountability | **Open / blocking** | One maintainer holds provisional planning responsibilities only; no accepted role assignments or independent relying-party decision owner exist |
 | Provider-side and relying-party-side participants | Discovery lead, product owner, paired participants | **Deferred / blocking** | Bounded pre-M1 recruitment outreach is permitted, but M2 paired participation and research recruitment remain Deferred until funding or suitable organic relationships exist |
 | Approved bounded paired-discovery protocol and evidence-sufficiency method | Product owner; discovery-method and delivery review | **Deferred / blocking** | `docs/discovery-research-plan.md` remains a Proposed protocol; no independent discovery-method approval exists |
@@ -35,13 +35,13 @@ The industrial-site inspection workflow and its buyer, relying-party decision, c
 | Mandatory output labels | Product, discovery, privacy, security, safety, and delivery reviewers | **Current maintainer acknowledgement only** | Every paper output states **“paper mockup — no proof generated”**; every non-cryptographic output states **“non-cryptographic UX prototype — no proof generated or verified”** on every surface and associated record |
 | Complete entry disposition | Delivery lead after all required evidence and reviews | **Open / blocking** | The maintainer explicitly acknowledges that no positive M2 entry disposition can currently be issued |
 
-The Current planning safeguards are necessary but do not compensate for missing M1 acceptance, real accountable participants, independence, paired discovery participants, method approval, privacy/input approval, or an approved evidence system.
+The Current planning safeguards permit M1 but do not compensate for the paired participants, discovery-method review, privacy/input review, or approved evidence system triggered by M2.
 
 ## Required acceptance evidence
 
 Before `M2` may become `in_progress`, the repository must contain only the minimum non-sensitive references needed to establish all of the following:
 
-1. **Accepted M1:** real preliminary participation, approved M1 boundary, required discipline reviews, and a valid delivery-lead acceptance disposition.
+1. **Provisional M1 baseline:** maintainer review records a solo-maintainer provisional baseline with no claim of independent approval.
 2. **Accountability:** approved stable references resolve to the named individuals for every required role, and each individual has acknowledged the relevant accountability and review duties. Names, contact details, or private directory material need not and should not be copied into Git.
 3. **Independent relying-party ownership and paired participation:** a genuine relying-party decision owner is not the producer, maintainer, project team, or an AI proxy; the required provider-side and relying-party-side participants are available for the same bounded decision workflow.
 4. **Protocol approval:** the product owner has approved the bounded paired-discovery scope, and a qualified discovery-method reviewer has approved the method, sampling rationale, evidence-sufficiency rule, contradiction handling, and review trigger.
