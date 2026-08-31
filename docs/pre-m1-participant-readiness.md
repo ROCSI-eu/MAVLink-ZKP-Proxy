@@ -15,7 +15,7 @@ This pack prepares the project to assess possible future participants. It does n
 
 The repository currently has no eligible preliminary participant set. `M1` remains `blocked`, `gate_closed=false`, and all later work remains blocked.
 
-This document does not authorize outreach, recruitment execution, participant-data collection, interviews, research, restricted-data handling, prototypes, telemetry or SITL work, proof work, hardware, publication, pilots, deployment, or production activity. The outreach template below is drafting material only and MUST NOT be sent while the Current work authorization prohibits participant contact.
+The Current work authorization now permits only lightweight pre-M1 outreach through public professional contact channels, use of the message below, minimum contact/role/interest/conflict handling outside Git, and an initial non-research suitability conversation. This pack does not authorize research or discovery interviews, workflow-evidence collection, telemetry exchange, procurement claims or discussions, restricted-data handling, prototypes, telemetry or SITL work, proof work, hardware, publication, pilots, deployment, or production activity. Recruitment contact and suitability discussion MUST NOT be treated as discovery, customer validation, independent review, product evidence, or evidence of demand, workflow fit, pilot intent, or willingness to pay.
 
 ## Preliminary role profiles
 
@@ -86,27 +86,19 @@ These templates are unapproved drafting material. They must be adapted only afte
 
 ## Proposed non-contact outreach-message template
 
-**Do not send under the Current authorization.** This is a future drafting template only.
+**Approved only for the bounded contact permitted by the Current work authorization.** Adaptation may identify the relevant role and public repository link, but must not expand the description, request research information, or imply a product, customer, procurement, or review claim.
 
-> We are preparing a documentation-only reconciliation milestone for an open-source concept called Telemetry Attestation Gateway. The project currently has no implementation, validated workflow, customer, pilot, or production claim. We are seeking a prospective participant to review a narrowly defined documentation role and its safety/privacy boundaries before M1 could begin. Participation would not involve telemetry, participant research, prototypes, hardware, proofs, procurement, or confidential data. No contact details or private evidence would be published in Git. Before any discussion, we would provide the role profile, boundaries, privacy notice, evidence-handling route, and a clear option to decline without further contact.
+> We are preparing a documentation-only reconciliation milestone for an open-source concept called Telemetry Attestation Gateway. The public repository is `<public-repository-link>`. The project currently has no implementation, validated workflow, customer, pilot, or production claim. We are seeking a prospective participant for the narrowly defined `<role_id>` documentation role before M1 could begin. An initial conversation would cover only role fit, authority, availability, conflicts, and willingness to accept the M1 boundaries. It would not be a research or discovery interview and would not involve workflow evidence, telemetry, prototypes, hardware, proofs, procurement, confidential data, or independent review. We would keep only minimum contact, role, interest, and conflict information outside Git, publish no contact details or private evidence in Git, and provide a clear option to decline without further contact.
 
-The future message must be adapted to the specific role without implying funding, employment, a customer relationship, approved research, selected workflow, product demand, pilot readiness, or regulatory use.
+The message may be adapted to the specific role without implying funding, employment, a customer relationship, approved research, selected workflow, product demand, pilot readiness, independent review, procurement intent, or regulatory use.
 
 ## Recruitment trigger and stop conditions
 
-Actual recruitment remains **Deferred** until a suitable trigger exists, such as funded capacity or a credible organic relationship with a potentially eligible participant.
+Bounded recruitment outreach is triggered by maintainer approval of the lightweight policy in the Current work authorization. It does not depend on prior funding or an existing organic relationship. The maintainer may contact a candidate for a named preliminary role through a public professional channel, use the approved message, retain only minimum contact, role, interest, and conflict information outside Git, and hold the initial non-research suitability conversation described there.
 
-Before any outreach occurs, a separate scoped governance change must:
+Before contact, the maintainer must identify the target role, use a public professional channel, confirm that the storage route is outside Git and limited to the minimum fields, and preserve the relying-party independence rule and all role disqualifiers. The candidate must receive the repository, concise description, boundaries, and option to decline. Any acknowledgement or later non-public information remains subject to an approved privacy notice, handling route, access, retention, deletion, withdrawal, and disclosure-review controls.
 
-1. amend the Current work authorization to permit a bounded recruitment action without authorizing research or technical work;
-2. identify who may make contact and for which role;
-3. approve the exact message, privacy notice, lawful handling basis where applicable, and contact-data route;
-4. identify an approved system for any non-public contact details or acknowledgements;
-5. define access, retention, deletion, withdrawal, and disclosure-review controls;
-6. preserve the relying-party independence rule and all role disqualifiers; and
-7. record stop conditions and pass `python3 scripts/check_docs.py`.
-
-Stop contact and keep M1 blocked if the candidate declines, cannot establish role or decision authority, requests restricted information in Git, expects implementation or research outside the authorization, cannot accept the safety/privacy boundary, has an unresolved material conflict, or would cause the project team to proxy the relying-party decision.
+Stop contact and keep M1 blocked if the candidate declines, cannot establish role or decision authority, requests restricted information in Git, expects implementation or research outside the authorization, cannot accept the safety/privacy boundary, has an unresolved material conflict, or would cause the project team to proxy the relying-party decision. Also stop before any research or discovery interview, workflow-evidence collection, telemetry exchange, procurement claim or discussion, restricted-data handling, recording or transcript, or independent-review request. Do not preserve or reuse recruitment statements as discovery, customer validation, independent review, or product evidence.
 
 ## Future M1 entry checklist
 
