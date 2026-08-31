@@ -30,7 +30,7 @@ The identifiers below were recorded as though they resolved to approved particip
 
 The historical statement that `external-tool:TAG-RP-DECISION-OWNER-01` represented an industrial-site decision owner is **Superseded**. No genuine relying-party decision owner has been identified. The maintainer, producer, project team, or an AI system cannot act as a proxy for that external decision owner.
 
-The relying-party role remains **Open** and blocking. External recruitment is **Deferred** until funding or suitable organic relationships exist.
+The relying-party role remains **Open** and blocking. Bounded external recruitment outreach is **Current / permitted** under the [Current work authorization](../../current-work-authorization.md#lightweight-pre-m1-outreach-policy), without prior funding or a suitable organic relationship, but only after its minimum privacy arrangement is approved. Outreach does not establish participation, independence, acknowledgement, approval, review, or milestone evidence.
 
 ## M1 safety and privacy boundary
 

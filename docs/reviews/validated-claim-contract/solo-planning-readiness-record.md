@@ -25,11 +25,11 @@ This combination permits only the activity listed in the [Current work authoriza
 
 The relying-party decision-owner role remains unassigned and cannot be filled by the maintainer, the producer, the project team, or an AI system acting as a proxy.
 
-## Deferred external participation and governance
+## Bounded external recruitment and deferred participation
 
-External provider-side and relying-party recruitment is **Deferred** until funding or suitable organic relationships exist.
+Lightweight provider-side and relying-party recruitment outreach is **Current / permitted** under the [Current work authorization](../../current-work-authorization.md#lightweight-pre-m1-outreach-policy). It does not require prior funding or a suitable organic relationship and is limited to identifying and assessing prospective preliminary participants through the governed, non-research contact described there. External participation remains **Open / not established** until real people agree and the delivery-plan evidence requirements are satisfied; outreach is not participation, discovery, review, approval, or milestone evidence.
 
-Google Drive is **Proposed** as a possible future restricted-governance and research-evidence system. No project folder, access model, artifact classification, retention/deletion schedule, disclosure-control process, or approval record has been configured. It is not an approved research system and must not hold participant or restricted research evidence for this project until the required governance is accepted.
+Google Drive is **Proposed** as a possible future restricted-governance and research-evidence system. No project folder, access model, artifact classification, retention/deletion schedule, disclosure-control process, or approval record has been configured. It is not an approved research system and must not hold initial recruitment fields, participant information, or restricted research evidence for this project until the required governance is accepted. Bounded outreach may begin only after the minimum privacy arrangement required by the Current work authorization is documented and approved for the selected contact and storage routes.
 
 Discovery-method approval and participant-research/input-handling approval are **Deferred** until suitable reviewers, participants, and an approved evidence system are available.
 
