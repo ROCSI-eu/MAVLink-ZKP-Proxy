@@ -33,7 +33,7 @@ The human-readable repository name is **Telemetry Attestation Gateway**; its hos
 
 The deterministic, single-vehicle SITL vertical slice below is the eventual proposed MVP target after the [**Validated claim and verifier contract**](docs/delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) milestone passes its stop/go review; it is not presently authorized implementation work.
 
-The Current operating state is solo documentation planning. `M1` and `M2` are blocked. Current work is limited by the [Current work authorization](docs/current-work-authorization.md) to documentation review, reconciliation, governance correction, demonstrably synthetic planning material, and lightweight recruitment outreach through public professional channels. After its minimum privacy arrangement is documented and approved, that outreach may share only the public repository and a concise description, retain minimum contact/role/interest/conflict information through the governed off-Git route, and include an initial non-research suitability conversation. It stops before interviews, workflow evidence, telemetry, procurement claims, restricted data, or independent review and is not discovery, customer validation, or product evidence. The [solo planning readiness record](docs/reviews/validated-claim-contract/solo-planning-readiness-record.md) records the factual reason for the broader boundary. Discovery execution, completed research records, paper or non-cryptographic prototype research, format/vector spikes, telemetry parsing, circuits, proof verification, SITL execution, hardware, and publication are not presently authorized.
+The Current operating state is solo documentation planning. `M1` is `in_progress` at solo concept level, while `M2` remains blocked. Current work is limited by the [Current work authorization](docs/current-work-authorization.md) to M1 documentation reconciliation, governance correction, demonstrably synthetic planning material, and lightweight recruitment outreach through public professional channels. After its minimum privacy arrangement is documented and approved, that outreach may share only the public repository and a concise description, retain minimum contact/role/interest/conflict information through the governed off-Git route, and include an initial non-research suitability conversation. It stops before interviews, workflow evidence, telemetry, procurement claims, restricted data, or independent review and is not discovery, customer validation, or product evidence. The [solo planning readiness record](docs/reviews/validated-claim-contract/solo-planning-readiness-record.md) records the factual reason for the broader boundary. Discovery execution, completed research records, paper or non-cryptographic prototype research, format/vector spikes, telemetry parsing, circuits, proof verification, SITL execution, hardware, and publication are not presently authorized.
 
 1. ingest MAVLink 2 traffic over local UDP and preserve its trust state;
 2. normalize the required `GLOBAL_POSITION_INT` and `VFR_HUD` fields;
@@ -56,7 +56,7 @@ Components are proposed boundaries, not deployed services. Development begins wi
 
 ## Start here
 
-The [documentation index](docs/README.md) provides audience-specific reading paths and explains document authority. Read the [Current work authorization](docs/current-work-authorization.md) before contributing. The named next milestone is [**Validated claim and verifier contract**](docs/delivery-plan.md#next-milestone--validated-claim-and-verifier-contract). `docs/delivery-plan.md` owns that milestone's entry conditions, workstream, required evidence, and exit rules. The [operational register](docs/management/validated-claim-contract-register.csv) records the Current blocked status. This is a planning milestone in a documentation-only repository; it does not imply that a prototype has been implemented.
+The [documentation index](docs/README.md) provides audience-specific reading paths and explains document authority. Read the [Current work authorization](docs/current-work-authorization.md) before contributing. The named next milestone is [**Validated claim and verifier contract**](docs/delivery-plan.md#next-milestone--validated-claim-and-verifier-contract). `docs/delivery-plan.md` owns that milestone's entry conditions, workstream, required evidence, and exit rules. The [operational register](docs/management/validated-claim-contract-register.csv) records `M1` as `in_progress` and `M2` as blocked. This is a planning milestone in a documentation-only repository; it does not imply that a prototype has been implemented.
 
 Choose the shortest path for your reason for visiting:
 
@@ -70,7 +70,7 @@ Choose the shortest path for your reason for visiting:
 
 ### Document directory
 
-- [current work authorization](docs/current-work-authorization.md) — the conservative work boundary while M1 entry remains unsatisfied;
+- [current work authorization](docs/current-work-authorization.md) — the conservative work boundary for solo-concept M1 and the transition into later work;
 - [product scope](docs/product-scope.md) — MVP, deferred work, non-goals, and success measures;
 - [architecture](docs/architecture.md) — boundaries, responsibilities, data flow, and failure behavior;
 - [data and proof model](docs/data-and-proof-model.md) — telemetry units, encoding, and proof semantics;
@@ -85,7 +85,7 @@ Choose the shortest path for your reason for visiting:
 
 ## Contributing during discovery
 
-During the Current blocked state, useful contributions are documentation reviews, contradiction reports, governance corrections, role and evidence requirements, and synthetic-only planning examples permitted by the [Current work authorization](docs/current-work-authorization.md). Do not describe proposed behavior as implemented or begin discovery execution, prototypes, proof work, telemetry/SITL work, or compatibility experiments without the accepted gate evidence required by the delivery plan.
+During the Current solo-concept M1 state, useful contributions are documentation reviews, contradiction reports, governance corrections, role and evidence requirements, and synthetic-only planning examples permitted by the [Current work authorization](docs/current-work-authorization.md). Do not describe proposed behavior as implemented or begin discovery execution, prototypes, proof work, telemetry/SITL work, or compatibility experiments without the accepted gate evidence required by the delivery plan.
 
 ## Safety and license
 

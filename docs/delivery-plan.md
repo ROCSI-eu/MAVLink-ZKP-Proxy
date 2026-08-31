@@ -35,18 +35,21 @@ Failed or inconclusive criteria remain recorded learning and keep the applicable
 
 This is the named next milestone. This plan owns the milestone's entry conditions, workstream, required evidence, and exit rules. The repository remains documentation only, and this milestone describes proposed validation work; it does not state or imply that a prototype, verifier, proof circuit, or production component has been implemented.
 
-### Minimum conditions required to start M1
+### Accountability levels and M1 start
 
-M1 may begin only when both of the following preliminary conditions are recorded. Until then, M1 remains blocked.
+Accountability is proportional to the claim and risk, rather than a fixed preliminary headcount:
 
-- **Preliminary role participation recorded:** prospective participants are recorded for the delivery, product, architecture, cryptography, security, privacy, safety, telemetry, discovery, and relying-party roles, and they agree to participate in reconciliation. The relying-party participant represents the owner of the decision being researched, not the producer or project team acting as a proxy. Final accountability assignments and review acknowledgements are not required to start M1; they are required before M2 or later work begins.
-- **M1 safety/privacy boundary recorded:** M1 is limited to documentation reconciliation; it uses no participant/customer telemetry or research data and authorizes no prototype, proof, verifier, telemetry or hardware integration or testing, vehicle command path, live ledger/network publication, production authorization, or multi-tenant service or identity boundary.
+1. **Solo concept level:** the maintainer may own documentation reconciliation, synthetic experiments, and provisional decisions. No independence, external validation, specialist approval, or readiness claim is created.
+2. **External validation level:** real provider and relying-party participants are required, together with only the reviewers triggered by the particular research or technical risk. The role-by-risk matrix in [`docs/pre-m1-participant-readiness.md`](pre-m1-participant-readiness.md) controls those triggers.
+3. **Pilot or production level:** named accountable discipline owners, independent reviews, and documented separation of duties are mandatory. A solo-maintainer disposition cannot satisfy this level.
+
+M1 may start immediately at the solo concept level and may finish through maintainer review, provided it remains documentation reconciliation only: no participant/customer telemetry or research data; prototype, proof, or verifier; telemetry, SITL, or hardware integration or testing; vehicle command path; live ledger/network publication; production authorization; or multi-tenant service or identity boundary. Its result MUST be labelled **“solo-maintainer provisional baseline”**, never **“independently approved baseline.”** Missing external roles are promotion blockers for the risk-triggered work that needs them, not blockers to M1 documentation work.
 
 ### Conditions required to begin M2 and later work
 
-M2 and later work may begin only after **the reconciled documentation baseline is approved as a documentation-only maturity state** through M1 and all of the following conditions are satisfied. An unassigned discipline, an implicit approval, or an unaccepted M1 keeps M2 and later work closed. No prototype, proof, verifier, telemetry integration, operational control, or product capability is claimed to exist merely because its contract is described.
+M2 and later work may begin only after M1 records a **solo-maintainer provisional baseline** and all risk-triggered conditions for the proposed work are satisfied. An unavailable role blocks only the work or claim that triggers it; external validation always requires real provider and relying-party participants. No prototype, proof, verifier, telemetry integration, operational control, or product capability is claimed to exist merely because its contract is described.
 
-- Named individuals are recorded for the product, delivery, architecture, cryptography, security, privacy, safety, telemetry, discovery, and relying-party roles. The relying-party role represents the owner of the decision being researched, not the producer or project team acting as a proxy. Each person acknowledges their accountability and the reviews assigned below.
+- Real provider and relying-party participants are recorded for external workflow validation, and the role-by-risk matrix identifies and records the reviewers required for the actual risks undertaken. Pilot or production promotion additionally records named discipline owners, independent reviews, conflicts, and separation-of-duty dispositions.
 - The candidate bounded-speed claim and relying-party decision are identified only as hypotheses to validate. Beginning later work authorizes no hardware integration or testing, vehicle command path, live ledger/network publication, production authorization, or multi-tenant service or identity boundary.
 - Discovery uses synthetic inputs or inputs covered by documented, approved governance for consent or other lawful basis, minimization, access, retention, and deletion. Raw or restricted participant/customer telemetry is not copied into fixtures, research reports, logs, or prototype outputs.
 - `A0_SYNTHETIC` is the milestone's only demonstrator assurance tier. A relying party may state a higher required future tier, but that request neither upgrades demonstration evidence nor authorizes work needed to attain it.
@@ -57,27 +60,27 @@ M2 and later work may begin only after **the reconciled documentation baseline i
 The identifiers below are gates, not dates. An arrow means that accepted evidence from the item on the left is a prerequisite for the item on the right. Parallel branches may proceed only where the individual prerequisites permit.
 
 ```text
-[preliminary role participation recorded + M1 safety/privacy boundary recorded]
-    -> M1 -> [the reconciled documentation baseline is approved as a documentation-only maturity state]
+[recorded M1 safety/privacy boundary]
+    -> M1 -> [solo-maintainer provisional baseline]
                   -> M2 -> M3 -> M4 -> M5 -> M6 -> M7 --\
                               \          \-> M8 -> M9 -+-> M11
                                \--------------^        \-> M10
 ```
 
-More precisely: the minimum M1 start conditions permit `M1` to begin; M1 closes when **the reconciled documentation baseline is approved as a documentation-only maturity state**; and that accepted M1 plus the other conditions required to begin M2 and later work permit `M2` to begin. Then `M1 → M2 → M3`; `M3 → M4`; `M4 → M5`; `M4 + M5 → M6`; `M2 + M4 + M5 + M6 → M7`; `M3 + M4 + M5 + M6 → M8`; `M3 + M5 + M8 → M9`; `M1…M9 → M11`; and `M4 + M8 + M9 → M10`. `M10` is a later cryptographic-technology workstream and is not a prerequisite for the `M11` Phase 1 stop/go decision.
+More precisely: the recorded boundary permits `M1` to begin; maintainer review closes M1 as a **solo-maintainer provisional baseline**; and that provisional baseline plus the risk-triggered conditions for external validation permit `M2` to begin. Then `M1 → M2 → M3`; `M3 → M4`; `M4 → M5`; `M4 + M5 → M6`; `M2 + M4 + M5 + M6 → M7`; `M3 + M4 + M5 + M6 → M8`; `M3 + M5 + M8 → M9`; `M1…M9 → M11`; and `M4 + M8 + M9 → M10`. `M10` is a later cryptographic-technology workstream and is not a prerequisite for the `M11` Phase 1 stop/go decision.
 
 #### M1 — Reconcile the documentation baseline
 
 - **Objective and rationale:** produce one contradiction register and an agreed authority map for claim, wire, result, assurance, discovery, testing, and decision language, so later executable evidence tests one contract rather than silently choosing among documents. This file remains the sole milestone-plan authority.
 - **Existing documentation files affected:** `docs/delivery-plan.md`, `docs/README.md`, `docs/system-plan.md`, `docs/product-scope.md`, `docs/architecture.md`, `docs/data-and-proof-model.md`, `docs/claim-envelope.md`, `docs/security-and-privacy.md`, `docs/testing-and-operations.md`, `docs/discovery-research-plan.md`, and `docs/decisions.md`.
 - **Proposed future artifacts/modules:** **Proposed:** `docs/reviews/validated-claim-contract/reconciliation-register.md` and `docs/reviews/validated-claim-contract/authority-map.md`.
-- **Accountable role and required reviewers:** delivery lead accountable; product, architecture, cryptography, security, privacy, safety, telemetry, discovery, and relying-party role holders review.
-- **Prerequisites:** **preliminary role participation recorded** and **M1 safety/privacy boundary recorded**.
-- **Deliverables and acceptance evidence:** line-addressable conflict/duplication inventory, disposition and owner for every conflict, explicit normative-document precedence, and reviewer sign-off showing no unresolved contradiction can change a downstream test interpretation; together this evidence must show that **the reconciled documentation baseline is approved as a documentation-only maturity state**.
+- **Accountable role and required reviewers:** repository maintainer accountable at solo concept level; no external or independent reviewer is required for M1. Future promotion applies the role-by-risk matrix.
+- **Prerequisites:** **M1 safety/privacy boundary recorded**.
+- **Deliverables and acceptance evidence:** line-addressable conflict/duplication inventory, disposition and owner for every conflict, explicit normative-document precedence, and maintainer review showing no known unresolved contradiction can change a downstream test interpretation; the evidence is labelled **“solo-maintainer provisional baseline.”**
 - **Principal risks:** paper agreement hides semantic conflict; a proposed artifact becomes a competing plan; broad editorial cleanup obscures substantive changes.
 - **Relative size:** `S`.
 - **Category:** documentation governance.
-- **Decision or gate closed:** **the reconciled documentation baseline is approved as a documentation-only maturity state**.
+- **Decision or gate closed:** **solo-maintainer provisional baseline**; no independent approval is claimed.
 - **ADR requirement:** no new ADR unless reconciliation changes a previously accepted architectural decision; any such change amends or supersedes that ADR before acceptance.
 - **Implementation exclusions:** no code, schema freeze, dependency selection, prototype, discovery claim, or production-readiness assertion.
 
@@ -86,8 +89,8 @@ More precisely: the minimum M1 start conditions permit `M1` to begin; M1 closes 
 - **Objective and rationale:** observe both sides of the same evidence handoff and the actual relying-party decision, alternatives, harms, purchasing route, minimum disclosure, and assurance need; unpaired interest cannot validate a workflow.
 - **Existing documentation files affected:** `docs/delivery-plan.md`, `docs/product-scope.md`, `docs/discovery-research-plan.md`, `docs/commercial-model.md`, `docs/security-and-privacy.md`, and `docs/decisions.md`.
 - **Proposed future artifacts/modules:** **Proposed evidence boundary:** governed source evidence is stored only in the externally approved research system. A repository synthesis directory is optional: `docs/discovery/` is a non-binding candidate consistent with `docs/discovery-research-plan.md`, and the privacy-handling record may instead name another privacy-approved repository path, if any. The product owner and privacy owner MUST approve that record, including the exact path and allowed formats, before the directory is created. Participant-level session records, contact details, raw notes, recordings, transcripts, consent records, procurement material, and re-identifying combinations remain outside Git. If Git storage is explicitly permitted, repository artifacts are limited to the non-sensitive approval reference; the approved synthesis schema; minimized, non-identifying observations or round summaries; denominators, role mix, provenance class, contradictions, limitations, and evidence identifiers; and product-owner and privacy review status.
-- **Accountable role and required reviewers:** discovery lead accountable with product owner; relying-party, privacy, security, safety, and delivery role holders review, and the paired provider and relying-party participants validate factual notes.
-- **Prerequisites:** accepted `M1`; approved research protocol and synthetic-or-governed input handling.
+- **Accountable role and required reviewers:** discovery lead accountable with product owner; paired provider and relying-party participants validate factual notes; privacy and discovery-method reviewers cover the participant-research risks. Any additional reviewer is required only when the proposed M2 activity triggers that review in the role-by-risk matrix.
+- **Prerequisites:** accepted `M1`; paired provider and relying-party participation; approved research protocol and synthetic-or-governed input handling; and the reviews triggered for the actual activity under the role-by-risk matrix.
 - **Deliverables and acceptance evidence:** rubric-complete paired records, contradictory and inconclusive cases, buyer/procurement visibility, workflow volumes and failure handling, unaided comprehension observations, and the product owner's explicit evidence-sufficiency disposition. Paper and non-cryptographic outputs carry the entry labels everywhere.
 - **Principal risks:** recruiting convenience participants; producer answers substituted for relying-party authority; sensitive data capture; coached comprehension; overclaiming a small sample.
 - **Relative size:** `L`.
@@ -239,7 +242,7 @@ Bounded, disposable Phase 0 spikes are permitted solely where an item above allo
 
 ## Phase 0 — decision framing and scaffold
 
-**Entry:** **preliminary role participation recorded** and **M1 safety/privacy boundary recorded** permit M1 to begin. M2 and later Phase 0 work remain closed until **the reconciled documentation baseline is approved as a documentation-only maturity state** and the other conditions required to begin M2 and later work are satisfied.
+**Entry:** the recorded **M1 safety/privacy boundary** permits M1 to begin at solo concept level. M2 and later Phase 0 work remain closed until the **solo-maintainer provisional baseline** exists and the applicable external-validation role-by-risk conditions are satisfied.
 
 ### Executable format spike gate
 

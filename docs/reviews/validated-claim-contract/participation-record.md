@@ -5,7 +5,7 @@
 | Milestone/work item | Validated claim and verifier contract / `M1` |
 | Originally recorded on | 2026-08-30 |
 | Status | **Superseded** — traceability only; the recorded participation claims were not satisfied |
-| Authority | [`docs/delivery-plan.md`](../../delivery-plan.md#minimum-conditions-required-to-start-m1) |
+| Authority | [`docs/delivery-plan.md`](../../delivery-plan.md#accountability-levels-and-m1-start) |
 | Current correction | [`solo-planning-readiness-record.md`](solo-planning-readiness-record.md#actual-operating-context) |
 | Evidence classification | Historical planning record; not participant, approval, review, or milestone evidence |
 
@@ -30,7 +30,7 @@ The identifiers below were recorded as though they resolved to approved particip
 
 The historical statement that `external-tool:TAG-RP-DECISION-OWNER-01` represented an industrial-site decision owner is **Superseded**. No genuine relying-party decision owner has been identified. The maintainer, producer, project team, or an AI system cannot act as a proxy for that external decision owner.
 
-The relying-party role remains **Open** and blocking. Bounded external recruitment outreach is **Current / permitted** under the [Current work authorization](../../current-work-authorization.md#lightweight-pre-m1-outreach-policy), without prior funding or a suitable organic relationship, but only after its minimum privacy arrangement is approved. Outreach does not establish participation, independence, acknowledgement, approval, review, or milestone evidence.
+The relying-party role remains **Open** and blocks any workflow-validation claim, but does not block solo M1 documentation work. Bounded external recruitment outreach is **Current / permitted** under the [Current work authorization](../../current-work-authorization.md#risk-triggered-limits), without prior funding or a suitable organic relationship, but only after its minimum privacy arrangement is approved. Outreach does not establish participation, independence, acknowledgement, approval, review, or milestone evidence.
 
 ## M1 safety and privacy boundary
 
@@ -44,13 +44,15 @@ The intended documentation-only restriction remains a valid planning safeguard:
 - no production authorization; and
 - no multi-tenant service or identity boundary.
 
-This restriction does not by itself satisfy the M1 entry conditions because the required real participation and approvals were not obtained.
+This restriction satisfies the boundary prerequisite for solo M1 work. It supplies no external participation or independent approval.
 
 ## Entry-condition disposition
 
-| Minimum M1 condition | Current evidence | Disposition |
+| Readiness item | Current evidence | Disposition |
 | --- | --- | --- |
-| Preliminary role participation recorded | No real participants or resolving approved references exist for the required roles; the relying-party role is unassigned. | **Open / not satisfied** |
-| M1 safety/privacy boundary recorded and approved | The restriction is documented, but the historical delivery, security, privacy, and safety approvals were not real approvals. | **Open / not satisfied** |
+| Solo M1 documentation reconciliation | Recorded safety/privacy boundary and maintainer accountability | **Current / permitted** |
+| External workflow validation | No real provider or relying-party participants | **Future promotion blocker** |
+| Risk-specific review | No external discipline reviewers recorded | **Future promotion blocker when the matrix triggers a reviewer** |
+| Pilot or production | No named discipline owners, independent reviews, or separation-of-duty record | **Future promotion blocker** |
 
-M1 must therefore remain `blocked`; `gate_closed=false`. This record is retained only to explain and supersede the earlier unsupported claims. It authorizes no M1 execution, M2 work, participant research, implementation, or later milestone.
+M1 may proceed and finish through maintainer review only as a **solo-maintainer provisional baseline**. This historical record establishes no participation or independent approval and authorizes no M2 research, technical implementation, pilot, or production work.

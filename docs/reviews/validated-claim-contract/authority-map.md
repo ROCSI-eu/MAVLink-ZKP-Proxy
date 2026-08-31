@@ -70,15 +70,9 @@ The sole maintainer may use the routing map for planning, but maintainer review 
 
 ## M1 gate disposition and later-work hold
 
-The historical status-change reference `TAG-M1-ACCEPTED-DOC-BASELINE-2026-08-30` is **Superseded** because its prerequisite participation and reviewer approvals did not occur.
+The historical status-change reference `TAG-M1-ACCEPTED-DOC-BASELINE-2026-08-30` remains **Superseded** because it falsely implied external approval. The authority map is now maintainer-reviewed M1 evidence at solo concept level.
 
-The Current disposition is:
-
-- the routing map and reconciliation inventory may remain Current as maintainer planning artifacts;
-- M1 is `blocked`; `gate_closed=false`;
-- the preliminary participation and M1 boundary approval conditions remain Open;
-- the complete required reviewer set has not approved the reconciliation baseline;
-- M2 remains `blocked`, and issue #49 remains Open and blocking; and
-- no participant research, prototype, proof, verifier, telemetry/SITL integration, hardware, command path, live publication, pilot, or production work is authorized.
-
-A future M1 acceptance requires real, resolving role references, the required participation and approval evidence, and a delivery-lead disposition under `docs/delivery-plan.md`. The maintainer's provisional combined planning roles do not satisfy those conditions.
+- M1 is `in_progress`; `gate_closed=false`;
+- maintainer review may finish it only as a **solo-maintainer provisional baseline**;
+- absent external discipline and relying-party roles are future promotion blockers under the role-by-risk matrix, not blockers to M1 documentation work; and
+- M2 remains blocked until real provider and relying-party participants and its triggered discovery/privacy reviews are available.

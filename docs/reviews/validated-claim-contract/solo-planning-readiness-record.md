@@ -4,30 +4,30 @@
 | --- | --- |
 | Recorded on | 2026-08-30 |
 | Status | Current factual operating-context record |
-| Scope | Documentation planning and recruitment preparation only |
+| Scope | Solo concept documentation, synthetic planning, and future-promotion readiness |
 | Evidence classification | Maintainer acknowledgement; no participant, customer, market, telemetry, proof, pilot, or production evidence |
 | Current-work authority | [`docs/current-work-authorization.md`](../../current-work-authorization.md) |
 | Related tracker | [Issue #49](https://github.com/ROCSI-eu/Telemetry-Attestation-Gateway/issues/49) |
 
 ## Actual operating context
 
-The repository currently has one maintainer brainstorming and documenting the concept. There is no financed project team, prospective customer, provider-side discovery participant, independent relying-party decision owner, or other external participant currently available to satisfy the milestone role and paired-discovery requirements.
+The repository currently has one maintainer brainstorming and documenting the concept. There is no financed project team, prospective customer, provider-side discovery participant, independent relying-party decision owner, or other external participant. Their absence blocks only the external-validation, pilot, or production activities that trigger those roles; it does not block solo M1 documentation work.
 
 The earlier `team-directory:*` and `external-tool:*` identifiers do not resolve to assigned people or approved external participants. They were planning placeholders and must not be treated as participation, accountability, review, approval, or discovery evidence.
 
-This correction does not invalidate the substantive documentation inventory where it accurately describes Proposed contracts and boundaries. It does invalidate the prior claim that the role-participation, approval, and M1 acceptance gates had been satisfied.
+This correction does not invalidate the substantive documentation inventory where it accurately describes Proposed contracts and boundaries. It does invalidate prior claims of external participation, independent review, or independent approval.
 
 ## Provisional role combination
 
 The maintainer acknowledges provisional responsibility for product, delivery, architecture, cryptography, security, privacy, safety, telemetry, and discovery **planning** only.
 
-This combination permits only the activity listed in the [Current work authorization](../../current-work-authorization.md#authorized-work), including drafting, reconciliation, role-definition work, recruitment preparation, and synthetic-only planning. It does not provide independent review and does not constitute approval of cryptography, security, privacy, safety, telemetry, discovery method, product scope, or a milestone gate.
+This combination permits only the activity listed in the [Current work authorization](../../current-work-authorization.md#authorized-solo-concept-work), including drafting, reconciliation, role-definition work, recruitment preparation, and synthetic-only planning. It does not provide independent review and does not constitute approval of cryptography, security, privacy, safety, telemetry, discovery method, product scope, or a milestone gate.
 
-The relying-party decision-owner role remains unassigned and cannot be filled by the maintainer, the producer, the project team, or an AI system acting as a proxy.
+The relying-party decision-owner role remains unassigned and is a future blocker to workflow validation, not to M1. It cannot be filled by the maintainer, producer, project team, or an AI proxy.
 
 ## Bounded external recruitment and deferred participation
 
-Lightweight provider-side and relying-party recruitment outreach is **Current / permitted** under the [Current work authorization](../../current-work-authorization.md#lightweight-pre-m1-outreach-policy). It does not require prior funding or a suitable organic relationship and is limited to identifying and assessing prospective preliminary participants through the governed, non-research contact described there. External participation remains **Open / not established** until real people agree and the delivery-plan evidence requirements are satisfied; outreach is not participation, discovery, review, approval, or milestone evidence.
+Lightweight provider-side and relying-party recruitment outreach is **Current / permitted** under the [Current work authorization](../../current-work-authorization.md#risk-triggered-limits). It does not require prior funding or a suitable organic relationship and is limited to identifying and assessing prospective preliminary participants through the governed, non-research contact described there. External participation remains **Open / not established** until real people agree and the delivery-plan evidence requirements are satisfied; outreach is not participation, discovery, review, approval, or milestone evidence.
 
 Google Drive is **Proposed** as a possible future restricted-governance and research-evidence system. No project folder, access model, artifact classification, retention/deletion schedule, disclosure-control process, or approval record has been configured. It is not an approved research system and must not hold initial recruitment fields, participant information, or restricted research evidence for this project until the required governance is accepted. Bounded outreach may begin only after the minimum privacy arrangement required by the Current work authorization is documented and approved for the selected contact and storage routes.
 
@@ -56,10 +56,8 @@ Bounded horizontal speed remains a **Proposed** synthetic technical primitive on
 
 ## Current disposition
 
-The prior M1 participation and approval claims are **Superseded** for traceability because the referenced participants and approvals do not exist. M1 therefore remains `blocked`, with its gate open, until its actual entry and review requirements are satisfied by accepted evidence.
+M1 is authorized at the **solo concept level** and may proceed through maintainer review. Its only permitted completion label is **“solo-maintainer provisional baseline”**; no independent approval is claimed. Historical placeholder participation and approval references remain **Superseded**.
 
-M2 remains `blocked`; `gate_closed=false`. Issue #49 remains Open and blocking, issue #50 cannot begin, and no later milestone is authorized.
+Unavailable provider, relying-party, privacy, cryptography, security, safety, telemetry, discovery, accessibility, operational, or other roles are recorded as future promotion blockers when the [role-by-risk matrix](../../pre-m1-participant-readiness.md#role-by-risk-matrix) triggers them. They are not blockers to documentation reconciliation, synthetic experiments, or provisional decisions.
 
-The maintainer explicitly acknowledges that a positive M2 entry disposition cannot be issued under the current evidence state. A future transition requires real accountable role holders, required acknowledgements and reviews, an independent relying-party decision owner, paired participants, approved discovery method and privacy/input handling, an approved evidence system, and the complete non-sensitive repository evidence set required by the delivery plan.
-
-Any transition from the Current pre-M1 state must follow the [transition rule](../../current-work-authorization.md#transition-to-m1). Establishing that rule does not satisfy its conditions.
+M2 remains `blocked`; `gate_closed=false` until real provider and relying-party participants and the reviewers triggered by its research/data risks are available. Pilot and production remain unauthorized until named accountable discipline owners, independent reviews, and separation-of-duty evidence exist.

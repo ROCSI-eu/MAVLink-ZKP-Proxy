@@ -4,9 +4,9 @@
 | --- | --- |
 | Milestone/work item | Validated claim and verifier contract / `M1` |
 | Originally recorded on | 2026-08-30 |
-| Entry-condition authority | [`docs/delivery-plan.md`](../../delivery-plan.md#minimum-conditions-required-to-start-m1) |
+| Entry-condition authority | [`docs/delivery-plan.md`](../../delivery-plan.md#accountability-levels-and-m1-start) |
 | Scope | Documentation reconciliation only |
-| Status | Current restriction; historical multi-role approvals **Superseded** |
+| Status | Current restriction; sufficient for solo concept M1 entry |
 | Evidence classification | Maintainer planning boundary; not accepted participant, review, approval, or milestone evidence |
 | Current correction | [`solo-planning-readiness-record.md`](solo-planning-readiness-record.md#current-disposition) |
 | Review trigger | Any proposed activity, data use, environment, publication, or service boundary outside the restriction below |
@@ -24,7 +24,7 @@ This boundary permits **no**:
 - production use or production authorization; or
 - multi-tenant service or identity boundary.
 
-These restrictions remain Current safeguards. They do not authorize M1 to begin because its role-participation and approval prerequisites are not satisfied.
+These restrictions remain Current safeguards and authorize M1 documentation reconciliation at solo concept level. They do not authorize external validation or technical, pilot, or production work.
 
 ## Operational controls
 
@@ -32,7 +32,7 @@ These restrictions remain Current safeguards. They do not authorize M1 to begin 
 2. No participant-level or customer data, telemetry, research notes, recordings, transcripts, credentials, production identifiers, or extracts from live systems may be collected, copied, linked, or processed.
 3. Planning work must not create or exercise executable, integration, testing, command, publication, production, tenancy, or identity paths.
 4. A contributor who encounters data or a requested activity outside this boundary must stop that activity and avoid committing the material.
-5. This restriction does not accept M1, approve the reconciled documentation baseline, or authorize M2 or later work.
+5. Maintainer review may close M1 only as a **solo-maintainer provisional baseline**; this restriction does not independently approve it or authorize M2 or later work.
 
 ## Approval references
 
@@ -49,6 +49,4 @@ The maintainer may enforce the restriction as a planning rule, but that is not i
 
 ## Entry-condition disposition
 
-The boundary text remains a Current non-authorization safeguard. The M1 boundary approval condition remains **Open** because the required role participants and approvals are absent.
-
-No M1 blocker may be removed on the basis of the superseded references. M1 remains `blocked`; `gate_closed=false`, and all later-work gates remain closed.
+The boundary is recorded and M1 may be `in_progress` at solo concept level. Historical external approvals remain Superseded, but their absence is not an M1 blocker. Maintainer review may finish M1 as a **solo-maintainer provisional baseline**; future external roles are promotion blockers only for the risk-triggered external-validation, pilot, or production work.
