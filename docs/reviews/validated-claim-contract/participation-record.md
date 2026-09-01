@@ -5,7 +5,7 @@
 | Milestone/work item | Validated claim and verifier contract / `M1` |
 | Originally recorded on | 2026-08-30 |
 | Status | **Superseded** — traceability only; the recorded participation claims were not satisfied |
-| Authority | [`docs/delivery-plan.md`](../../delivery-plan.md#accountability-levels-and-m1-start) |
+| Authority | [`docs/delivery-plan.md`](../../delivery-plan.md#status-dimensions) |
 | Current correction | [`solo-planning-readiness-record.md`](solo-planning-readiness-record.md#actual-operating-context) |
 | Evidence classification | Historical planning record; not participant, approval, review, or milestone evidence |
 

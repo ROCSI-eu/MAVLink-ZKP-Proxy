@@ -6,7 +6,7 @@
 | Audience | Maintainer, future participants, reviewers, and accountable owners |
 | Accountable role | Repository maintainer for solo concept records; named owners at pilot or production level |
 | Review trigger | Change in activity, data, risk, claim, environment, or maturity level |
-| Authority | Supporting matrix for the accountability levels in the [delivery plan](delivery-plan.md#accountability-levels-and-m1-start) |
+| Authority | Supporting matrix for the accountability levels in the [delivery plan](delivery-plan.md#status-dimensions) |
 
 ## Readiness principle
 
