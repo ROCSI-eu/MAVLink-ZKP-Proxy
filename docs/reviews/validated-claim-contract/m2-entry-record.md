@@ -2,19 +2,26 @@
 
 | Record field | Value |
 | --- | --- |
+| Implementation state | Concept only |
+| Evidence source | No execution evidence |
+| Review independence | Maintainer-reviewed |
+| Data class | Public documentation |
+| Permitted environment | Documentation-only |
+| External claim level | No external assurance claim |
+| Activity | Exploration permitted within the Current work authorization |
 | Work item | `M2` — Run paired provider/relying-party discovery |
 | Record date | 2026-08-30 |
 | Status | **Open** — entry conditions are not satisfied |
-| Current disposition | `M1` is `in_progress`; `M2` remains `blocked`; `gate_closed=false` |
+| Current disposition | `M1` is `in_progress`; `Blocked — M2 entry promotion` applies; `gate_closed=false` |
 | Required accountable role | Discovery lead with product owner; accepted assignees absent |
 | Primary tracker | [Issue #49](https://github.com/ROCSI-eu/Telemetry-Attestation-Gateway/issues/49) |
-| Downstream tracker | [Issue #50](https://github.com/ROCSI-eu/Telemetry-Attestation-Gateway/issues/50), blocked by issue #49 |
+| Downstream tracker | [Issue #50](https://github.com/ROCSI-eu/Telemetry-Attestation-Gateway/issues/50), tracking the M2 entry promotion decision after issue #49 |
 | Authority | [`docs/delivery-plan.md`](../../delivery-plan.md), [`docs/discovery-research-plan.md`](../../discovery-research-plan.md), and the [`M1` authority map](authority-map.md) |
 | Actual operating context | [`solo-planning-readiness-record.md`](solo-planning-readiness-record.md) |
 
 ## Purpose and non-authorization
 
-This record coordinates the evidence required to move `M2` from `blocked` to `in_progress`. It is not an approval record and does not itself satisfy an entry condition.
+This record coordinates the evidence required to change `Blocked — M2 entry promotion` to an approved M2 research activity. It is not an approval record and does not itself satisfy an entry condition.
 
 The repository is in a solo, documentation-planning state. The prior independent M1 approval claim is Superseded; M1 is proceeding at solo concept level and may finish only as a solo-maintainer provisional baseline. This record does not authorize participant-data collection, interviews, completed research records, a prototype, proof generation or verification, telemetry or SITL integration, hardware, a vehicle command path, live publication, a pilot, pricing, or production activity.
 
@@ -24,16 +31,16 @@ The industrial-site inspection workflow and its buyer, relying-party decision, c
 
 | Entry condition | Required owner or reviewers | Current status | Evidence or blocker |
 | --- | --- | --- | --- |
-| Solo-maintainer provisional `M1` baseline | Repository maintainer | **Open / blocking M2 until M1 review** | M1 is in progress; no independent approval is required or claimed |
-| Risk-triggered accountability recorded | Discovery lead with product owner; reviewers identified by the role-by-risk matrix | **Open / blocking only for triggered work** | The planned participant research triggers privacy and discovery-method review; additional roles are required only if the actual activity triggers their risk row |
-| Provider-side and relying-party-side participants | Discovery lead, product owner, paired participants | **Deferred / blocking** | Bounded pre-M1 recruitment outreach is permitted, but M2 paired participation and research recruitment remain Deferred until funding or suitable organic relationships exist |
-| Approved bounded paired-discovery protocol and evidence-sufficiency method | Product owner; discovery-method review | **Deferred / blocking** | `docs/discovery-research-plan.md` remains a Proposed protocol; no independent discovery-method approval exists |
-| Approved research and input-handling arrangement | Product owner and privacy reviewer; additional review only where the matrix is triggered | **Deferred / blocking** | Google Drive is only Proposed and unconfigured; no approved handling record, system, access model, retention, deletion, or disclosure control exists |
+| Solo-maintainer provisional `M1` baseline | Repository maintainer | **Open** — M2 entry promotion remains blocked until M1 review | M1 is in progress; no independent approval is required or claimed |
+| Risk-triggered accountability recorded | Discovery lead with product owner; reviewers identified by the role-by-risk matrix | **Open** — the applicable triggered-work promotion remains blocked | The planned participant research triggers privacy and discovery-method review; additional roles are required only if the actual activity triggers their risk row |
+| Provider-side and relying-party-side participants | Discovery lead, product owner, paired participants | **Deferred** — M2 entry promotion remains blocked | Bounded pre-M1 recruitment outreach is permitted, but M2 paired participation and research recruitment remain Deferred until funding or suitable organic relationships exist |
+| Approved bounded paired-discovery protocol and evidence-sufficiency method | Product owner; discovery-method review | **Deferred** — M2 entry promotion remains blocked | `docs/discovery-research-plan.md` remains a Proposed protocol; no independent discovery-method approval exists |
+| Approved research and input-handling arrangement | Product owner and privacy reviewer; additional review only where the matrix is triggered | **Deferred** — M2 entry promotion remains blocked | Google Drive is only Proposed and unconfigured; no approved handling record, system, access model, retention, deletion, or disclosure control exists |
 | Synthetic-or-governed inputs | Product owner and privacy owner | **Current planning boundary only** | All present planning inputs are limited to demonstrably synthetic, minimized, test-only data; this does not authorize research execution |
 | Hypothesis and non-claim boundary acknowledged | Product owner, discovery lead, paired participants, and risk-triggered reviewers | **Current maintainer acknowledgement only** | The workflow, claim materiality, coverage, need, decision, assurance, procurement, pilot intent, and willingness to pay remain Open; the required external acknowledgements are absent |
 | Demonstrator assurance restricted to `A0_SYNTHETIC` | Product owner, relying-party participant, and any reviewer triggered by the proposed assurance claim | **Current maintainer acknowledgement only** | `A0_SYNTHETIC` is the only permitted demonstrator tier; required external review remains absent |
 | Mandatory output labels | Product owner and discovery lead | **Current maintainer acknowledgement only** | Every paper output states **“paper mockup — no proof generated”**; every non-cryptographic output states **“non-cryptographic UX prototype — no proof generated or verified”** on every surface and associated record |
-| Complete entry disposition | Discovery lead with product owner after all applicable evidence and risk-triggered reviews | **Open / blocking** | The maintainer explicitly acknowledges that no positive M2 entry disposition can currently be issued |
+| Complete entry disposition | Discovery lead with product owner after all applicable evidence and risk-triggered reviews | **Open** — M2 entry promotion remains blocked | The maintainer explicitly acknowledges that no positive M2 entry disposition can currently be issued |
 
 The Current planning safeguards permit M1 but do not compensate for the paired participants, discovery-method review, privacy/input review, or approved evidence system triggered by M2.
 
@@ -69,7 +76,7 @@ Deferred does not mean satisfied. Each deferred item remains blocking until acce
 Only when accepted M1 evidence and every M2 entry condition are complete:
 
 1. update this record with the non-sensitive evidence references, reviewer acknowledgements, expiry or review triggers, and discovery-lead/product-owner disposition;
-2. update the `M2` row in `docs/management/validated-claim-contract-register.csv` from `blocked` to `in_progress`;
+2. update each affected artifact row in `docs/management/validated-claim-contract-register.csv` with its six labels, approved research environment, evidence references, and limitations;
 3. populate the approved `accountable_person_ref` and accepted `evidence_refs`;
 4. clear only the satisfied entry blockers, retain `gate_closed=false`, and add a dated `last_status_change_ref`;
 5. close issue #49 and leave issue #50 open for the governed discovery evidence and final `M2` disposition; and

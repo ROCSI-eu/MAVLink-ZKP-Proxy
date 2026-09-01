@@ -2,6 +2,13 @@
 
 | Record field | Value |
 | --- | --- |
+| Implementation state | Concept only |
+| Evidence source | No execution evidence |
+| Review independence | Maintainer-reviewed |
+| Data class | Public documentation |
+| Permitted environment | Documentation-only |
+| External claim level | No external assurance claim |
+| Activity | Exploration permitted within the Current work authorization |
 | Recorded on | 2026-08-30 |
 | Status | Current factual operating-context record |
 | Scope | Solo concept documentation, synthetic planning, and future-promotion readiness |
@@ -60,4 +67,4 @@ M1 is authorized at the **solo concept level** and may proceed through maintaine
 
 Unavailable provider, relying-party, privacy, cryptography, security, safety, telemetry, discovery, accessibility, operational, or other roles are recorded as future promotion blockers when the [role-by-risk matrix](../../pre-m1-participant-readiness.md#role-by-risk-matrix) triggers them. They are not blockers to documentation reconciliation, synthetic experiments, or provisional decisions.
 
-M2 remains `blocked`; `gate_closed=false` until real provider and relying-party participants and the reviewers triggered by its research/data risks are available. Pilot and production remain unauthorized until named accountable discipline owners, independent reviews, and separation-of-duty evidence exist.
+`Blocked — M2 entry promotion` applies; `gate_closed=false` until real provider and relying-party participants and the reviewers triggered by its research/data risks are available. Pilot and production remain unauthorized until named accountable discipline owners, independent reviews, and separation-of-duty evidence exist.
