@@ -64,6 +64,12 @@ Tier assignment is based on verified evidence, never on a caller-selected label.
 
 ## Safety boundary
 
+### Experimental isolation boundary
+
+The solo experimental sandbox is authorized only for demonstrably synthetic data and local disposable resources. Every artifact and output MUST carry **`EXPERIMENTAL`**, **`SYNTHETIC_ONLY`**, and **`NOT VALIDATION OR PRODUCTION AUTHORIZATION`** directly or, where its format cannot embed them, through an adjacent manifest that identifies the artifact by path and digest; every human-visible rendering MUST display the markings. Its trust roots, keys, identities, namespaces, endpoints, storage, and processes MUST be test-only and separated from real telemetry, live ledgers/networks, hardware, all command paths, credentials/non-test keys, participant/customer data, and production infrastructure. External network access is denied by default. Synthetic data MUST have recorded generator or hand-authored provenance and MUST not be derived from, replay, resemble, or encode restricted source records.
+
+Threat, privacy, cryptography, and independent review are promotion controls rather than prerequisites to create the isolated experiment. Sandbox results establish no security property, proof-system fitness, telemetry truth, privacy outcome, or production readiness. Before promotion, the destination gate requires a fresh review of data provenance, dependencies, attack surface, key and identity separation, disclosures, negative tests, limitations, and residual risk; labels are not removed from the sandbox artifact in place.
+
 The MVP is observational. No verifier result, chain event, UI action, timeout, or error path may produce a MAVLink command. Simulation is the only permitted source until the hardware gate passes. Any command path requires a new product decision, hazard analysis, authorization protocol, fail-safe design, and safety review; it is not an extension of the MVP.
 
 ## Threat and risk register

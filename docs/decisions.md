@@ -143,7 +143,7 @@ The canonical claim, public-input ordering, proof bytes, policy/key selection, c
 
 ## Current invariants versus decisions
 
-The `Current` claims concern repository reality, documentation governance, and the envelope version 1 validity-window semantics in ADR-0001: the repository is documentation-only, this register is the decision process, and no implementation-technology ADR exists. MVP scope and architecture are Proposed constraints to guide the first implementation; they become accepted decisions only through accountable review. Open items block their stated gates. Deferred items are not implied future commitments.
+The `Current` claims concern repository reality, documentation governance, the isolated sandbox authorization, and the envelope version 1 validity-window semantics in ADR-0001: the repository contains governance documentation and may contain compliant disposable sandbox artifacts, this register is the decision process, and no implementation-technology ADR exists. Sandbox artifacts are not supported implementation and select no implementation technology. MVP scope and architecture are Proposed constraints to guide the first supported implementation; they become accepted decisions only through accountable review. Open items block their stated gates. Deferred items are not implied future commitments.
 
 ## Validation and related documents
 
