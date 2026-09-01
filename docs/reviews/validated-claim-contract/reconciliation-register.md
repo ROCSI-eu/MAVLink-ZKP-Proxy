@@ -6,7 +6,7 @@
 | Review date | 2026-08-30 |
 | Status | Current maintainer reconciliation inventory; prior M1 acceptance **Superseded** |
 | Accountable role | Delivery lead remains unassigned for accepted milestone purposes |
-| Milestone authority | [`docs/delivery-plan.md`](../../delivery-plan.md#m1--reconcile-the-documentation-baseline) |
+| Milestone authority | [`docs/delivery-plan.md`](../../delivery-plan.md#operating-model) |
 | Current correction | [`solo-planning-readiness-record.md`](solo-planning-readiness-record.md#current-disposition) |
 | Scope | Claim, wire format, result, assurance, discovery, testing, and decision rules in the eleven M1 documents |
 

@@ -82,13 +82,13 @@ The comparison hypothesis is that a zero-knowledge claim may provide a useful di
 
 Any promotion of these hypotheses into product scope requires both product-owner approval and discovery-method review of the paired evidence. Privacy-owner review is also required if discovery changes the candidate public or restricted disclosure list. The cross-check of `README.md`, `commercial-model.md`, `decisions.md`, and `discovery-research-plan.md` must be repeated at that point so that no validated-scope edit imports an unresolved workflow, decision, consequence, disclosure, or comparison hypothesis as fact.
 
-### Commercial validation gates
+### Promotion evidence aligned to the delivery plan
 
-Commercial validation is staged so that a criterion is not demanded before the artifact needed to test it exists. Passing one gate authorizes only the next evaluation stage; it is not production, regulatory, safety, or whole-flight-compliance evidence. If any criterion is missed, that gate remains closed: narrow or change the workflow, record the learning in the decision register, and repeat the applicable discovery rather than expanding implementation.
+The sections below describe evidence consumed by the delivery plan's artifact promotions. They are not sequential phase-entry gates: safe exploration in any track may continue independently. The former `Gate 1`–`Gate 3` and `Phase 1`–`Phase 3` labels are retained elsewhere only as historical or descriptive packaging labels and MUST NOT be used as prerequisites. The normative synchronization points are [Gates A–E](delivery-plan.md#synchronization-gates).
 
-#### Gate 1 — problem and workflow validation (before Phase 1)
+#### Workflow evidence (`WF`) for Gate D
 
-Before broad implementation begins or Phase 1 is entered, the product owner must record evidence that all of the following criteria are met:
+Before `WF` is consumed to declare the MVP, the product owner must record evidence that all of the following criteria are met. Its absence does not block synthetic technical or claim exploration:
 
 - Document paired coverage of the same real evidence-acceptance decisions from both provider-side participants and relying-party participants, including actual buyers or participants with direct procurement and budget-path visibility; a provider's account of its customer does not count as relying-party evidence.
 - Record supporting, contradictory, and inconclusive cases rather than requiring a predetermined number of problem confirmations, and document a sampling rationale explaining the selected roles, organizations, decision contexts, missing coverage, stopping basis, and limitations.
@@ -96,27 +96,27 @@ Before broad implementation begins or Phase 1 is entered, the product owner must
 - Confirm the actual buyer, proof-producing actor, relying party, workflow owner, evidence-acceptance decision, handoffs, current alternative, observed decision volume, acceptable review time, and consequences and handling of false acceptance, false rejection, and unverifiable outcomes. The working **5–50 decisions per buyer per month** hypothesis must be replaced with observed buyer data.
 - Complete a field-by-field disclosure map of the current workflow and proposed claim, including the minimum public disclosure and restricted fields, reviewed by buyer and relying-party representatives.
 - Obtain explicit buyer and relying-party acceptance that the proposed evidence is for an eligible telemetry **snapshot**, not continuous or whole-flight coverage; record whether snapshot evidence is sufficient for the decision or what sampling/coverage claim would instead be required.
-- Identify the purchasing route and budget holder. This is route validation only; willingness to pay is reserved for Gate 3.
+- Identify the purchasing route and budget holder. This is route validation only; willingness to pay requires the commercial evidence described below.
 - Test the exact accepted, rejected, and unverifiable claim wording and adjacent limitations with representative relying-party reviewers, and record uncoached comprehension, objections, failure reasons, and revisions.
 
-Gate 1 discovery MAY use paper mockups or a non-cryptographic offline UX prototype. Every screen, package, result, and research record used that way MUST be conspicuously labelled **“paper mockup — no proof generated”** or **“non-cryptographic UX prototype — no proof generated or verified,”** as applicable, and MUST NOT be represented as technical validation or independent verification.
+Workflow discovery MAY use paper mockups or a non-cryptographic offline UX prototype. Every screen, package, result, and research record used that way MUST be conspicuously labelled **“paper mockup — no proof generated”** or **“non-cryptographic UX prototype — no proof generated or verified,”** as applicable, and MUST NOT be represented as technical validation or independent verification.
 
-#### Gate 2 — technical workflow validation (after Phase 2 artifacts exist)
+#### Participant-facing real-proof evaluation at Gate B
 
-After Phase 2 has produced the circuit, real proofs, canonical public inputs, authenticated verification/policy/revocation artifacts, and an independent verifier, the product owner, cryptography lead, and security lead must record:
+After `RP` construction has produced the circuit, real proofs, canonical public inputs, authenticated verification/policy/revocation artifacts, and an independent verifier, Gate B may authorize participant-facing evaluation. The product owner, cryptography lead, and security lead must record:
 
 - An approved technical-workflow evaluation design whose sampling rationale identifies the workflow, participants, deterministic case matrix, stopping basis, missing coverage, and limitations. It must include at least one genuinely paired provider/relying-party workflow in which both sides participate in the same evidence handoff and decision; a provider account of a relying party, or two unconnected evaluations, is not a pair. The final number of workflows and cases is justified by coverage of positive, negative, boundary, authenticated-artifact, disclosure, assurance, comprehension, and exception paths rather than by a fixed demonstration quota. Participants need not yet have made the Gate 3 design-partner or purchasing commitments.
 - End-to-end evidence from an eligible SITL fixture through real proof production, authenticated artifact handling, independent verification, and a recorded human accept/reject decision. Every pre-agreed deterministic case must produce its specified technical result; any mismatch is a defect or documented specification issue and keeps the gate closed. The evaluated case set and its results must not be converted into a reliability, accuracy, success-rate, or error-rate claim.
 - Evidence that the verifier receives no witness and that no restricted field appears in the proof package, authenticated artifacts, or verifier input; the provider and relying party must confirm from the tested artifacts that disclosure is preferable to raw-log disclosure for this case.
 - Relying-party confirmation that the demonstrated source trust, provenance, policy, freshness, replay, snapshot limitation, and independent-verification controls are sufficient for the stated decision, plus observed reviewer comprehension, review time, objections, and every failure reason.
 
-The Gate 2 evaluation design, evidence, and sufficiency disposition require product, discovery-method, delivery, and relying-party review in addition to the named technical approvals.
+The Gate B evaluation design, evidence, and sufficiency disposition require product, discovery-method, delivery, and relying-party review in addition to the named technical approvals.
 
-Paper mockups and non-cryptographic prototypes cannot satisfy Gate 2. A vendor assertion, self-verification by the proof producer, or a demonstration without authenticated portable artifacts also cannot satisfy it.
+Paper mockups and non-cryptographic prototypes cannot satisfy Gate B. A vendor assertion, self-verification by the proof producer, or a demonstration without authenticated portable artifacts also cannot satisfy it.
 
-#### Gate 3 — commercial pilot validation (after Phase 3 offline package exists)
+#### Commercial evidence (`CE`) for pilot promotion
 
-After Phase 3 has produced the versioned offline evidence package, and before a pilot begins, the product owner must record:
+Before Gate E promotes a versioned offline evidence package into a pilot, the product owner must record:
 
 - Written design-partner commitments preserving paired provider and relying-party participation in the same workflow, each naming the participating organizations, workflow and decision owners, decision and scope, access to representative synthetic or appropriately governed data, timing, resources, success/stop criteria, and agreement to evaluate the offline workflow. A provider account of its customer, an unpaired participant, or a non-binding expression of interest does not establish paired participation.
 - Integration evidence from the paired participants using the self-contained offline package without a vendor service or network dependency, including positive and negative cases, a human accept/reject interpretation, elapsed engineering time, code/configuration changes, dependencies, deployment/support steps, blockers, and comparison with pre-agreed integration and performance thresholds.
@@ -124,9 +124,9 @@ After Phase 3 has produced the versioned offline evidence package, and before a 
 - Documented confirmation from the relevant design-partner buyer owners that the packaged workflow is preferable to raw-log disclosure for the tested case, plus evidence of the purchasing route and budget holder. An executed paid-pilot agreement or another completed purchase is purchasing evidence and must be recorded distinctly from pilot intent, interest, a proposed price, or an unexecuted commitment; none of those substitutes for a completed purchase.
 - An explicit product-owner justification that the partner evidence is sufficient or insufficient, addressing independence between participating organizations, provider-side and relying-party decision ownership, variation in integrations, contradictory or negative evidence, and the strength of purchasing evidence. The justification must state the sampling and stopping rationale and limitations; it must not impose or infer a universal partner count, price, or purchasing threshold.
 
-The Gate 3 evidence and product-owner sufficiency disposition require product, discovery-method, delivery, and relying-party review.
+The Gate E commercial evidence and product-owner sufficiency disposition require product, discovery-method, delivery, and relying-party review.
 
-All three gates preserve the SITL-only, no-command, privacy, snapshot-limitation, authenticated-artifact, and independent-verification constraints. No gate authorizes hardware, command handling, disclosure of restricted fields, or reliance on a vendor service as the verifier.
+All these promotions preserve the SITL-only, no-command, privacy, snapshot-limitation, authenticated-artifact, and independent-verification constraints. No gate authorizes hardware, command handling, disclosure of restricted fields, or reliance on a vendor service as the verifier.
 
 ## MVP scope
 

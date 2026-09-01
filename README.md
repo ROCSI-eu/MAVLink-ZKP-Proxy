@@ -31,9 +31,9 @@ The human-readable repository name is **Telemetry Attestation Gateway**; its hos
 
 ## Proposed MVP target
 
-The deterministic, single-vehicle SITL vertical slice below is the eventual proposed MVP target after the [**Validated claim and verifier contract**](docs/delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) milestone passes its stop/go review; it is not presently authorized implementation work.
+The deterministic, single-vehicle SITL vertical slice below is the eventual proposed MVP target. It becomes an MVP only through [Gate D](docs/delivery-plan.md#gate-d--declare-the-mvp); safe synthetic exploration does not imply that declaration or authorize deployment.
 
-The Current operating state is solo concept work. `M1` is `in_progress`, while `M2` remains blocked. The [Current work authorization](docs/current-work-authorization.md) permits M1 documentation work, bounded recruitment outreach, and a separate [solo experimental sandbox](docs/delivery-plan.md#solo-experimental-sandbox-track). The maintainer may create disposable synthetic-only encoding, parser, mock-adapter, non-cryptographic, proof-feasibility, toy-circuit/local-verification, no-hardware/no-command SITL, and local UI/CLI experiments. Every artifact and output must display **`EXPERIMENTAL`**, **`SYNTHETIC_ONLY`**, and **`NOT VALIDATION OR PRODUCTION AUTHORIZATION`** and remain isolated from real telemetry, ledgers, hardware, credentials, participant data, and production infrastructure. Independent review and external evidence gate promotion and external claims—not sandbox creation. The [delivery plan](docs/delivery-plan.md#solo-experimental-sandbox-track) defines separate gates for supported prototypes, external-discovery evidence, MVP components, and pilot/production components.
+The Current operating state is solo concept work across parallel tracks. The former `M1`–`M11` sequence is superseded and does not block unrelated exploration. The [Current work authorization](docs/current-work-authorization.md) permits documentation work, bounded recruitment outreach, and synthetic reversible work within the [exploration boundary](docs/delivery-plan.md#exploration-boundary). The maintainer may create disposable synthetic-only encoding, parser, mock-adapter, non-cryptographic, proof-feasibility, toy-circuit/local-verification, no-hardware/no-command SITL, and local UI/CLI experiments. Every artifact and output must display **`EXPERIMENTAL`**, **`SYNTHETIC_ONLY`**, and **`NOT VALIDATION OR PRODUCTION AUTHORIZATION`** and remain isolated from real telemetry, ledgers, hardware, credentials, participant data, and production infrastructure. Independent review and external evidence gate promotion and external claims—not sandbox creation. The [delivery plan](docs/delivery-plan.md#synchronization-gates) defines separate gates for supported prototypes, external-discovery evidence, MVP components, and pilot/production components.
 
 1. ingest MAVLink 2 traffic over local UDP and preserve its trust state;
 2. normalize the required `GLOBAL_POSITION_INT` and `VFR_HUD` fields;
@@ -56,7 +56,7 @@ Components are proposed boundaries, not deployed services. Development begins wi
 
 ## Start here
 
-The [documentation index](docs/README.md) provides audience-specific reading paths and explains document authority. Read the [Current work authorization](docs/current-work-authorization.md) before contributing. The named next milestone is [**Validated claim and verifier contract**](docs/delivery-plan.md#next-milestone--validated-claim-and-verifier-contract). `docs/delivery-plan.md` owns that milestone's entry conditions, workstream, required evidence, and exit rules. The [operational register](docs/management/validated-claim-contract-register.csv) records `M1` as `in_progress` and `M2` as blocked. This is a planning milestone in a documentation-led repository with only the separately governed disposable sandbox exception; it does not imply that a supported prototype has been implemented.
+The [documentation index](docs/README.md) provides audience-specific reading paths and explains document authority. Read the [Current work authorization](docs/current-work-authorization.md) before contributing. The [delivery plan](docs/delivery-plan.md) owns parallel tracks, artifact dependencies, and promotion gates. The [artifact register](docs/management/validated-claim-contract-register.csv) records independent exploration, provisionality, external-validation, and deployment-approval statuses. Those statuses do not imply that a supported prototype has been implemented.
 
 Choose the shortest path for your reason for visiting:
 
@@ -76,7 +76,7 @@ Choose the shortest path for your reason for visiting:
 - [data and proof model](docs/data-and-proof-model.md) — telemetry units, encoding, and proof semantics;
 - [claim envelope](docs/claim-envelope.md) — public wire contract, disclosure rules, and verifier outcomes;
 - [security and privacy](docs/security-and-privacy.md) — trust assumptions, threats, controls, and safety boundary;
-- [delivery plan](docs/delivery-plan.md) — the next milestone, phases, evidence, owners, and stop/go rules;
+- [delivery plan](docs/delivery-plan.md) — parallel tracks, artifact dependencies, evidence, owners, and promotion gates;
 - [testing and operations](docs/testing-and-operations.md) — validation layers and readiness gates; and
 - [commercial model](docs/commercial-model.md) — open capabilities, optional services, and anti-lock-in rules;
 - [discovery research plan](docs/discovery-research-plan.md) — research protocol, privacy gate, and evidence rules;

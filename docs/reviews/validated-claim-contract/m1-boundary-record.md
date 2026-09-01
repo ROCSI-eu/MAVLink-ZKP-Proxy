@@ -4,7 +4,7 @@
 | --- | --- |
 | Milestone/work item | Validated claim and verifier contract / `M1` |
 | Originally recorded on | 2026-08-30 |
-| Entry-condition authority | [`docs/delivery-plan.md`](../../delivery-plan.md#accountability-levels-and-m1-start) |
+| Entry-condition authority | [`docs/delivery-plan.md`](../../delivery-plan.md#status-dimensions) |
 | Scope | Documentation reconciliation only |
 | Status | Current restriction; sufficient for solo concept M1 entry |
 | Evidence classification | Maintainer planning boundary; not accepted participant, review, approval, or milestone evidence |
