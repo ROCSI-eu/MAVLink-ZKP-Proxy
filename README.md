@@ -56,7 +56,7 @@ Components are proposed boundaries, not deployed services. Development begins wi
 
 ## Start here
 
-The [documentation index](docs/README.md) provides audience-specific reading paths and explains document authority. Read the [Current work authorization](docs/current-work-authorization.md) before contributing. The named next milestone is [**Validated claim and verifier contract**](docs/delivery-plan.md#next-milestone--validated-claim-and-verifier-contract). `docs/delivery-plan.md` owns that milestone's entry conditions, workstream, required evidence, and exit rules. The [operational register](docs/management/validated-claim-contract-register.csv) records `M1` as `in_progress` and `M2` as blocked. This is a planning milestone in a documentation-only repository; it does not imply that a prototype has been implemented.
+The [documentation index](docs/README.md) provides audience-specific reading paths and explains document authority. Read the [Current work authorization](docs/current-work-authorization.md) before contributing. The named next milestone is [**Validated claim and verifier contract**](docs/delivery-plan.md#next-milestone--validated-claim-and-verifier-contract). `docs/delivery-plan.md` owns that milestone's entry conditions, workstream, required evidence, and exit rules. The [operational register](docs/management/validated-claim-contract-register.csv) records `M1` as `in_progress` and `M2` as blocked. This is a planning milestone in a documentation-led repository with only the separately governed disposable sandbox exception; it does not imply that a supported prototype has been implemented.
 
 Choose the shortest path for your reason for visiting:
 

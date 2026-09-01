@@ -9,7 +9,7 @@
 
 ## Purpose
 
-This index is the navigation and authority map for a documentation-only project. It separates topics whose audiences, owners, and change cadences differ; the former [system plan](system-plan.md) is Superseded and is not an alternative baseline.
+This index is the navigation and authority map for a documentation-led project that also permits isolated, disposable sandbox artifacts. It separates topics whose audiences, owners, and change cadences differ; the former [system plan](system-plan.md) is Superseded and is not an alternative baseline. Sandbox artifacts are not supported implementation and remain governed by the authorization and promotion rules below.
 
 The [current work authorization](current-work-authorization.md) owns the activity boundary for solo-concept `M1`, the isolated synthetic experimental sandbox, and transition into later work. The [delivery plan](delivery-plan.md#solo-experimental-sandbox-track) owns the sandbox categories, mandatory markings, isolation rules, and separate promotion gates. It also permits bounded recruitment outreach under its stated privacy controls. Supporting readiness and management records do not satisfy a gate.
 

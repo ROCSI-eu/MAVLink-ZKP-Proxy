@@ -1,6 +1,8 @@
 # Contributing
 
-This repository is documentation-only. Follow the authority and status rules in the [documentation guide](docs/README.md), and do not present proposed behavior as implemented.
+This repository contains governance documentation plus disposable sandbox artifacts that comply with the [solo experimental sandbox track](docs/delivery-plan.md#solo-experimental-sandbox-track). Other implementation contributions are not authorized. Follow the authority and status rules in the [documentation guide](docs/README.md), and do not present proposed or sandbox behavior as implemented product capability.
+
+Sandbox contributions must use demonstrably synthetic data, remain inside the documented isolation boundary, and carry **`EXPERIMENTAL`**, **`SYNTHETIC_ONLY`**, and **`NOT VALIDATION OR PRODUCTION AUTHORIZATION`**. If a format cannot embed the markings, include the adjacent path-and-digest manifest required by the delivery plan; human-visible renderings must still display them. A sandbox contribution is not a supported prototype, milestone or discovery evidence, an MVP component, or pilot/production work.
 
 ## Developer Certificate of Origin
 
