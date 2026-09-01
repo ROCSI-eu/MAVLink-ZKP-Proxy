@@ -6,7 +6,7 @@
 
 <p align="center"><em>Conceptual illustration of the Proposed architecture. Documentation-only; not implementation, proof, verification, telemetry-truth, safety, compliance, or production-readiness evidence.</em></p>
 
-> **Current maturity: documentation only.** This repository contains no working proxy, proof circuit, Midnight contract, dashboard, or deployment.
+> **Current maturity: documentation plus a permitted disposable sandbox track.** No sandbox artifact is a supported prototype, validated capability, MVP component, or deployment.
 
 Telemetry Attestation Gateway is a proposed observational gateway that turns selected telemetry into narrowly defined, privacy-preserving claims. Its first adapter uses MAVLink, and its initial claim is that a simulated vehicle's horizontal speed is at or below a policy limit, without disclosing exact position.
 
@@ -33,7 +33,7 @@ The human-readable repository name is **Telemetry Attestation Gateway**; its hos
 
 The deterministic, single-vehicle SITL vertical slice below is the eventual proposed MVP target after the [**Validated claim and verifier contract**](docs/delivery-plan.md#next-milestone--validated-claim-and-verifier-contract) milestone passes its stop/go review; it is not presently authorized implementation work.
 
-The Current operating state is solo documentation planning. `M1` is `in_progress` at solo concept level, while `M2` remains blocked. Current work is limited by the [Current work authorization](docs/current-work-authorization.md) to M1 documentation reconciliation, governance correction, demonstrably synthetic planning material, and lightweight recruitment outreach through public professional channels. After its minimum privacy arrangement is documented and approved, that outreach may share only the public repository and a concise description, retain minimum contact/role/interest/conflict information through the governed off-Git route, and include an initial non-research suitability conversation. It stops before interviews, workflow evidence, telemetry, procurement claims, restricted data, or independent review and is not discovery, customer validation, or product evidence. The [solo planning readiness record](docs/reviews/validated-claim-contract/solo-planning-readiness-record.md) records the factual reason for the broader boundary. Discovery execution, completed research records, paper or non-cryptographic prototype research, format/vector spikes, telemetry parsing, circuits, proof verification, SITL execution, hardware, and publication are not presently authorized.
+The Current operating state is solo concept work. `M1` is `in_progress`, while `M2` remains blocked. The [Current work authorization](docs/current-work-authorization.md) permits M1 documentation work, bounded recruitment outreach, and a separate [solo experimental sandbox](docs/delivery-plan.md#solo-experimental-sandbox-track). The maintainer may create disposable synthetic-only encoding, parser, mock-adapter, non-cryptographic, proof-feasibility, toy-circuit/local-verification, no-hardware/no-command SITL, and local UI/CLI experiments. Every artifact and output must display **`EXPERIMENTAL`**, **`SYNTHETIC_ONLY`**, and **`NOT VALIDATION OR PRODUCTION AUTHORIZATION`** and remain isolated from real telemetry, ledgers, hardware, credentials, participant data, and production infrastructure. Independent review and external evidence gate promotion and external claims—not sandbox creation. The [delivery plan](docs/delivery-plan.md#solo-experimental-sandbox-track) defines separate gates for supported prototypes, external-discovery evidence, MVP components, and pilot/production components.
 
 1. ingest MAVLink 2 traffic over local UDP and preserve its trust state;
 2. normalize the required `GLOBAL_POSITION_INT` and `VFR_HUD` fields;
@@ -85,10 +85,10 @@ Choose the shortest path for your reason for visiting:
 
 ## Contributing during discovery
 
-During the Current solo-concept M1 state, useful contributions are documentation reviews, contradiction reports, governance corrections, role and evidence requirements, and synthetic-only planning examples permitted by the [Current work authorization](docs/current-work-authorization.md). Do not describe proposed behavior as implemented or begin discovery execution, prototypes, proof work, telemetry/SITL work, or compatibility experiments without the accepted gate evidence required by the delivery plan.
+During the Current solo-concept M1 state, useful contributions include documentation work and compliant disposable experiments permitted by the [Current work authorization](docs/current-work-authorization.md). Do not describe sandbox behavior as implemented product capability, use it for discovery, or promote it into supported prototype, MVP, pilot, or production work without the destination evidence required by the delivery plan.
 
 ## Safety and license
 
-Use simulation and controlled test environments only after the applicable gate authorizes technical work. Do not connect an experimental build to a flight-critical command path. Hardware work requires the gates in the [delivery plan](docs/delivery-plan.md).
+Sandbox simulation is permitted only with demonstrably synthetic inputs, no hardware, and no command path. Do not connect an experimental build to a live ledger, production infrastructure, or flight-critical command path. Hardware and operational work require the gates in the [delivery plan](docs/delivery-plan.md).
 
 The root [MIT License](LICENSE) remains the current effective license. A layered MPL-2.0/CC-BY-4.0/CC0-1.0 model is [Proposed, not approved or implemented](LICENSING.md), pending legal, community-impact, dependency, ownership, and ADR review. Contributors must follow the [DCO and provenance policy](CONTRIBUTING.md).

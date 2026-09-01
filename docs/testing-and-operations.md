@@ -21,6 +21,12 @@
 
 Fixtures MUST be synthetic or approved for redistribution. Randomized failures print reproducible seeds. Test output must not contain restricted or secret data.
 
+## Solo experimental sandbox testing
+
+Disposable schema/encoding spikes, fixture-driven parsers, local-only mock adapters, non-cryptographic prototypes, proof feasibility benchmarks, toy circuits/local verification, no-hardware/no-command SITL, and local UI/CLI demonstrations MAY run before milestone gates. Their harnesses MUST verify demonstrably synthetic provenance, deny external network access by default, use only loopback mocks and disposable test keys, and assert that no hardware or command interface is reachable. Tests and scans MUST fail when real telemetry, live-ledger endpoints, production hosts, credentials/non-test keys, participant identifiers, or production infrastructure references are present.
+
+Every source artifact or adjacent digest manifest and every console, log, report, export, screen, screenshot, recording, benchmark table, or test result MUST include **`EXPERIMENTAL`**, **`SYNTHETIC_ONLY`**, and **`NOT VALIDATION OR PRODUCTION AUTHORIZATION`**. Sandbox performance is feasibility data only: it is not an SLO, representative benchmark, validation result, or release evidence. Tests may inform redesign, but only the [destination-specific promotion gate](delivery-plan.md#solo-experimental-sandbox-track) can admit a reviewed copy or reimplementation into supported, discovery, MVP, pilot, or production evidence.
+
 ## Policy lifecycle, publication, and rollback cases
 
 Lifecycle tests MUST exercise every permitted transition and reject skipped, reversed, unsigned, unauthorized, wrong-digest, out-of-order, and in-place mutation attempts. With an authenticated integer boundary clock, cases MUST cover just before, exactly at, and just after each of `not_before` and `not_after`; equality at `not_before` MUST be accepted as current, while equality at and just after `not_after` MUST be expired. Cases MUST also cover activation before approval or before `not_before`, deprecated acceptance before the exclusive sunset with a warning, and rejection at and after expiry. Matrix cases MUST pair each policy with supported and unsupported schema, statement, circuit, proof-suite, verification-key, tier, and domain identifiers, proving that cryptographic validity cannot override incompatibility.
