@@ -2,6 +2,13 @@
 
 | Record field | Value |
 | --- | --- |
+| Implementation state | Concept only |
+| Evidence source | No execution evidence |
+| Review independence | Maintainer-reviewed |
+| Data class | Public documentation |
+| Permitted environment | Documentation-only |
+| External claim level | No external assurance claim |
+| Activity | Exploration permitted within the Current work authorization |
 | Work item | `M1` — Reconcile the documentation baseline |
 | Review date | 2026-08-30 |
 | Status | Current routing map; prior M1 approval record **Superseded** |
@@ -75,4 +82,4 @@ The historical status-change reference `TAG-M1-ACCEPTED-DOC-BASELINE-2026-08-30`
 - M1 is `in_progress`; `gate_closed=false`;
 - maintainer review may finish it only as a **solo-maintainer provisional baseline**;
 - absent external discipline and relying-party roles are future promotion blockers under the role-by-risk matrix, not blockers to M1 documentation work; and
-- M2 remains blocked until real provider and relying-party participants and its triggered discovery/privacy reviews are available.
+- `Blocked — M2 entry promotion` applies until real provider and relying-party participants and its triggered discovery/privacy reviews are available.

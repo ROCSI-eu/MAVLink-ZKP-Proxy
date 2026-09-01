@@ -19,7 +19,7 @@ Every substantive document declares its purpose, audience, status, accountable r
 
 - **Current** — demonstrably true of this repository or an active documentation rule.
 - **Proposed** — intended but unimplemented or unaccepted.
-- **Open** — unresolved and blocking.
+- **Open** — an unresolved hypothesis, question, or decision. `Open` does not stop unrelated work; the applicable promotion decision fails closed until it is resolved.
 - **Deferred** — outside the current phase.
 - **Superseded** — traceability only; no longer authoritative.
 
@@ -27,9 +27,36 @@ Every substantive document declares its purpose, audience, status, accountable r
 
 Roles identify required accountability until named people are assigned. A role label, placeholder, sole-maintainer acknowledgement, or AI-assisted review does not satisfy an artifact-promotion requirement for a real accountable person, independent reviewer, or relying-party decision owner. Review triggers are used instead of arbitrary review dates. Evidence should be linked from an ADR or milestone record when those artifacts exist.
 
+### Orthogonal artifact labels
+
+Document state describes prose and decisions, not artifact maturity. Every governed artifact or milestone record MUST state each label below; the values are independent and MUST NOT be collapsed into one maturity word.
+
+| Dimension | Allowed labels | What the label answers |
+| --- | --- | --- |
+| **Artifact implementation state** | `Concept only`, `Experimental`, `Supported prototype`, `MVP component`, `Pilot component`, `Production component`, `Superseded` | What has actually been implemented and supported? `Experimental` is disposable and never means validated. |
+| **Evidence source** | `No execution evidence`, `Synthetic evidence`, `SITL evidence`, `Participant evidence`, `Real-source test evidence`, `Operational evidence` | What kind of observation supports the scoped statement? List multiple sources rather than implying substitution. |
+| **Review independence** | `Unreviewed`, `Maintainer-reviewed`, `Peer-reviewed`, `Independently reviewed` | Who reviewed it, and were they independent of its production? Named scope and conflicts are required for the last two labels. |
+| **Data class** | `Public documentation`, `Synthetic data`, `Participant research data`, `Restricted/customer data`, `Operational data` | What is the most sensitive data the artifact is authorized to handle? This is a ceiling, not evidence that data was used. |
+| **Permitted environment** | `Documentation-only`, `Local-only`, `Isolated test environment`, `Approved research environment`, `Authorized pilot`, `Authorized production` | Where may this exact version run or be used? Higher-consequence environments require their specific gate. |
+| **External claim level** | `No external assurance claim`, `Externally observed finding`, `Independently verified technical claim`, `Authorized pilot claim`, `Authorized production claim` | What may be said outside the project about this exact version and scope? |
+
+Use a slash-separated profile when brevity helps, for example: **`Experimental / Synthetic evidence / Maintainer-reviewed / Synthetic data / Local-only / No external assurance claim`**. Omitting a dimension is not an upgrade. `Exploration permitted` is the activity status for reversible solo work within its stated boundary. **`Blocked` is reserved for a named promotion or deployment decision that cannot proceed**, such as `Blocked — Gate B participant evaluation`; it MUST NOT describe the repository, an entire track, or an unresolved hypothesis.
+
+### Allowed external claims
+
+| External claim level | Claims allowed | Minimum corresponding evidence |
+| --- | --- | --- |
+| `No external assurance claim` | Factual description of the concept, experiment, inputs, method, and observed synthetic result, with limitations and mandatory labels. | Truthful provenance only; no validation or readiness adjective is allowed. |
+| `Externally observed finding` | The precise workflow, comprehension, integration, or commercial finding observed by the named external audience. | Approved governance and scoped participant/external evidence; this does not establish security, safety, interoperability, or readiness. |
+| `Independently verified technical claim` | Only the technical property independently reproduced for the named version, configuration, corpus, and environment. | Relevant execution evidence plus competent independent review; interoperability additionally requires the release corpus and independent implementations specified by the delivery plan. |
+| `Authorized pilot claim` | That the named scope is authorized for the recorded pilot, with limitations and stop conditions. | Passed applicable gates, governed data, named owners, independent risk review, and explicit pilot authorization. |
+| `Authorized production claim` | That the named scope is authorized for the recorded production environment and supported operating envelope. | Gate E production evidence and explicit production authorization; claims remain limited to measured and reviewed properties. |
+
+An `Experimental` artifact MUST NOT be described as **validated, secure, safe, interoperable, customer-backed, or production-ready**. Each term requires direct corresponding evidence: approved external evaluation for “validated” or “customer-backed”; scoped independent security or safety evidence for “secure” or “safe”; released cross-implementation evidence for “interoperable”; and explicit Gate E authorization plus operational evidence for “production-ready.” Evidence in one dimension never upgrades another.
+
 ## Reading paths
 
-All root reading paths lead to the five [parallel exploration tracks](delivery-plan.md#operating-model). The delivery plan owns artifact dependencies and promotion gates; the [artifact register](management/validated-claim-contract-register.csv) records the four independent Current status dimensions without imposing milestone sequencing.
+All root reading paths lead to the five [parallel exploration tracks](delivery-plan.md#operating-model). The delivery plan owns artifact dependencies and promotion gates; the [artifact register](management/validated-claim-contract-register.csv) records the six independent artifact labels plus activity and contract state without imposing milestone sequencing.
 
 The Current state permits solo, synthetic, reversible exploration across tracks within the documented boundary. No artifact is recorded as externally validated or approved for deployment. External evidence and named reviewers are required only for the applicable promotion or claim, not for unrelated exploration.
 

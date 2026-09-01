@@ -2,6 +2,13 @@
 
 | Record field | Value |
 | --- | --- |
+| Implementation state | Concept only |
+| Evidence source | No execution evidence |
+| Review independence | Maintainer-reviewed |
+| Data class | Public documentation |
+| Permitted environment | Documentation-only |
+| External claim level | No external assurance claim |
+| Activity | Exploration permitted within the Current work authorization |
 | Milestone/work item | Validated claim and verifier contract / `M1` |
 | Originally recorded on | 2026-08-30 |
 | Status | **Superseded** — traceability only; the recorded participation claims were not satisfied |

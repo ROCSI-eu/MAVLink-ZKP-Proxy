@@ -24,16 +24,9 @@ Technical feasibility does not validate a workflow or market. External workflow 
 
 ### Status dimensions
 
-Every governed artifact record MUST carry these four independent fields. A `blocked` or `no` value in one field MUST NOT be used to stop unrelated exploration.
+Every governed artifact record MUST carry the six independent labels defined by the [documentation status model](README.md#orthogonal-artifact-labels): implementation state, evidence source, review independence, data class, permitted environment, and external claim level. Records additionally state activity as `Exploration permitted`, `Exploration restricted`, or `Exploration not permitted`, and may state whether a contract is provisional or frozen. `Open` is reserved for unresolved hypotheses or decisions. `Blocked` is reserved for a specific named promotion or deployment decision that cannot proceed; a failed gate MUST NOT stop unrelated exploration.
 
-| Field | Allowed values | Meaning |
-| --- | --- | --- |
-| **Exploration allowed** | `yes`, `restricted`, `no` | Whether additional learning may proceed within the stated data, environment, and risk boundary. Defaults to `yes` for solo, synthetic, reversible work. |
-| **Artifact provisional** | `yes`, `no`, `superseded` | Whether the artifact can change incompatibly and must not be represented as frozen, stable, or authoritative. Defaults to `yes`. |
-| **Externally validated** | `not sought`, `pending`, `yes`, `no` | Whether the stated external audience has evaluated the artifact under approved governance. This says nothing about technical or deployment readiness. |
-| **Approved for deployment** | `not sought`, `pending`, `yes`, `no` | Whether the artifact is authorized for the named deployment scope. This is never implied by any other field. |
-
-Statuses are scoped assertions, not maturity levels. Each value MUST name the artifact version or digest, intended use, evidence links, owner, decision date, limitations, and—when `yes`—the approving authority. For example, a contract can remain provisional while a synthetic codec spike is allowed; a workflow can be externally validated while deployment approval remains `not sought`; and a failed promotion review can leave exploration `yes`.
+Statuses are scoped assertions, not a maturity ladder. Each value MUST name the artifact version or digest, intended use, evidence links, owner, decision date, limitations, and any approving authority. For example, a contract can remain provisional while a synthetic codec spike is `Exploration permitted`; a workflow can have participant evidence while deployment remains unauthorized; and `Blocked — Gate B participant evaluation` can coexist with continued local exploration.
 
 ### Exploration boundary
 

@@ -16,6 +16,8 @@
 
 A missing external role is a blocker to promotion into the work or claim that triggers that role. It is not a blocker to solo documentation reconciliation or synthetic, reversible exploration within the delivery plan's [exploration boundary](delivery-plan.md#exploration-boundary).
 
+The activity label for that reversible solo work is **Exploration permitted**. `Open` identifies an unresolved hypothesis. `Blocked` is used only as `Blocked — <named promotion or deployment decision>` when that decision cannot proceed; it is never a repository-wide state.
+
 ## Authorized solo concept work
 
 The maintainer may:
@@ -31,9 +33,9 @@ AI may assist drafting but cannot be a participant, independent reviewer, accoun
 
 ## Experimental sandbox authorization
 
-Sandbox creation and iteration are authorized now and do not require external participants or independent reviewers. Every artifact and output MUST carry **`EXPERIMENTAL`**, **`SYNTHETIC_ONLY`**, and **`NOT VALIDATION OR PRODUCTION AUTHORIZATION`** directly or, where its format cannot embed them, through an adjacent manifest that identifies the artifact by path and digest; every human-visible rendering MUST display the markings. Sandbox work MUST use only demonstrably synthetic inputs with recorded provenance and remain isolated from real telemetry, live ledgers/networks, hardware, command paths, credentials/non-test keys, participant data, and production infrastructure. Local loopback mocks and disposable test keys are permitted; external network access is denied by default.
+Sandbox creation and iteration are authorized now and do not require external participants or independent reviewers. Its required status profile is **`Experimental / Synthetic evidence / Maintainer-reviewed / Synthetic data / Local-only / No external assurance claim`**, using the [six orthogonal labels](README.md#orthogonal-artifact-labels). Every artifact and output MUST carry **`EXPERIMENTAL`**, **`SYNTHETIC_ONLY`**, and **`NOT VALIDATION OR PRODUCTION AUTHORIZATION`** directly or, where its format cannot embed them, through an adjacent manifest that identifies the artifact by path and digest; every human-visible rendering MUST display the markings. Sandbox work MUST use only demonstrably synthetic inputs with recorded provenance and remain isolated from real telemetry, live ledgers/networks, hardware, command paths, credentials/non-test keys, participant data, and production infrastructure. Local loopback mocks and disposable test keys are permitted; external network access is denied by default.
 
-Sandbox outputs cannot satisfy external discovery, independent-review, security, interoperability, MVP, pilot, or production evidence. They cannot support external claims. Promotion into a supported prototype, external-discovery evidence, an MVP component, or a pilot/production component requires the applicable [promotion gate](delivery-plan.md#synchronization-gates); promotion is a reviewed copy or reimplementation, never removal of labels in place.
+Sandbox outputs cannot satisfy external discovery, independent-review, security, safety, interoperability, customer-backing, MVP, pilot, or production evidence. They cannot support external assurance claims and MUST NOT be called validated, secure, safe, interoperable, customer-backed, or production-ready. Promotion into a supported prototype, external-discovery evidence, an MVP component, or a pilot/production component requires the applicable [promotion gate](delivery-plan.md#synchronization-gates); promotion is a reviewed copy or reimplementation, never removal of labels in place.
 
 ## Risk-triggered limits
 
